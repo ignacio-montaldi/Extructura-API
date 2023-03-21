@@ -15,12 +15,48 @@ from PIL import Image
 # Image Decoding
 from base64 import decodebytes
 
+# Other
+from enum import Enum
+
 
 app = FastAPI()
 
 posts = []
 
 ######## MAIN SCRIPT ########
+
+
+# ####### Modelos #######
+
+class Invoice_type(Enum):
+    A = 1
+    B = 2
+    C = 3
+
+
+class AItem:
+    def __init__(self, cod, title, amount, measure, unit_price, discount_perc, subtotal, iva_fee, subtotal_inc_fees):
+        self.cod = cod
+        self.title = title
+        self.amount = amount
+        self.measure = measure
+        self.unit_price = unit_price
+        self.discount_perc = discount_perc
+        self.subtotal = subtotal
+        self.iva_fee = iva_fee
+        self.subtotal_inc_fees = subtotal_inc_fees
+
+
+class CItem:
+    def __init__(self, cod, title, amount, measure, unit_price, discount_perc, discounted_subtotal, subtotal):
+        self.cod = cod
+        self.title = title
+        self.amount = amount
+        self.measure = measure
+        self.unit_price = unit_price
+        self.discount_perc = discount_perc
+        self.discounted_subtotal = discounted_subtotal
+        self.subtotal = subtotal
 
 
 def saveCroppedImages(originalImage, preprocededImage, startingIndex, boxWidthTresh, boxHeightTresh, outputImagePrefix, higherThanHeight, folder, reverseSorting):
@@ -49,7 +85,7 @@ def saveCroppedImages(originalImage, preprocededImage, startingIndex, boxWidthTr
         else:
             if w > boxWidthTresh and h < boxHeightTresh:
                 roi = originalImage[y:y+h, x:x+w]
-                fileName = "temp/" + outputImagePrefix + \
+                fileName = folder + "/" + outputImagePrefix + \
                     "_" + str(index) + ".png"
                 cv2.imwrite(fileName, roi)
                 index += 1
@@ -95,51 +131,59 @@ def deleteFilesInFolder(folderPath):
         except Exception as e:
             print('Failed to delete %s. Reason: %s' % (file_path, e))
 
-####### Modelos #######
-
-
-class Item:
-    def __init__(self, cod, title, amount, measure, unit_price, discount_perc, subtotal, iva_fee, subtotal_inc_fees):
-        self.cod = cod
-        self.title = title
-        self.amount = amount
-        self.measure = measure
-        self.unit_price = unit_price
-        self.discount_perc = discount_perc
-        self.subtotal = subtotal
-        self.iva_fee = iva_fee
-        self.subtotal_inc_fees = subtotal_inc_fees
-
 
 ####### Código principal #######
 
 def image_cropping():
+    starting_image_path = "data/factura.png"
 
-    # Separación inicial, remueve bordes de los costados
-    image = cv2.imread("data/factura.png")
+    image = cv2.imread(starting_image_path)
     processImage(image=image, rectDimensions=(1, 100),
-                 startingIndex=1, boxWidthTresh=100, boxHeightTresh=100, folder="pretemp", outputImagePrefix="invoice_aux", higherThanHeight=True, savePreprocessingImages=False, reverseSorting=False)
+                 startingIndex=1, boxWidthTresh=100,  boxHeightTresh=100, folder="pretemp", outputImagePrefix="invoice_aux", higherThanHeight=True, savePreprocessingImages=True, reverseSorting=False)
 
     # Obtiene encabezado, además tambien remueve los bordes superiores e inferiores
     image2 = cv2.imread("pretemp/invoice_aux_1.png")
-    processImage(image=image2, rectDimensions=(100, 9),
-                 startingIndex=1,  boxWidthTresh=100, boxHeightTresh=100, folder="temp", outputImagePrefix="header", higherThanHeight=True, savePreprocessingImages=False, reverseSorting=False)
+    processImage(image=image2, rectDimensions=(100, 15),
+                 startingIndex=1,  boxWidthTresh=100, boxHeightTresh=100, folder="temp", outputImagePrefix="header", higherThanHeight=True, savePreprocessingImages=True, reverseSorting=False)
 
     # Obtiene pie, le remueve todo y conserva el encuadrado
     image3 = cv2.imread("pretemp/invoice_aux_2.png")
     processImage(image=image3, rectDimensions=(3, 5), startingIndex=1,
-                 boxWidthTresh=200, boxHeightTresh=100, folder="temp", outputImagePrefix="footer", higherThanHeight=True, savePreprocessingImages=False, reverseSorting=False)
+                 boxWidthTresh=200, boxHeightTresh=100, folder="temp", outputImagePrefix="footer", higherThanHeight=True, savePreprocessingImages=True, reverseSorting=False)
 
     # Obtiene los items del cuerpo de la factura
     image4 = cv2.imread("pretemp/invoice_aux_1.png")
-    processImage(image=image4, rectDimensions=(500, 3),
-                 startingIndex=1,  boxWidthTresh=100, boxHeightTresh=50, folder="temp", outputImagePrefix="item", higherThanHeight=False, savePreprocessingImages=False, reverseSorting=False)
+    processImage(image=image4, rectDimensions=(500, 5),
+                 startingIndex=1,  boxWidthTresh=100, boxHeightTresh=50, folder="temp", outputImagePrefix="item", higherThanHeight=False, savePreprocessingImages=True, reverseSorting=False)
 
-    # Borramos los archivos del preprocesado
+    image5 = cv2.imread(starting_image_path)
+    invoice_type_image = image5[88:186,
+                                (image5.shape[1]//2)-48:(image5.shape[1]//2)+48]
+    processImage(image=invoice_type_image, rectDimensions=(1, 1),
+                 startingIndex=1,  boxWidthTresh=30, boxHeightTresh=30, folder="pretemp", outputImagePrefix="invoice_type_image", higherThanHeight=True, savePreprocessingImages=True, reverseSorting=False)
+
+    image5 = cv2.imread("pretemp/invoice_type_image_1.png")
+    ocr_result = pytesseract.image_to_string(
+        image5, lang='spa', config='--psm 6')
+    ocr_result = ocr_result.replace('\n\x0c', '')
+
+    match ocr_result:
+        case "A":
+            invoice_type = Invoice_type.A
+        case "B":
+            invoice_type = Invoice_type.B
+        case "C":
+            invoice_type = Invoice_type.C
+        case _:
+            print("Error")
+
+    # # Borramos los archivos del preprocesado
     deleteFilesInFolder('./pretemp')
 
+    return invoice_type
 
-def item_processing():
+
+def item_processing(invoice_type: Invoice_type):
     directory_in_str = "./temp"
     directory = os.fsencode(directory_in_str)
 
@@ -147,7 +191,7 @@ def item_processing():
 
     for file in os.listdir(directory):
         filename = os.fsdecode(file)
-        if filename.startswith("item") and (not filename.startswith("item_1")):
+        if filename.startswith("item"):
 
             img_file = "temp/" + filename
             image = cv2.imread(img_file)
@@ -169,13 +213,17 @@ def item_processing():
                     ocr_result = ocr_result.replace('\n\x0c', '')
                     ocr_result = ocr_result.replace('\n', ' ')
                     valuesStr.append(ocr_result)
-
-            item = Item(valuesStr[0], valuesStr[1], valuesStr[2], valuesStr[3],
-                        valuesStr[4], valuesStr[5], valuesStr[6], valuesStr[7], valuesStr[8])
+            if (invoice_type == Invoice_type.A):
+                item = AItem(valuesStr[0], valuesStr[1], valuesStr[2], valuesStr[3],
+                             valuesStr[4], valuesStr[5], valuesStr[6], valuesStr[7], valuesStr[8])
+            else:
+                item = CItem(valuesStr[0], valuesStr[1], valuesStr[2], valuesStr[3],
+                             valuesStr[4], valuesStr[5], valuesStr[6], valuesStr[7])
 
             items.append(item)
         else:
             continue
+    deleteFilesInFolder('./temp')
     return items
 
 ###################################################################
@@ -254,6 +302,7 @@ class Image(BaseModel):
 def send_image(image: Image):
     with open("data/factura.png", "wb") as f:
         f.write(decodebytes(str.encode(image.base64Image)))
-    image_cropping()
-    items = item_processing()
+    invoice_type = image_cropping()
+    items = item_processing(invoice_type=invoice_type)
+    deleteFilesInFolder('./data')
     return items

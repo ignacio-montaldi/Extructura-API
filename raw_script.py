@@ -17,7 +17,7 @@ class Invoice_type(Enum):
     C = 3
 
 
-class InvoiceHeader():
+class InvoiceHeader:
     def __init__(self, business_name, business_address, vat_condition, document_type, checkout_aisle_number, document_number, issue_date, seller_cuit, gross_income, business_opening_date, client_cuit, client_name, client_vat_condition, client_address, sale_method):
         self.business_name = business_name
         self.business_address = business_address

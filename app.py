@@ -1,9 +1,6 @@
 # Fast API
-from fastapi import FastAPI, HTTPException, File, UploadFile
+from fastapi import FastAPI
 from pydantic import BaseModel
-from typing import Text, Optional
-from datetime import datetime
-from uuid import uuid4 as uuid
 
 # Scanning
 import shutil
@@ -21,8 +18,8 @@ from enum import Enum
 
 ######## MAIN SCRIPT ########
 
-
 # ####### Modelos #######
+
 
 class Invoice:
     def __init__(self, type, header, items, footer):
@@ -83,7 +80,7 @@ class CItem:
 
 
 class AFooter:
-    def __init__(self, currency, net_amount_taxed, vat_27, vat_21, vat_10_5, vat_5, vat_2_5, vat_0, other_taxes_ammout, total):
+    def __init__(self, currency, net_amount_taxed, vat_27, vat_21, vat_10_5, vat_5, vat_2_5, vat_0, other_taxes_amount, total):
         self.currency = currency
         self.net_amount_taxed = net_amount_taxed
         self.vat_27 = vat_27
@@ -92,15 +89,15 @@ class AFooter:
         self.vat_5 = vat_5
         self.vat_2_5 = vat_2_5
         self.vat_0 = vat_0
-        self.other_taxes_ammout = other_taxes_ammout
+        self.other_taxes_amount = other_taxes_amount
         self.total = total
 
 
 class CFooter:
-    def __init__(self, currency, sub_total, other_taxes_ammout, total):
+    def __init__(self, currency, sub_total, other_taxes_amount, total):
         self.currency = currency
         self.sub_total = sub_total
-        self.other_taxes_ammout = other_taxes_ammout
+        self.other_taxes_amount = other_taxes_amount
         self.total = total
 
 ####### Funciones #######
@@ -476,12 +473,12 @@ def getFooter(invoice_type):
             img_file="processing/footer_value_4.png"), vat_5=getFooterConcept(
             img_file="processing/footer_value_5.png"), vat_2_5=getFooterConcept(
             img_file="processing/footer_value_6.png"), vat_0=getFooterConcept(
-            img_file="processing/footer_value_7.png"), other_taxes_ammout=getFooterConcept(
+            img_file="processing/footer_value_7.png"), other_taxes_amount=getFooterConcept(
             img_file="processing/footer_value_8.png"), total=getFooterConcept(
             img_file="processing/footer_value_9.png"), currency=getFooterCurrency("processing/footer_key_1.png"))
     else:
         footer = CFooter(sub_total=getFooterConcept(
-            img_file="processing/footer_value_1.png"), other_taxes_ammout=getFooterConcept(
+            img_file="processing/footer_value_1.png"), other_taxes_amount=getFooterConcept(
             img_file="processing/footer_value_2.png"), total=getFooterConcept(
             img_file="processing/footer_value_3.png"), currency=getFooterCurrency("processing/footer_key_1.png"))
     return footer
@@ -497,9 +494,36 @@ def addBorder(image, path):
     cv2.imwrite(path, image_with_border)
 
 
+def getInvoiceType():
+    # Obtiene el tipo de factura
+    image = cv2.imread(getSmallestImagePath(
+        dir="temp", fileNamePrefix="header_box"))
+    processImage(image=image, rectDimensions=(1, 1),
+                 boxWidthTresh=25, boxHeightTresh=25, folder="pretemp", outputImagePrefix="invoice_type_image")
+
+    image = cv2.imread("pretemp/invoice_type_image_1.png")
+    addBorder(image, "pretemp/invoice_type_image_1.png")
+    image = cv2.imread("pretemp/invoice_type_image_1.png")
+    ocr_result = pytesseract.image_to_string(
+        image, lang='spa', config='--psm 6')
+    ocr_result = ocr_result.replace('\n\x0c', '')
+
+    match ocr_result:
+        case "A":
+            invoice_type = Invoice_type.A
+        case "B":
+            invoice_type = Invoice_type.B
+        case "C":
+            invoice_type = Invoice_type.C
+        case _:
+            print("Error")
+
+    return invoice_type
+
+
 ####### Código principal #######
 
-def getInvoice():
+def preprocessImage():
     starting_image_path = "data/factura.png"
 
     # Separación inicial, remueve bordes de los costados
@@ -541,52 +565,24 @@ def getInvoice():
 
     image = cv2.imread("temp/header_box_2.png")
     processImage(image=image, rectDimensions=(500, 34),
-                 boxWidthTresh=1, boxHeightTresh=100, folder="temp", outputImagePrefix="header_box", startingIndex=2, savePreprocessingImages=True)
+                 boxWidthTresh=1, boxHeightTresh=100, folder="temp", outputImagePrefix="header_box", startingIndex=2)
 
-    # Obtiene el tipo de factura
-    image = cv2.imread(getSmallestImagePath(
-        dir="temp", fileNamePrefix="header_box"))
-    processImage(image=image, rectDimensions=(1, 1),
-                 boxWidthTresh=25, boxHeightTresh=25, folder="pretemp", outputImagePrefix="invoice_type_image")
+    # #### GET HEADER CONCEPTS #####
+    # header = getHeader()
+    # print(header)
 
-    image = cv2.imread("pretemp/invoice_type_image_1.png")
-    addBorder(image, "pretemp/invoice_type_image_1.png")
-    image = cv2.imread("pretemp/invoice_type_image_1.png")
-    ocr_result = pytesseract.image_to_string(
-        image, lang='spa', config='--psm 6')
-    ocr_result = ocr_result.replace('\n\x0c', '')
+    # #### GET ITEMS #####
+    # items = getItems(invoice_type)
+    # print(items)
 
-    match ocr_result:
-        case "A":
-            invoice_type = Invoice_type.A
-        case "B":
-            invoice_type = Invoice_type.B
-        case "C":
-            invoice_type = Invoice_type.C
-        case _:
-            print("Error")
+    # #### GET FOOTER CONCEPTS #####
+    # footer = getFooter(invoice_type)
+    # print(footer)
 
-    #### GET HEADER CONCEPTS #####
-    header = getHeader()
-    print(header)
+    # invoice = Invoice(type=invoice_type.name, header=header,
+    #                   items=items, footer=footer)
 
-    #### GET ITEMS #####
-    items = getItems(invoice_type)
-    print(items)
-
-    #### GET FOOTER CONCEPTS #####
-    footer = getFooter(invoice_type)
-    print(footer)
-
-    # Borramos los archivos generados para el analisis
-    deleteFilesInFolder('./pretemp')
-    deleteFilesInFolder('./temp')
-    deleteFilesInFolder('./processing')
-
-    invoice = Invoice(type=invoice_type.name, header=header,
-                      items=items, footer=footer)
-
-    return invoice
+    # return invoice
 
 
 ################## API ########################
@@ -598,20 +594,53 @@ def read_root():
     return {"welcome_message: Welcome to Extractura"}
 
 
-# @app.get('/items')
-# def get_items():
-#     items = getItems()
-#     return items
+global invoice_type
+global header
+global footer
+global items
 
 
 class Image(BaseModel):
     base64Image: str
 
 
-@app.post('/send_image')
+@app.post('/recieve_image')
 def send_image(image: Image):
     with open("data/factura.png", "wb") as f:
         f.write(decodebytes(str.encode(image.base64Image)))
-    invoice = getInvoice()
+    preprocessImage()
+    global invoice_type
+    invoice_type = getInvoiceType()
+    return
+
+
+@app.post('/header')
+def get_header():
+    global header
+    header = getHeader()
+    return
+
+
+@app.post('/items')
+def get_items():
+    global items
+    items = getItems(invoice_type)
+    return
+
+
+@app.post('/footer')
+def get_footer():
+    global footer
+    footer = getFooter(invoice_type)
+    return
+
+
+@app.get('/invoice')
+def get_invoice():
+    invoice = Invoice(type=invoice_type.name, header=header,
+                      items=items, footer=footer)
+    deleteFilesInFolder('./pretemp')
+    deleteFilesInFolder('./temp')
+    deleteFilesInFolder('./processing')
     deleteFilesInFolder('./data')
     return invoice

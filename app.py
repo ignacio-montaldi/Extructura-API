@@ -80,7 +80,7 @@ class CItem:
 
 
 class AFooter:
-    def __init__(self, currency, net_amount_taxed, vat_27, vat_21, vat_10_5, vat_5, vat_2_5, vat_0, other_taxes_amount, total):
+    def __init__(self, currency, net_amount_taxed, vat_27, vat_21, vat_10_5, vat_5, vat_2_5, vat_0, other_taxes_ammout, total, exchange_rate):
         self.currency = currency
         self.net_amount_taxed = net_amount_taxed
         self.vat_27 = vat_27
@@ -89,16 +89,18 @@ class AFooter:
         self.vat_5 = vat_5
         self.vat_2_5 = vat_2_5
         self.vat_0 = vat_0
-        self.other_taxes_amount = other_taxes_amount
+        self.other_taxes_ammout = other_taxes_ammout
         self.total = total
+        self.exchange_rate = exchange_rate
 
 
 class CFooter:
-    def __init__(self, currency, sub_total, other_taxes_amount, total):
+    def __init__(self, currency, sub_total, other_taxes_ammout, total, exchange_rate):
         self.currency = currency
         self.sub_total = sub_total
-        self.other_taxes_amount = other_taxes_amount
+        self.other_taxes_ammout = other_taxes_ammout
         self.total = total
+        self.exchange_rate = exchange_rate
 
 ####### Funciones #######
 
@@ -440,14 +442,27 @@ def getFooter(invoice_type):
         cv2.imwrite("temp/footer_box_1.png", image)
         image = cv2.imread("temp/footer_box_1.png", 0)
         contours = getBoxesContours(
-            image, "test", False)
+            image, "test", True)
 
         for c in contours:
             x, y, w, h = cv2.boundingRect(c)
             if w < image.shape[1]:
+                new_img = image[y:y+h, x:x+w]
+                cv2.imwrite("temp/footer_box_2.png", new_img)
                 cv2.rectangle(image, (x-5, y-5), (x+w+3, y+h+3),
                               (255, 255, 255), -1)
                 cv2.imwrite("temp/footer_box_1.png", image)
+
+    # Buscamos si tenemos el cuadro con el cambio de moneda, de caso contrario el cambio es 1
+    try:
+        image = cv2.imread("temp/footer_box_2.png")
+        ocr_result = pytesseract.image_to_string(
+            image, lang='spa', config='--psm 6')
+        ocr_result = ocr_result[ocr_result.find(
+            "consignado de")+len("consignado de"):ocr_result.find("asciende")-1:].strip()
+        exchange_rate = ocr_result
+    except:
+        exchange_rate = "1"
 
     # Separa por un lado las claves y por otro los valores del pie de la factura
     image = cv2.imread("temp/footer_box_1.png")
@@ -473,14 +488,14 @@ def getFooter(invoice_type):
             img_file="processing/footer_value_4.png"), vat_5=getFooterConcept(
             img_file="processing/footer_value_5.png"), vat_2_5=getFooterConcept(
             img_file="processing/footer_value_6.png"), vat_0=getFooterConcept(
-            img_file="processing/footer_value_7.png"), other_taxes_amount=getFooterConcept(
+            img_file="processing/footer_value_7.png"), other_taxes_ammout=getFooterConcept(
             img_file="processing/footer_value_8.png"), total=getFooterConcept(
-            img_file="processing/footer_value_9.png"), currency=getFooterCurrency("processing/footer_key_1.png"))
+            img_file="processing/footer_value_9.png"), currency=getFooterCurrency("processing/footer_key_1.png"), exchange_rate=exchange_rate)
     else:
         footer = CFooter(sub_total=getFooterConcept(
-            img_file="processing/footer_value_1.png"), other_taxes_amount=getFooterConcept(
+            img_file="processing/footer_value_1.png"), other_taxes_ammout=getFooterConcept(
             img_file="processing/footer_value_2.png"), total=getFooterConcept(
-            img_file="processing/footer_value_3.png"), currency=getFooterCurrency("processing/footer_key_1.png"))
+            img_file="processing/footer_value_3.png"), currency=getFooterCurrency("processing/footer_key_1.png"), exchange_rate=exchange_rate)
     return footer
 
 # Agrega bordes blancos a imagen

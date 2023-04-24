@@ -1,3 +1,5 @@
+#### Script para capturas del pdf unicamente ####
+
 import shutil
 import os
 import cv2

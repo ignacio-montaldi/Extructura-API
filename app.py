@@ -63,7 +63,7 @@ class InvoiceHeader:
 
 
 class AItem:
-    def __init__(self, cod, title, amount, measure, unit_price, discount_perc, subtotal, iva_fee, subtotal_inc_fees):
+    def __init__(self, cod, title, amount, measure, unit_price, discount_perc, subtotal, vat_fee, subtotal_inc_fees):
         self.cod = cod
         self.title = title
         self.amount = amount
@@ -71,7 +71,7 @@ class AItem:
         self.unit_price = unit_price
         self.discount_perc = discount_perc
         self.subtotal = subtotal
-        self.iva_fee = iva_fee
+        self.vat_fee = vat_fee
         self.subtotal_inc_fees = subtotal_inc_fees
 
 

@@ -781,8 +781,8 @@ def reduceToBiggestByArea(folder, file_name_prefix):
 
 
 ###### Código principal ###########################################################################################################################################
-starting_image_path = "data/page8.png"
-isPerfectImage = False
+starting_image_path = "raw_scripts/data/page1.png"
+isPerfectImage = True
 original_img = cv2.imread(starting_image_path)
 
 if (isPerfectImage):

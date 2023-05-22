@@ -477,6 +477,11 @@ def getFooterCurrency(img_file):
     ocr_result = ocr_result.replace('\n\x0c', '')
     ocr_result = ocr_result.replace('\n', ' ')
     ocr_result = ocr_result[ocr_result.find(":")+1::].strip()
+   
+    if(fuzz.ratio(ocr_result, "$") > fuzz.ratio(ocr_result, "USD")):
+        ocr_result = "ARS"
+    else:
+        ocr_result = "USD"
     return ocr_result
 
 

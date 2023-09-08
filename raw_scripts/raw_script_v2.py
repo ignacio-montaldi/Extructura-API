@@ -1063,8 +1063,8 @@ def reduceToBiggestByArea(folder, file_name_prefix):
 
 
 ###### Código principal ###########################################################################################################################################
-starting_image_path = "raw_scripts/data/page1.png"
-isPerfectImage = True
+starting_image_path = "raw_scripts/data/fototcl.png"
+isPerfectImage = False
 original_img = cv2.imread(starting_image_path)
 
 if isPerfectImage:
@@ -1246,6 +1246,7 @@ footer = getFooter(invoice_type)
 print(footer)
 
 # Borramos los archivos generados para el analisis
+deleteFilesInFolder("./data")
 deleteFilesInFolder("./pretemp")
 deleteFilesInFolder("./temp")
 deleteFilesInFolder("./processing")

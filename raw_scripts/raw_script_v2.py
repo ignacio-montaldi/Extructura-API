@@ -937,6 +937,11 @@ def preprocess_image(original_img):
 
     finalResult = imageCleaning(warped_image)
 
+    cv2.imwrite("./pretemp/preprocess_invoice_resized.png", img_resize)
+    cv2.imwrite("./pretemp/preprocess_invoice_blur.png", blurred_image)
+    cv2.imwrite("./pretemp/preprocess_invoice_edged.png", edged_img)
+    cv2.imwrite("./pretemp/preprocess_invoice_warped.png", warped_image)
+
     cv2.imwrite("./data/" + "page_preprocessed" + ".png", finalResult)
     return finalResult
 
@@ -1063,7 +1068,7 @@ def reduceToBiggestByArea(folder, file_name_prefix):
 
 
 ###### Código principal ###########################################################################################################################################
-starting_image_path = "raw_scripts/data/fototcl.png"
+starting_image_path = "raw_scripts/data/scanner2.png"
 isPerfectImage = False
 original_img = cv2.imread(starting_image_path)
 

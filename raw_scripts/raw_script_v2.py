@@ -1134,19 +1134,19 @@ def remove_borders_fixed(image):
 
 
 ###### Código principal ###########################################################################################################################################
-starting_image_path = "raw_scripts/data/fototcl.png"
+starting_image_path = "raw_scripts/data/scanner4.png"
 isPerfectImage = False
 isScannerImage = True
 original_img = cv2.imread(starting_image_path)
 
-image = original_img
-# angle = getSkewAngle(original_img)
-# image = addBorders(original_img, size=350, color=[255, 255, 255])
-# image = rotateImage(image, angle)
-# image = deskew(image)
-# image = remove_borders_fixed(image)
-# image = addBorders(image, size=30, color=[0, 0, 0])
-# cv2.imwrite("data/page_preprocessed.png", image)
+# image = original_img
+angle = getSkewAngle(original_img)
+image = addBorders(original_img, size=350, color=[255, 255, 255])
+image = rotateImage(image, angle)
+image = deskew(image)
+image = remove_borders_fixed(image)
+image = addBorders(image, size=30, color=[0, 0, 0])
+cv2.imwrite("data/page_preprocessed.png", image)
 
 
 if isPerfectImage:

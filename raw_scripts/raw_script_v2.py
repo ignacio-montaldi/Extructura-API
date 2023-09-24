@@ -1067,15 +1067,92 @@ def reduceToBiggestByArea(folder, file_name_prefix):
     )
 
 
+###### Imágenes de Scanner ###########################################################################################################################################
+
+
+def addBorders(cvImage, size, color):
+    top, bottom, left, right = [size] * 4
+    imageWithBorder = cv2.copyMakeBorder(
+        cvImage, top, bottom, left, right, cv2.BORDER_CONSTANT, value=color
+    )
+    return imageWithBorder
+
+
+# Calculate skew angle of an image
+def getSkewAngle(cvImage) -> float:
+    # Prep image, copy, convert to gray scale, blur, and threshold
+    newImage = cvImage.copy()
+    gray = cv2.cvtColor(newImage, cv2.COLOR_BGR2GRAY)
+    blur = cv2.GaussianBlur(gray, (9, 9), 0)
+    thresh = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
+
+    # Apply dilate to merge text into meaningful lines/paragraphs.
+    # Use larger kernel on X axis to merge characters into single line, cancelling out any spaces.
+    # But use smaller kernel on Y axis to separate between different blocks of text
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (30, 5))
+    dilate = cv2.dilate(thresh, kernel, iterations=5)
+
+    # Find all contours
+    contours, hierarchy = cv2.findContours(
+        dilate, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE
+    )
+    contours = sorted(contours, key=cv2.contourArea, reverse=True)
+
+    # Find largest contour and surround in min area box
+    largestContour = contours[0]
+    minAreaRect = cv2.minAreaRect(largestContour)
+
+    # Determine the angle. Convert it to the value that was originally used to obtain skewed image
+    angle = minAreaRect[-1]
+    if angle < -45:
+        angle = 90 + angle
+    return -1.0 * angle
+
+
+# Rotate the image around its center
+def rotateImage(cvImage, angle: float):
+    newImage = cvImage.copy()
+    (h, w) = newImage.shape[:2]
+    center = (w // 2, h // 2)
+    M = cv2.getRotationMatrix2D(center, angle, 1.0)
+    newImage = cv2.warpAffine(
+        newImage, M, (w, h), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REPLICATE
+    )
+    return newImage
+
+
+# Deskew image
+def deskew(cvImage):
+    angle = getSkewAngle(cvImage)
+    return rotateImage(cvImage, -1.0 * angle)
+
+
+def remove_borders_fixed(image):
+    crop = image[350 : image.shape[0] - 350, 350 : image.shape[1] - 350]
+
+    return crop
+
+
 ###### Código principal ###########################################################################################################################################
-starting_image_path = "raw_scripts/data/scanner2.png"
+starting_image_path = "raw_scripts/data/fototcl.png"
 isPerfectImage = False
+isScannerImage = True
 original_img = cv2.imread(starting_image_path)
 
+image = original_img
+# angle = getSkewAngle(original_img)
+# image = addBorders(original_img, size=350, color=[255, 255, 255])
+# image = rotateImage(image, angle)
+# image = deskew(image)
+# image = remove_borders_fixed(image)
+# image = addBorders(image, size=30, color=[0, 0, 0])
+# cv2.imwrite("data/page_preprocessed.png", image)
+
+
 if isPerfectImage:
-    image = imageCleaning(original_img)
+    image = imageCleaning(image)
 else:
-    image = preprocess_image(original_img)
+    image = preprocess_image(image)
     image = edgeCleaning(
         image=image, path="data/page_preprocessed.png", paddingToPaint=10, all=True
     )

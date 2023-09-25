@@ -1134,19 +1134,19 @@ def remove_borders_fixed(image):
 
 
 ###### Código principal ###########################################################################################################################################
-starting_image_path = "raw_scripts/data/scanner4.png"
+starting_image_path = "raw_scripts/data/fototcl.png"
 isPerfectImage = False
 isScannerImage = True
 original_img = cv2.imread(starting_image_path)
 
-# image = original_img
-angle = getSkewAngle(original_img)
-image = addBorders(original_img, size=350, color=[255, 255, 255])
-image = rotateImage(image, angle)
-image = deskew(image)
-image = remove_borders_fixed(image)
-image = addBorders(image, size=30, color=[0, 0, 0])
-cv2.imwrite("data/page_preprocessed.png", image)
+image = original_img
+# angle = getSkewAngle(original_img)
+# image = addBorders(original_img, size=350, color=[255, 255, 255])
+# image = rotateImage(image, angle)
+# image = deskew(image)
+# image = remove_borders_fixed(image)
+# image = addBorders(image, size=30, color=[0, 0, 0])
+# cv2.imwrite("data/page_preprocessed.png", image)
 
 
 if isPerfectImage:
@@ -1246,7 +1246,7 @@ imageWol = cv2.imread("pretemp/header_1_wol.png", 0)
 createImagesFromImageBoxes(
     imageToProcess=image,
     imageWoLines=imageWol,
-    savePreprocessingImages=False,
+    savePreprocessingImages=True,
     originalName="header",
     check_function=check_valid_header_boxes,
 )
@@ -1320,12 +1320,12 @@ header = getHeader()
 print(header)
 
 ##### GET ITEMS #####
-items = getItems(invoice_type)
-print(items)
+# items = getItems(invoice_type)
+# print(items)
 
 ##### GET FOOTER CONCEPTS #####
-footer = getFooter(invoice_type)
-print(footer)
+# footer = getFooter(invoice_type)
+# print(footer)
 
 # Borramos los archivos generados para el analisis
 deleteFilesInFolder("./data")

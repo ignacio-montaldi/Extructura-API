@@ -22,6 +22,10 @@ start_time = time.time()
 
 
 # ####### Modelos #######
+class Image_type(Enum):
+    pdf = 1
+    photo = 2
+    scan = 3
 
 
 class Invoice:
@@ -937,11 +941,6 @@ def preprocess_image(original_img):
 
     finalResult = imageCleaning(warped_image)
 
-    cv2.imwrite("./pretemp/preprocess_invoice_resized.png", img_resize)
-    cv2.imwrite("./pretemp/preprocess_invoice_blur.png", blurred_image)
-    cv2.imwrite("./pretemp/preprocess_invoice_edged.png", edged_img)
-    cv2.imwrite("./pretemp/preprocess_invoice_warped.png", warped_image)
-
     cv2.imwrite("./data/" + "page_preprocessed" + ".png", finalResult)
     return finalResult
 
@@ -1067,9 +1066,6 @@ def reduceToBiggestByArea(folder, file_name_prefix):
     )
 
 
-###### Imágenes de Scanner ###########################################################################################################################################
-
-
 def addBorders(cvImage, size, color):
     top, bottom, left, right = [size] * 4
     imageWithBorder = cv2.copyMakeBorder(
@@ -1077,85 +1073,65 @@ def addBorders(cvImage, size, color):
     )
     return imageWithBorder
 
+import math
+from typing import Tuple, Union
 
-# Calculate skew angle of an image
-def getSkewAngle(cvImage) -> float:
-    # Prep image, copy, convert to gray scale, blur, and threshold
-    newImage = cvImage.copy()
-    gray = cv2.cvtColor(newImage, cv2.COLOR_BGR2GRAY)
-    blur = cv2.GaussianBlur(gray, (9, 9), 0)
-    thresh = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
-
-    # Apply dilate to merge text into meaningful lines/paragraphs.
-    # Use larger kernel on X axis to merge characters into single line, cancelling out any spaces.
-    # But use smaller kernel on Y axis to separate between different blocks of text
-    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (30, 5))
-    dilate = cv2.dilate(thresh, kernel, iterations=5)
-
-    # Find all contours
-    contours, hierarchy = cv2.findContours(
-        dilate, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE
-    )
-    contours = sorted(contours, key=cv2.contourArea, reverse=True)
-
-    # Find largest contour and surround in min area box
-    largestContour = contours[0]
-    minAreaRect = cv2.minAreaRect(largestContour)
-
-    # Determine the angle. Convert it to the value that was originally used to obtain skewed image
-    angle = minAreaRect[-1]
-    if angle < -45:
-        angle = 90 + angle
-    return -1.0 * angle
+from deskew import determine_skew
 
 
-# Rotate the image around its center
-def rotateImage(cvImage, angle: float):
-    newImage = cvImage.copy()
-    (h, w) = newImage.shape[:2]
-    center = (w // 2, h // 2)
-    M = cv2.getRotationMatrix2D(center, angle, 1.0)
-    newImage = cv2.warpAffine(
-        newImage, M, (w, h), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REPLICATE
-    )
-    return newImage
+def rotate(
+        image: np.ndarray, angle: float, background: Union[int, Tuple[int, int, int]]
+) -> np.ndarray:
+    old_width, old_height = image.shape[:2]
+    angle_radian = math.radians(angle)
+    width = abs(np.sin(angle_radian) * old_height) + abs(np.cos(angle_radian) * old_width)
+    height = abs(np.sin(angle_radian) * old_width) + abs(np.cos(angle_radian) * old_height)
 
-
-# Deskew image
-def deskew(cvImage):
-    angle = getSkewAngle(cvImage)
-    return rotateImage(cvImage, -1.0 * angle)
-
-
-def remove_borders_fixed(image):
-    crop = image[350 : image.shape[0] - 350, 350 : image.shape[1] - 350]
-
-    return crop
+    image_center = tuple(np.array(image.shape[1::-1]) / 2)
+    rot_mat = cv2.getRotationMatrix2D(image_center, angle, 1.0)
+    rot_mat[1, 2] += (width - old_width) / 2
+    rot_mat[0, 2] += (height - old_height) / 2
+    return cv2.warpAffine(image, rot_mat, (int(round(height)), int(round(width))), borderValue=background)
 
 
 ###### Código principal ###########################################################################################################################################
-starting_image_path = "raw_scripts/data/fototcl.png"
-isPerfectImage = False
-isScannerImage = True
-original_img = cv2.imread(starting_image_path)
+starting_image_path = "raw_scripts/data/scanner4.png"
+image_type = Image_type.scan
+image = cv2.imread(starting_image_path)
 
-image = original_img
-# angle = getSkewAngle(original_img)
-# image = addBorders(original_img, size=350, color=[255, 255, 255])
-# image = rotateImage(image, angle)
-# image = deskew(image)
-# image = remove_borders_fixed(image)
-# image = addBorders(image, size=30, color=[0, 0, 0])
-# cv2.imwrite("data/page_preprocessed.png", image)
+# Preprocesamos la imágen según el tipo de imágen
+match image_type:
+    case Image_type.pdf:
+        image = imageCleaning(image)
+    case Image_type.photo:
+        image = preprocess_image(image)
+        image = edgeCleaning(
+            image=image, path="data/page_preprocessed.png", paddingToPaint=10, all=True
+        )
+    case Image_type.scan:
+        image = addBorders(image, size=30, color=[0, 0, 0])
+        cv2.imwrite("data/page_preprocessed.png", image)
+        image = preprocess_image(image)
+        image = edgeCleaning(
+            image=image, path="data/page_preprocessed.png", paddingToPaint=10, all=True
+        )
+        # grayscale = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        angle = determine_skew(image)
+        rotated = rotate(image, angle, (0, 0, 0))
+        # cv2.imwrite('output.png', rotated)
+        # from wand.image import Image
+        # from wand.display import display
 
+        # with Image(filename="data/page_preprocessed.png") as img:
+        #     img.deskew(0.50 * img.quantum_range)
+        #     img.save(filename="data/page_preprocessed.png")
+        # image = cv2.imread("data/page_preprocessed.png", 0)
+        cv2.imwrite("data/page_preprocessed.png", rotated)
+        image = rotated
 
-if isPerfectImage:
-    image = imageCleaning(image)
-else:
-    image = preprocess_image(image)
-    image = edgeCleaning(
-        image=image, path="data/page_preprocessed.png", paddingToPaint=10, all=True
-    )
+    case _:
+        print("Error")
+
 
 # Obtenemos duplicado sin líneas en el cuerpo de la factura
 invoiceWithoutLines = remove_lines_from_image(image)
@@ -1237,8 +1213,14 @@ processImage(
 
 
 def check_valid_header_boxes(height, width):
-    ratio = height / width
-    return ratio > 0.1 and ratio < 1 and height * width > 6000
+    # ratio = height / width
+    # print(height)
+    # print(width)
+    # print("-----")
+    # print(ratio)
+    # print(height * width)
+    return height > 70 and height < 240 and width > 80 and height < 1130
+    # return True
 
 
 image = cv2.imread("pretemp/header_1.png", 0)
@@ -1320,12 +1302,12 @@ header = getHeader()
 print(header)
 
 ##### GET ITEMS #####
-# items = getItems(invoice_type)
-# print(items)
+items = getItems(invoice_type)
+print(items)
 
 ##### GET FOOTER CONCEPTS #####
-# footer = getFooter(invoice_type)
-# print(footer)
+footer = getFooter(invoice_type)
+print(footer)
 
 # Borramos los archivos generados para el analisis
 deleteFilesInFolder("./data")

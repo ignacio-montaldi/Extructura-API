@@ -1,4 +1,4 @@
-#### Script para capturas del pdf y para fotos de facturas tomadas con un celular ####
+#### Script para capturas del pdf, fotos de facturas tomadas con un celular e imágenes capturadas por un escáner ####
 
 import shutil
 import os

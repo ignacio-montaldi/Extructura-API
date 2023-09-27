@@ -1243,7 +1243,8 @@ def preprocessImage(image_type):
     # Recorta cada una de las "cajas" del encabezado
 
     def check_valid_header_boxes(height, width):
-        return height > 70 and height < 240 and width > 80 and height < 1130
+        ratio = height / width
+        return height > 70 and height < 240 and width > 80 and height < 1130 and ratio > 0.1 and ratio < 1
        
     image = cv2.imread("pretemp/header_1.png", 0)
     imageWol = cv2.imread("pretemp/header_1_wol.png", 0)

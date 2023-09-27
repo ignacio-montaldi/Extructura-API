@@ -1099,8 +1099,8 @@ def rotate(
 
 
 ###### Código principal ###########################################################################################################################################
-starting_image_path = "raw_scripts/data/scanner4.png"
-image_type = Image_type.scan
+starting_image_path = "raw_scripts/data/pdf6.png"
+image_type = Image_type.pdf
 image = cv2.imread(starting_image_path)
 
 # Preprocesamos la imágen según el tipo de imágen
@@ -1212,7 +1212,8 @@ processImage(
 
 
 def check_valid_header_boxes(height, width):
-    return height > 70 and height < 240 and width > 80 and height < 1130
+    ratio = height / width
+    return height > 70 and height < 240 and width > 80 and height < 1130 and ratio > 0.1 and ratio < 1
 
 
 image = cv2.imread("pretemp/header_1.png", 0)

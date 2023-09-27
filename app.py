@@ -29,7 +29,10 @@ start_time = time.time()
 
 # ####### Modelos #######
 
-
+class Image_type(Enum):
+    pdf = 1
+    photo = 2
+    scan = 3
 class Invoice:
     def __init__(self, type, header, items, footer):
         self.type = type
@@ -37,17 +40,14 @@ class Invoice:
         self.items = items
         self.footer = footer
 
-
 class Invoice_type(Enum):
     A = 1
     B = 2
     C = 3
 
-
 class Operation_type(Enum):
     Sell = 1
     Purchase = 2
-
 
 vatConditions = [
     {"id": 1, "name": "IVA Responsable Inscripto"},
@@ -65,7 +65,6 @@ vatConditions = [
     {"id": 13, "name": "Monotributista Social"},
     {"id": 14, "name": "Pequeño Contribuyente Eventual Social"},
 ]
-
 
 class InvoiceHeader:
     def __init__(
@@ -103,7 +102,6 @@ class InvoiceHeader:
         self.client_address = client_address
         self.sale_method = sale_method
 
-
 class AItem:
     def __init__(
         self,
@@ -127,7 +125,6 @@ class AItem:
         self.vat_fee = vat_fee
         self.subtotal_inc_fees = subtotal_inc_fees
 
-
 class CItem:
     def __init__(
         self,
@@ -148,7 +145,6 @@ class CItem:
         self.discount_perc = discount_perc
         self.discounted_subtotal = discounted_subtotal
         self.subtotal = subtotal
-
 
 class AFooter:
     def __init__(
@@ -177,7 +173,6 @@ class AFooter:
         self.total = total
         self.exchange_rate = exchange_rate
 
-
 class CFooter:
     def __init__(self, currency, sub_total, other_taxes_ammout, total, exchange_rate):
         self.currency = currency
@@ -186,10 +181,7 @@ class CFooter:
         self.total = total
         self.exchange_rate = exchange_rate
 
-
 ####### Funciones #######
-
-
 def saveCroppedImages(
     originalImage,
     imageWoLines,
@@ -400,7 +392,7 @@ def getItems(invoice_type: Invoice_type):
     return items
 
 
-# Borra los archivos temporales, si
+# Borra los archivos temporales
 
 
 def deleteFilesInFolder(folderPath, fileNamePrefix=None):
@@ -417,7 +409,8 @@ def deleteFilesInFolder(folderPath, fileNamePrefix=None):
                 print("Failed to delete %s. Reason: %s" % (file_path, e))
 
 
-def getBoxesContours(img, originalName, savePreprocessingImages=False):
+def getBoxesContours(img, originalName, savePreprocessingImages=False, verticalDialationIterations= 3,
+    horizontalDialationIterations= 3):
     # Thresholding the image
     (thresh, img_bin) = cv2.threshold(
         img, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU
@@ -437,11 +430,11 @@ def getBoxesContours(img, originalName, savePreprocessingImages=False):
 
     # Morphological operation to detect vertical lines from an image
     img_temp1 = cv2.erode(img_bin, verticle_kernel, iterations=3)
-    verticle_lines_img = cv2.dilate(img_temp1, verticle_kernel, iterations=3)
+    verticle_lines_img = cv2.dilate(img_temp1, verticle_kernel, iterations=verticalDialationIterations)
 
     # Morphological operation to detect horizontal lines from an image
     img_temp2 = cv2.erode(img_bin, hori_kernel, iterations=3)
-    horizontal_lines_img = cv2.dilate(img_temp2, hori_kernel, iterations=3)
+    horizontal_lines_img = cv2.dilate(img_temp2, hori_kernel, iterations=horizontalDialationIterations)
 
     # Weighting parameters, this will decide the quantity of an image to be added to make a new image.
     alpha = 0.5
@@ -481,9 +474,11 @@ def createImagesFromImageBoxes(
     imageWoLines=None,
     check_function=None,
     savePreprocessingImages=False,
+     verticalDialationIterations= 3,
+    horizontalDialationIterations= 3,
 ):
-    contours = getBoxesContours(imageToProcess, originalName, savePreprocessingImages)
-
+    contours = getBoxesContours(imageToProcess, originalName, savePreprocessingImages, verticalDialationIterations= verticalDialationIterations, horizontalDialationIterations= horizontalDialationIterations,)
+     
     idx = 0
     for c in contours:
         # Returns the location and width,height for every contour
@@ -499,7 +494,7 @@ def createImagesFromImageBoxes(
                 )
 
 
-# Ordenación de contornos
+# Ordenamiento de contornos
 
 
 def sort_contours(cnts, method="left-to-right"):
@@ -725,7 +720,7 @@ def getFooterCurrency(img_file):
 
 
 def key(x, y, w, h):
-    return ((x > 700 and x < 760) or (x > 30 and x < 60)) and (
+    return ((x > 680 and x < 760) or (x > 30 and x < 60)) and (
         (w > 230 and w < 260) or (w > 915 and w < 960)
     )
 
@@ -778,7 +773,7 @@ def getFooter(invoice_type):
                 cv2.rectangle(image, (x, y), (x + w, y + h), (255, 255, 255), -1)
                 cv2.imwrite("temp/footer_box_1_wol.png", image)
 
-    try:
+    if (os.path.isfile("temp/footer_box_2_wol.png")):
         image = cv2.imread("temp/footer_box_2_wol.png")
         ocr_result = pytesseract.image_to_string(image, lang="spa", config="--psm 6")
         ocr_result = ocr_result[
@@ -787,7 +782,7 @@ def getFooter(invoice_type):
             - 1 :
         ].strip()
         exchange_rate = ocr_result
-    except:
+    else:
         exchange_rate = "1"
 
     # Separa por un lado las claves y por otro los valores del pie de la factura
@@ -1077,6 +1072,33 @@ def reduceToBiggestByArea(folder, file_name_prefix):
     cv2.imwrite(
         os.path.join(folder, file_name_prefix) + "_1_wol.png", invoiceWithoutLines
     )
+    
+def addBorders(cvImage, size, color):
+    top, bottom, left, right = [size] * 4
+    imageWithBorder = cv2.copyMakeBorder(
+        cvImage, top, bottom, left, right, cv2.BORDER_CONSTANT, value=color
+    )
+    return imageWithBorder
+
+import math
+from typing import Tuple, Union
+
+from deskew import determine_skew
+
+
+def rotate(
+        image: np.ndarray, angle: float, background: Union[int, Tuple[int, int, int]]
+) -> np.ndarray:
+    old_width, old_height = image.shape[:2]
+    angle_radian = math.radians(angle)
+    width = abs(np.sin(angle_radian) * old_height) + abs(np.cos(angle_radian) * old_width)
+    height = abs(np.sin(angle_radian) * old_width) + abs(np.cos(angle_radian) * old_height)
+
+    image_center = tuple(np.array(image.shape[1::-1]) / 2)
+    rot_mat = cv2.getRotationMatrix2D(image_center, angle, 1.0)
+    rot_mat[1, 2] += (width - old_width) / 2
+    rot_mat[0, 2] += (height - old_height) / 2
+    return cv2.warpAffine(image, rot_mat, (int(round(height)), int(round(width))), borderValue=background)
 
 
 def getInvoiceType():
@@ -1113,17 +1135,37 @@ def getInvoiceType():
 ####### Código principal #######
 
 
-def preprocessImage(isPerfectImage):
+def preprocessImage(image_type):
     starting_image_path = "data/factura.png"
-    original_img = cv2.imread(starting_image_path)
+    image = cv2.imread(starting_image_path)
 
-    if isPerfectImage:
-        image = imageCleaning(original_img)
-    else:
-        image = preprocess_image(original_img)
-        image = edgeCleaning(
-            image=image, path="data/page_preprocessed.png", paddingToPaint=10, all=True
-        )
+    # Preprocesamos la imágen según el tipo de imágen
+    match image_type:
+        case Image_type.pdf:
+            image = imageCleaning(image)
+        case Image_type.photo:
+            image = preprocess_image(image)
+            image = edgeCleaning(
+                image=image, path="data/page_preprocessed.png", paddingToPaint=10, all=True
+            )
+        case Image_type.scan:
+            image = addBorders(image, size=30, color=[125, 0, 255])
+            cv2.imwrite("data/page_preprocessed.png", image)
+            image = preprocess_image(image)
+            image = edgeCleaning(
+                image=image, path="data/page_preprocessed.png", paddingToPaint=10, all=True
+            )
+            
+            from wand.image import Image
+            from wand.display import display
+
+            with Image(filename="data/page_preprocessed.png") as img:
+                img.deskew(0.4 * img.quantum_range)
+                img.save(filename="data/page_preprocessed.png")
+            image = cv2.imread("data/page_preprocessed.png", 0)
+
+        case _:
+            print("Error")
 
     # Obtenemos duplicado sin líneas en el cuerpo de la factura
     invoiceWithoutLines = remove_lines_from_image(image)
@@ -1201,16 +1243,16 @@ def preprocessImage(isPerfectImage):
     # Recorta cada una de las "cajas" del encabezado
 
     def check_valid_header_boxes(height, width):
-        ratio = height / width
-        return ratio > 0.1 and ratio < 1 and height * width > 6000
-
+        return height > 70 and height < 240 and width > 80 and height < 1130
+       
     image = cv2.imread("pretemp/header_1.png", 0)
     imageWol = cv2.imread("pretemp/header_1_wol.png", 0)
     createImagesFromImageBoxes(
         imageToProcess=image,
         imageWoLines=imageWol,
-        savePreprocessingImages=False,
+        savePreprocessingImages=True,
         originalName="header",
+        verticalDialationIterations= 9 if image_type == Image_type.scan else 3,horizontalDialationIterations= 9 if image_type == Image_type.scan else 3,
         check_function=check_valid_header_boxes,
     )
 
@@ -1268,14 +1310,14 @@ global items
 
 class Image(BaseModel):
     base64Image: str
-    isPerfectImage: bool
+    imageTypeId: int
 
 
 @app.post("/recieve_image")
 def send_image(image: Image):
     with open("data/factura.png", "wb") as f:
         f.write(decodebytes(str.encode(image.base64Image)))
-    preprocessImage(image.isPerfectImage)
+    preprocessImage(Image_type(image.imageTypeId))
     global invoice_type
     invoice_type = getInvoiceType()
     return

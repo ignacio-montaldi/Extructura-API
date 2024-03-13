@@ -1,0 +1,26 @@
+import cv2
+
+from lib.functions.get_boxes_contours import getBoxesContours
+
+def createImagesFromImageBoxes(
+    imageToProcess,
+    originalName,
+    imageWoLines=None,
+    check_function=None,
+    savePreprocessingImages=False,
+):
+    contours = getBoxesContours(imageToProcess, originalName, savePreprocessingImages)
+
+    idx = 0
+    for c in contours:
+        # Returns the location and width,height for every contour
+        x, y, w, h = cv2.boundingRect(c)
+        if callable(check_function) and check_function(h, w):
+            idx += 1
+            new_img = imageToProcess[y : y + h, x : x + w]
+            cv2.imwrite("temp/" + originalName + "_box_" + str(idx) + ".png", new_img)
+            if imageWoLines is not None:
+                new_img = imageWoLines[y : y + h, x : x + w]
+                cv2.imwrite(
+                    "temp/" + originalName + "_box_" + str(idx) + "_wol.png", new_img
+                )

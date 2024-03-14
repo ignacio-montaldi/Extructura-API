@@ -3,7 +3,7 @@ import cv2
 import pytesseract
 from fuzzywuzzy import fuzz
 
-from lib.functions.find_first_character_of_a_string import findFirstCharacterOfAString
+from lib.functions.utils.find_first_character_of_a_string import findFirstCharacterOfAString
 
 def getHeaderConceptImproved(key_to_match, file_name_prefix):
     directory_in_str = "./processing"

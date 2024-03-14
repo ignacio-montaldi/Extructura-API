@@ -7,9 +7,9 @@ from lib.enums.invoice_type_enum import Invoice_type
 from lib.models.invoice_type_a_footer import AFooter
 from lib.models.invoice_type_c_footer import CFooter
 
-from lib.functions.get_footer_concept import getFooterConcept
-from lib.functions.get_footer_currency import getFooterCurrency
-from lib.functions.process_image import processImage
+from lib.functions.invoice_related.get_footer_concept import getFooterConcept
+from lib.functions.invoice_related.get_footer_currency import getFooterCurrency
+from lib.functions.utils.process_image import processImage
 
 
 def getFooter(invoice_type):

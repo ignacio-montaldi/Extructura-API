@@ -1,8 +1,8 @@
 import cv2
 import imutils
 
-from lib.functions.image_cleaning import imageCleaning
-from lib.functions.perspective_transform import perspectiveTransform
+from lib.functions.utils.image_cleaning import imageCleaning
+from lib.functions.utils.perspective_transform import perspectiveTransform
 
 
 def preprocess_image(original_img):

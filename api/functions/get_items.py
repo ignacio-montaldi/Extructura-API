@@ -7,7 +7,7 @@ from lib.enums.invoice_type_enum import Invoice_type
 from lib.models.invoice_type_a_item import AItem
 from lib.models.invoice_type_c_item import CItem
 
-from lib.functions.process_image import processImage
+from lib.functions.utils.process_image import processImage
 
 # Devuelve el detalle de los productos
 

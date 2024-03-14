@@ -1,6 +1,6 @@
 import cv2
 
-from lib.functions.save_cropped_images import saveCroppedImages
+from lib.functions.utils.save_cropped_images import saveCroppedImages
 
 def processImage(
     imageToProcess,

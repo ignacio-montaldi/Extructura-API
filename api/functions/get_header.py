@@ -1,9 +1,9 @@
 import cv2
-from lib.functions.get_header_concept import getHeaderConcept
-from lib.functions.get_header_concept_inproved import getHeaderConceptImproved
-from lib.functions.get_vat_condition import getVatCondition
+from lib.functions.invoice_related.get_header_concept import getHeaderConcept
+from lib.functions.invoice_related.get_header_concept_inproved import getHeaderConceptImproved
+from lib.functions.invoice_related.get_vat_condition import getVatCondition
 
-from lib.functions.process_image import processImage
+from lib.functions.utils.process_image import processImage
 from lib.models.invoice_header import InvoiceHeader
 
 

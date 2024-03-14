@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from lib.functions.order_points import order_points
+from lib.functions.utils.order_points import order_points
 
 
 def perspectiveTransform(image, pts):

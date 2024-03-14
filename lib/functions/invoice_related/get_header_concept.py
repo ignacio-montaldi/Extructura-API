@@ -1,7 +1,7 @@
 import cv2
 import pytesseract
 
-from lib.functions.find_first_character_of_a_string import findFirstCharacterOfAString
+from lib.functions.utils.find_first_character_of_a_string import findFirstCharacterOfAString
 
 def getHeaderConcept(img_file):
     image = cv2.imread(img_file)

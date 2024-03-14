@@ -1,6 +1,6 @@
 import cv2
 
-from lib.functions.get_boxes_contours import getBoxesContours
+from lib.functions.utils.get_boxes_contours import getBoxesContours
 
 def createImagesFromImageBoxes(
     imageToProcess,

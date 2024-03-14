@@ -2,17 +2,17 @@ import cv2
 
 from lib.enums.image_type_enum import Image_type
 
-from lib.functions.add_borders import addBorders
-from lib.functions.are_header_boxes_inverted import areHeaderMainBoxesInverted
-from lib.functions.create_images_from_boxes import createImagesFromImageBoxes
-from lib.functions.crop_top_right_header_box import cropHeaderBox2
-from lib.functions.edge_cleaning import edgeCleaning
-from lib.functions.image_cleaning import imageCleaning
-from lib.functions.invert_two_file_names import invertTwoFileNames
-from lib.functions.preprocess_image import preprocess_image
-from lib.functions.process_image import processImage
-from lib.functions.reduce_to_biggest_by_area import reduceToBiggestByArea
-from lib.functions.remove_lines_from_image import removeLinesFromImage
+from lib.functions.invoice_related.are_header_boxes_inverted import areHeaderMainBoxesInverted
+from lib.functions.invoice_related.crop_top_right_header_box import cropHeaderBox2
+from lib.functions.utils.add_borders import addBorders
+from lib.functions.utils.create_images_from_boxes import createImagesFromImageBoxes
+from lib.functions.utils.edge_cleaning import edgeCleaning
+from lib.functions.utils.image_cleaning import imageCleaning
+from lib.functions.utils.invert_two_file_names import invertTwoFileNames
+from lib.functions.utils.preprocess_image import preprocess_image
+from lib.functions.utils.process_image import processImage
+from lib.functions.utils.reduce_to_biggest_by_area import reduceToBiggestByArea
+from lib.functions.utils.remove_lines_from_image import removeLinesFromImage
 
 def preprocessInvoice(image_type):
     starting_image_path = "data/factura.png"

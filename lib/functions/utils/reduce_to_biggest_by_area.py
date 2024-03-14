@@ -1,8 +1,8 @@
 import os
 import cv2
 
-from lib.functions.delete_files_in_folder import deleteFilesInFolder
-from lib.functions.remove_lines_from_image import removeLinesFromImage
+from lib.functions.utils.delete_files_in_folder import deleteFilesInFolder
+from lib.functions.utils.remove_lines_from_image import removeLinesFromImage
 
 def reduceToBiggestByArea(folder, file_name_prefix):
     biggestArea = 0

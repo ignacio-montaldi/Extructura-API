@@ -1,4 +1,4 @@
-from lib.functions.get_vertical_line_position import getVerticalLinePosition
+from lib.functions.utils.get_vertical_line_position import getVerticalLinePosition
 
 def areHeaderMainBoxesInverted(header1, header2):
     header1Sum = getVerticalLinePosition(header1)

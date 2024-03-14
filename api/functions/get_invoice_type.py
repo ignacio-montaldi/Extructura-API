@@ -2,9 +2,9 @@ import cv2
 import pytesseract
 
 from lib.enums.invoice_type_enum import Invoice_type
-from lib.functions.add_border import addBorder
-from lib.functions.get_smallest_image_path import getSmallestImagePath
-from lib.functions.process_image import processImage
+from lib.functions.utils.add_border import addBorder
+from lib.functions.utils.get_smallest_image_path import getSmallestImagePath
+from lib.functions.utils.process_image import processImage
 
 
 def getInvoiceType():

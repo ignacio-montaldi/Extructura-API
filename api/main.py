@@ -14,7 +14,7 @@ from lib.enums.image_type_enum import Image_type
 from lib.models.invoice_model import Invoice
 
 # Functions
-from lib.functions.delete_files_in_folder import deleteFilesInFolder
+from lib.functions.utils.delete_files_in_folder import deleteFilesInFolder
 from api.functions.get_footer import getFooter
 from api.functions.get_header import getHeader
 from api.functions.get_invoice_type import getInvoiceType

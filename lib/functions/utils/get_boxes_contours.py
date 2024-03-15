@@ -1,7 +1,8 @@
 import cv2
 import numpy as np
 
-from api.main import sort_contours
+from lib.functions.utils.sort_contours import sortContours
+
 
 def getBoxesContours(img, originalName, savePreprocessingImages=False, verticalDialationIterations= 3,
     horizontalDialationIterations= 3):
@@ -47,7 +48,7 @@ def getBoxesContours(img, originalName, savePreprocessingImages=False, verticalD
         img_final_bin, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE
     )
     # Sort all the contours by top to bottom.
-    contours = sort_contours(contours, method="top-to-bottom")
+    contours = sortContours(contours, method="top-to-bottom")
 
     if savePreprocessingImages:
         cv2.imwrite("pretemp/" + originalName + "_binirized_image.jpg", img_bin)

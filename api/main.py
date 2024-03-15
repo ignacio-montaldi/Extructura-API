@@ -1,29 +1,27 @@
 # Fast API
 from fastapi import FastAPI
 
-# Scanning
-from PIL import Image
-
 # Image Decoding
 from base64 import decodebytes
 
 # Enums
-from lib.enums.image_type_enum import Image_type
-
-# Models
-from lib.models.invoice_model import Invoice
-
-# Functions
-from lib.functions.utils.delete_files_in_folder import deleteFilesInFolder
 from api.functions.get_footer import getFooter
 from api.functions.get_header import getHeader
 from api.functions.get_invoice_type import getInvoiceType
 from api.functions.get_items import getItems
 from api.functions.preprocess_invoice import preprocessInvoice
+from lib.enums.image_type_enum import Image_type
+
+# Models
+from lib.models.incoming_image import Image
+from lib.models.invoice_model import Invoice
+
+# Functions
+from lib.functions.utils.delete_files_in_folder import deleteFilesInFolder
+
 
 ################## API ########################
 app = FastAPI()
-
 
 @app.get("/")
 def read_root():

@@ -5,7 +5,6 @@ import os
 import cv2
 
 import pytesseract
-from PIL import Image
 import numpy as np
 
 from enum import Enum

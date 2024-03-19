@@ -12,7 +12,7 @@ from lib.functions.utils.process_image import processImage
 # Devuelve el detalle de los productos
 
 def getItems(invoice_type: Invoice_type):
-    directory_in_str = "./temp"
+    directory_in_str = "images/temp"
     directory = os.fsencode(directory_in_str)
 
     items = []
@@ -20,7 +20,7 @@ def getItems(invoice_type: Invoice_type):
     for file in os.listdir(directory):
         filename = os.fsdecode(file)
         if filename.startswith("item"):
-            img_file = "temp/" + filename
+            img_file = "images/temp/" + filename
             image = cv2.imread(img_file)
             processImage(
                 imageToProcess=image,
@@ -28,13 +28,13 @@ def getItems(invoice_type: Invoice_type):
                 startingIndex=1,
                 boxWidthTresh=14,
                 boxHeightTresh=0,
-                folder="temp",
+                folder="images/temp",
                 outputImagePrefix="value",
                 savePreprocessingImages=False,
                 reverseSorting=True,
             )
 
-            directory_in_str = "./temp"
+            directory_in_str = "images/temp"
             directory = os.fsencode(directory_in_str)
 
             valuesStr = []
@@ -42,7 +42,7 @@ def getItems(invoice_type: Invoice_type):
             for file in os.listdir(directory):
                 filename = os.fsdecode(file)
                 if filename.startswith("value"):
-                    img_file = "temp/" + filename
+                    img_file = "images/temp/" + filename
                     image = cv2.imread(img_file)
                     ocr_result = pytesseract.image_to_string(
                         image, lang="spa", config="--psm 6"

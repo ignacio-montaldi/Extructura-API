@@ -36,7 +36,7 @@ global items
 
 @app.post("/recieve_image")
 def send_image(image: Image):
-    with open("data/factura.png", "wb") as f:
+    with open("images/data/factura.png", "wb") as f:
         f.write(decodebytes(str.encode(image.base64Image)))
     preprocessInvoice(Image_type(image.imageTypeId))
     global invoice_type
@@ -68,8 +68,8 @@ def get_footer():
 @app.get("/invoice")
 def get_invoice():
     invoice = Invoice(type=invoice_type.name, header=header, items=items, footer=footer)
-    deleteFilesInFolder("./pretemp")
-    deleteFilesInFolder("./temp")
-    deleteFilesInFolder("./processing")
-    deleteFilesInFolder("./data")
+    deleteFilesInFolder("images/pretemp")
+    deleteFilesInFolder("images/temp")
+    deleteFilesInFolder("images/processing")
+    deleteFilesInFolder("images/data")
     return invoice

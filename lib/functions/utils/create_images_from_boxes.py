@@ -20,9 +20,9 @@ def createImagesFromImageBoxes(
         if callable(check_function) and check_function(h, w):
             idx += 1
             new_img = imageToProcess[y : y + h, x : x + w]
-            cv2.imwrite("temp/" + originalName + "_box_" + str(idx) + ".png", new_img)
+            cv2.imwrite("images/temp/" + originalName + "_box_" + str(idx) + ".png", new_img)
             if imageWoLines is not None:
                 new_img = imageWoLines[y : y + h, x : x + w]
                 cv2.imwrite(
-                    "temp/" + originalName + "_box_" + str(idx) + "_wol.png", new_img
+                    "images/temp/" + originalName + "_box_" + str(idx) + "_wol.png", new_img
                 )

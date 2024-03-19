@@ -15,7 +15,7 @@ from lib.functions.utils.process_image import processImage
 def getFooter(invoice_type):
     # Esta parte chequea el el pie de la factura no contenga elementos extra innecesarios para traer los datos, de lo contrario, pinta recuadros blancos encima para evitar que molesten en el análisis
     # En caso de que haya datos extra --> should_paint == True
-    image = cv2.imread("temp/footer_box_1_wol.png")
+    image = cv2.imread("images/temp/footer_box_1_wol.png")
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     blur = cv2.GaussianBlur(gray, (7, 7), 0)
     thresh = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
@@ -34,11 +34,11 @@ def getFooter(invoice_type):
         if (not isBoxAFooterConceptKey(x, y, w, h)) and (not isBoxAFooterConceptValue(x, y, w, h)):
             cv2.rectangle(image, (x, y), (x + w, y + h), (255, 255, 255), -1)
 
-    cv2.imwrite("temp/footer_box_1_wol.png", image)
+    cv2.imwrite("images/temp/footer_box_1_wol.png", image)
 
     # Si es A USD
     if has_exchange_box:
-        image = cv2.imread("temp/footer_box_1_wol.png")
+        image = cv2.imread("images/temp/footer_box_1_wol.png")
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         blur = cv2.GaussianBlur(gray, (7, 7), 0)
         thresh = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
@@ -52,12 +52,12 @@ def getFooter(invoice_type):
             x, y, w, h = cv2.boundingRect(c)
             if w == image.shape[1]:
                 new_img = image[y : y + h, x : x + w]
-                cv2.imwrite("temp/footer_box_2_wol.png", new_img)
+                cv2.imwrite("images/temp/footer_box_2_wol.png", new_img)
                 cv2.rectangle(image, (x, y), (x + w, y + h), (255, 255, 255), -1)
-                cv2.imwrite("temp/footer_box_1_wol.png", image)
+                cv2.imwrite("images/temp/footer_box_1_wol.png", image)
 
-    if (os.path.isfile("temp/footer_box_2_wol.png")):
-        image = cv2.imread("temp/footer_box_2_wol.png")
+    if (os.path.isfile("images/temp/footer_box_2_wol.png")):
+        image = cv2.imread("images/temp/footer_box_2_wol.png")
         ocr_result = pytesseract.image_to_string(image, lang="spa", config="--psm 6")
         ocr_result = ocr_result[
             ocr_result.find("consignado de")
@@ -69,63 +69,63 @@ def getFooter(invoice_type):
         exchange_rate = "1"
 
     # Separa por un lado las claves y por otro los valores del pie de la factura
-    image = cv2.imread("temp/footer_box_1_wol.png")
+    image = cv2.imread("images/temp/footer_box_1_wol.png")
     processImage(
         imageToProcess=image,
         rectDimensions=(10, 200),
         boxWidthTresh=1,
         boxHeightTresh=1,
-        folder="processing",
+        folder="images/processing",
         outputImagePrefix="footer_key_value",
     )
 
     # Divide por partes las claves, de aquí usamos cualquiera (la primera) para obtener la moneda en que se operó en la factura
-    image = cv2.imread("processing/footer_key_value_2.png")
+    image = cv2.imread("images/processing/footer_key_value_2.png")
     processImage(
         imageToProcess=image,
         rectDimensions=(200, 1),
         boxWidthTresh=1,
         boxHeightTresh=1,
-        folder="processing",
+        folder="images/processing",
         outputImagePrefix="footer_key",
     )
 
     # Divide por partes los valores
-    image = cv2.imread("processing/footer_key_value_1.png")
+    image = cv2.imread("images/processing/footer_key_value_1.png")
     processImage(
         imageToProcess=image,
         rectDimensions=(10, 5),
         boxWidthTresh=1,
         boxHeightTresh=1,
-        folder="processing",
+        folder="images/processing",
         outputImagePrefix="footer_value",
     )
 
     # Creo pie tipo RI o mono
     if invoice_type == Invoice_type.A:
         footer = AFooter(
-            net_amount_taxed=getFooterConcept(img_file="processing/footer_value_1.png"),
-            vat_27=getFooterConcept(img_file="processing/footer_value_2.png"),
-            vat_21=getFooterConcept(img_file="processing/footer_value_3.png"),
-            vat_10_5=getFooterConcept(img_file="processing/footer_value_4.png"),
-            vat_5=getFooterConcept(img_file="processing/footer_value_5.png"),
-            vat_2_5=getFooterConcept(img_file="processing/footer_value_6.png"),
-            vat_0=getFooterConcept(img_file="processing/footer_value_7.png"),
+            net_amount_taxed=getFooterConcept(img_file="images/processing/footer_value_1.png"),
+            vat_27=getFooterConcept(img_file="images/processing/footer_value_2.png"),
+            vat_21=getFooterConcept(img_file="images/processing/footer_value_3.png"),
+            vat_10_5=getFooterConcept(img_file="images/processing/footer_value_4.png"),
+            vat_5=getFooterConcept(img_file="images/processing/footer_value_5.png"),
+            vat_2_5=getFooterConcept(img_file="images/processing/footer_value_6.png"),
+            vat_0=getFooterConcept(img_file="images/processing/footer_value_7.png"),
             other_taxes_ammout=getFooterConcept(
-                img_file="processing/footer_value_8.png"
+                img_file="images/processing/footer_value_8.png"
             ),
-            total=getFooterConcept(img_file="processing/footer_value_9.png"),
-            currency=getFooterCurrency("processing/footer_key_1.png"),
+            total=getFooterConcept(img_file="images/processing/footer_value_9.png"),
+            currency=getFooterCurrency("images/processing/footer_key_1.png"),
             exchange_rate=exchange_rate,
         )
     else:
         footer = CFooter(
-            sub_total=getFooterConcept(img_file="processing/footer_value_1.png"),
+            sub_total=getFooterConcept(img_file="images/processing/footer_value_1.png"),
             other_taxes_ammout=getFooterConcept(
-                img_file="processing/footer_value_2.png"
+                img_file="images/processing/footer_value_2.png"
             ),
-            total=getFooterConcept(img_file="processing/footer_value_3.png"),
-            currency=getFooterCurrency("processing/footer_key_1.png"),
+            total=getFooterConcept(img_file="images/processing/footer_value_3.png"),
+            currency=getFooterCurrency("images/processing/footer_key_1.png"),
             exchange_rate=exchange_rate,
         )
     return footer

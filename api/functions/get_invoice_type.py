@@ -9,19 +9,19 @@ from lib.functions.utils.process_image import processImage
 
 def getInvoiceType():
     # Obtiene el tipo de factura
-    image = cv2.imread(getSmallestImagePath(dir="temp", fileNamePrefix="header_box"))
+    image = cv2.imread(getSmallestImagePath(dir="images/temp", fileNamePrefix="header_box"))
     processImage(
         imageToProcess=image,
         rectDimensions=(1, 1),
         boxWidthTresh=25,
         boxHeightTresh=25,
-        folder="pretemp",
+        folder="images/pretemp",
         outputImagePrefix="invoice_type_image",
     )
 
-    image = cv2.imread("pretemp/invoice_type_image_1.png")
-    addBorder(image, "pretemp/invoice_type_image_1.png")
-    image = cv2.imread("pretemp/invoice_type_image_1.png")
+    image = cv2.imread("images/pretemp/invoice_type_image_1.png")
+    addBorder(image, "images/pretemp/invoice_type_image_1.png")
+    image = cv2.imread("images/pretemp/invoice_type_image_1.png")
     ocr_result = pytesseract.image_to_string(image, lang="spa", config="--psm 6")
     ocr_result = ocr_result.replace("\n\x0c", "")
 

@@ -1099,7 +1099,7 @@ def rotate(
 
 
 ###### Código principal ###########################################################################################################################################
-starting_image_path = "raw_scripts/data/pdf6.png"
+starting_image_path = "raw_scripts/data/pdf4.png"
 image_type = Image_type.pdf
 image = cv2.imread(starting_image_path)
 

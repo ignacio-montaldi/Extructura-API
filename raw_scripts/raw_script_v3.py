@@ -78,6 +78,7 @@ match image_type:
 
 
 # Obtenemos duplicado sin líneas en el cuerpo de la factura
+image = cv2.imread("images/data/page_preprocessed.png")
 invoiceWithoutLines = removeLinesFromImage(image)
 cv2.imwrite("images/data/page_without_lines.png", invoiceWithoutLines)
 

@@ -1,5 +1,6 @@
 import cv2
 
+from lib.functions.utils.check_if_image_is_gray import checkIfImageIsGray
 from lib.functions.utils.save_cropped_images import saveCroppedImages
 
 def processImage(
@@ -20,11 +21,8 @@ def processImage(
     imageToProcess = cv2.imread(imageToProcessPath)
     
     # Poner en escala de grises la imágen, nada mas, si es que no viene ya lista
-    if len(imageToProcess.shape) < 3:
-        gray = imageToProcess
-    else:
-        gray = cv2.cvtColor(imageToProcess, cv2.COLOR_BGR2GRAY)
-        
+    gray = checkIfImageIsGray(imageToProcess)
+            
 
     # Difuminar la imágen, permite agrupar objetos (es decir, hacer menos legible su separacion) en la imágen para el siguiente paso Kernel positivo e impar
     blur = cv2.GaussianBlur(gray, (7, 7), 0)
@@ -44,7 +42,7 @@ def processImage(
         cv2.imwrite("pretemp/invoice_dialate.png", dilate)
 
     saveCroppedImages(
-        originalImage=imageToProcess,
+        originalImage=gray,
         imageWoLines=imageWoLines,
         proprocessedImage=dilate,
         startingIndex=startingIndex,

@@ -9,9 +9,8 @@ from lib.functions.utils.process_image import processImage
 
 def getInvoiceType():
     # Obtiene el tipo de factura
-    image = cv2.imread(getSmallestImagePath(dir="images/temp", fileNamePrefix="header_box"))
     processImage(
-        imageToProcess=image,
+        imageToProcessPath=getSmallestImagePath(dir="images/temp", fileNamePrefix="header_box"),
         rectDimensions=(1, 1),
         boxWidthTresh=25,
         boxHeightTresh=25,

@@ -48,205 +48,209 @@ starting_image_path = "raw_scripts/data/pdf4.png"
 image_type = Image_type.pdf
 image = cv2.imread(starting_image_path)
 
-# Preprocesamos la imágen según el tipo de imágen
-match image_type:
-    case Image_type.pdf:
-        image = imageCleaning(image)
-        cv2.imwrite("images/data/page_preprocessed.png", image)
-    case Image_type.photo:
-        image = preprocess_image(image)
-        image = edgeCleaning(
-            image=image, path="images/data/page_preprocessed.png", paddingToPaint=10, all=True
-        )
-        cv2.imwrite("images/data/page_preprocessed.png")
-    case Image_type.scan:
-        image = addBorders(image, size=30, color=[125, 0, 255])
-        cv2.imwrite("images/data/page_preprocessed.png", image)
-        image = preprocess_image(image)
-        image = edgeCleaning(
-            image=image, path="images/data/page_preprocessed.png", paddingToPaint=10, all=True
-        )
-        
-        from wand.image import Image
+try:
 
-        with Image(filename="images/data/page_preprocessed.png") as img:
-            img.deskew(0.4 * img.quantum_range)
-            img.save(filename="images/data/page_preprocessed.png")
+    # Preprocesamos la imágen según el tipo de imágen
+    match image_type:
+        case Image_type.pdf:
+            image = imageCleaning(image)
+            cv2.imwrite("images/data/page_preprocessed.png", image)
+        case Image_type.photo:
+            image = preprocess_image(image)
+            image = edgeCleaning(
+                image=image, path="images/data/page_preprocessed.png", paddingToPaint=10, all=True
+            )
+            cv2.imwrite("images/data/page_preprocessed.png")
+        case Image_type.scan:
+            image = addBorders(image, size=30, color=[125, 0, 255])
+            cv2.imwrite("images/data/page_preprocessed.png", image)
+            image = preprocess_image(image)
+            image = edgeCleaning(
+                image=image, path="images/data/page_preprocessed.png", paddingToPaint=10, all=True
+            )
+            
+            from wand.image import Image
 
-    case _:
-        print("Error")
+            with Image(filename="images/data/page_preprocessed.png") as img:
+                img.deskew(0.4 * img.quantum_range)
+                img.save(filename="images/data/page_preprocessed.png")
 
-
-# Obtenemos duplicado sin líneas en el cuerpo de la factura
-image = cv2.imread("images/data/page_preprocessed.png")
-invoiceWithoutLines = removeLinesFromImage(image)
-cv2.imwrite("images/data/page_without_lines.png", invoiceWithoutLines)
+        case _:
+            print("Error")
 
 
-# Separación inicial, remueve bordes de los costados
-processImage(
-    imageToProcessPath="images/data/page_preprocessed.png",
-    imageWoLines=invoiceWithoutLines,
-    rectDimensions=(1, 100),
-    boxWidthTresh=100,
-    boxHeightTresh=100,
-    folder="pretemp",
-    outputImagePrefix="invoice_aux",
-    savePreprocessingImages=False,
-)
-
-# Obtiene de encabezado, además tambien remueve los bordes superiores e inferiores
-imageWol = cv2.imread("images/pretemp/invoice_aux_1_wol.png")
-processImage(
-    imageToProcessPath="images/pretemp/invoice_aux_1.png",
-    imageWoLines=imageWol,
-    rectDimensions=(100, 15),
-    boxWidthTresh=100,
-    boxHeightTresh=100,
-    folder="pretemp",
-    outputImagePrefix="header",
-)
-
-# Obtiene pie, le remueve todo y conserva el encuadrado
-imageWol = cv2.imread("images/pretemp/invoice_aux_2_wol.png")
-processImage(
-    imageToProcessPath="images/pretemp/invoice_aux_2.png",
-    imageWoLines=imageWol,
-    rectDimensions=(3, 5),
-    boxWidthTresh=200,
-    boxHeightTresh=100,
-    folder="pretemp",
-    outputImagePrefix="footer",
-)
-
-# Del pie, se queda con el cuadro importante (sin marco) y desecha los demás
+    # Obtenemos duplicado sin líneas en el cuerpo de la factura
+    image = cv2.imread("images/data/page_preprocessed.png")
+    invoiceWithoutLines = removeLinesFromImage(image)
+    cv2.imwrite("images/data/page_without_lines.png", invoiceWithoutLines)
 
 
-def check_valid_footer_box(height, width):
-    ratio = height / width
-    return ratio > 0.15 and ratio < 0.35
+    # Separación inicial, remueve bordes de los costados
+    processImage(
+        imageToProcessPath="images/data/page_preprocessed.png",
+        imageWoLines=invoiceWithoutLines,
+        rectDimensions=(1, 100),
+        boxWidthTresh=100,
+        boxHeightTresh=100,
+        folder="pretemp",
+        outputImagePrefix="invoice_aux",
+        savePreprocessingImages=False,
+    )
+
+    # Obtiene de encabezado, además tambien remueve los bordes superiores e inferiores
+    imageWol = cv2.imread("images/pretemp/invoice_aux_1_wol.png")
+    processImage(
+        imageToProcessPath="images/pretemp/invoice_aux_1.png",
+        imageWoLines=imageWol,
+        rectDimensions=(100, 15),
+        boxWidthTresh=100,
+        boxHeightTresh=100,
+        folder="pretemp",
+        outputImagePrefix="header",
+    )
+
+    # Obtiene pie, le remueve todo y conserva el encuadrado
+    imageWol = cv2.imread("images/pretemp/invoice_aux_2_wol.png")
+    processImage(
+        imageToProcessPath="images/pretemp/invoice_aux_2.png",
+        imageWoLines=imageWol,
+        rectDimensions=(3, 5),
+        boxWidthTresh=200,
+        boxHeightTresh=100,
+        folder="pretemp",
+        outputImagePrefix="footer",
+    )
+
+    # Del pie, se queda con el cuadro importante (sin marco) y desecha los demás
 
 
-image = cv2.imread("images/pretemp/footer_1.png", 0)
-imageWol = cv2.imread("images/pretemp/footer_1_wol.png", 0)
-createImagesFromImageBoxes(
-    imageToProcess=image,
-    imageWoLines=imageWol,
-    savePreprocessingImages=False,
-    originalName="footer",
-    check_function=check_valid_footer_box,
-)
-
-reduceToBiggestByArea("temp", "footer_box")
-
-# Obtiene los items del cuerpo de la factura
-processImage(
-    imageToProcessPath="images/pretemp/invoice_aux_1.png",
-    rectDimensions=(500, 5),
-    boxWidthTresh=100,
-    boxHeightTresh=150,
-    folder="temp",
-    outputImagePrefix="item",
-    higherThanHeight=False,
-)
-
-# Recorta cada una de las "cajas" del encabezado
+    def check_valid_footer_box(height, width):
+        ratio = height / width
+        return ratio > 0.15 and ratio < 0.35
 
 
-def check_valid_header_boxes(height, width):
-    ratio = height / width
-    return height > 70 and height < 240 and width > 80 and height < 1130 and ratio > 0.1 and ratio < 1
+    image = cv2.imread("images/pretemp/footer_1.png", 0)
+    imageWol = cv2.imread("images/pretemp/footer_1_wol.png", 0)
+    createImagesFromImageBoxes(
+        imageToProcess=image,
+        imageWoLines=imageWol,
+        savePreprocessingImages=False,
+        originalName="footer",
+        check_function=check_valid_footer_box,
+    )
+
+    reduceToBiggestByArea("temp", "footer_box")
+
+    # Obtiene los items del cuerpo de la factura
+    processImage(
+        imageToProcessPath="images/pretemp/invoice_aux_1.png",
+        rectDimensions=(500, 5),
+        boxWidthTresh=100,
+        boxHeightTresh=150,
+        folder="temp",
+        outputImagePrefix="item",
+        higherThanHeight=False,
+    )
+
+    # Recorta cada una de las "cajas" del encabezado
 
 
-image = cv2.imread("images/pretemp/header_1.png", 0)
-imageWol = cv2.imread("images/pretemp/header_1_wol.png", 0)
-createImagesFromImageBoxes(
-    imageToProcess=image,
-    imageWoLines=imageWol,
-    savePreprocessingImages=False,
-    originalName="header",
-    verticalDialationIterations= 9 if image_type == Image_type.scan else 3,
-    horizontalDialationIterations= 9 if image_type == Image_type.scan else 3,
-    check_function=check_valid_header_boxes,
-)
-
-# Chequeamos que el encabezado 1 y 2 están bien ubicados (problema viene de ver cual es primero por ser del mismo tamaño)
-header1 = cv2.imread("images/temp/header_box_1.png")
-header2 = cv2.imread("images/temp/header_box_2.png")
-if areHeaderMainBoxesInverted(header1=header1, header2=header2):
-    invertTwoFileNames("images/temp/header_box_1.png", "images/temp/header_box_2.png")
-    invertTwoFileNames("images/temp/header_box_1_wol.png", "images/temp/header_box_2_wol.png")
-
-# Recorte del resto del tipo de factura en los dos cuadros donde estorba en la esquina
-processImage(
-    imageToProcessPath="images/temp/header_box_1_wol.png",
-    rectDimensions=(10, 500),
-    boxWidthTresh=50,
-    boxHeightTresh=1,
-    folder="temp",
-    outputImagePrefix="header_box",
-    outPutImageSufix="_wol",
-    savePreprocessingImages=False,
-)
-
-image = cv2.imread("images/temp/header_box_2_wol.png")
-cropHeaderBox2(image)
-
-processImage(
-    imageToProcessPath="images/temp/header_box_2_wol.png",
-    rectDimensions=(500, 34),
-    boxWidthTresh=1,
-    boxHeightTresh=100,
-    folder="temp",
-    outputImagePrefix="header_box",
-    outPutImageSufix="_wol",
-    startingIndex=2,
-    savePreprocessingImages=False,
-)
-
-# Obtiene el tipo de factura
-processImage(
-    imageToProcessPath=getSmallestImagePath(dir="temp", fileNamePrefix="header_box"),
-    rectDimensions=(1, 1),
-    boxWidthTresh=25,
-    boxHeightTresh=25,
-    folder="pretemp",
-    outputImagePrefix="invoice_type_image",
-)
-
-image = cv2.imread("images/pretemp/invoice_type_image_1.png")
-addBorder(image, "images/pretemp/invoice_type_image_1.png")
-image = cv2.imread("images/pretemp/invoice_type_image_1.png")
-ocr_result = pytesseract.image_to_string(image, lang="spa", config="--psm 6")
-ocr_result = ocr_result.replace("\n\x0c", "")
-
-match ocr_result:
-    case "A":
-        invoice_type = Invoice_type.A
-    case "B":
-        invoice_type = Invoice_type.B
-    case "C":
-        invoice_type = Invoice_type.C
-    case _:
-        print("Error")
+    def check_valid_header_boxes(height, width):
+        ratio = height / width
+        return height > 70 and height < 240 and width > 80 and height < 1130 and ratio > 0.1 and ratio < 1
 
 
-##### GET HEADER CONCEPTS #####
-header = getHeader()
-print(header)
+    image = cv2.imread("images/pretemp/header_1.png", 0)
+    imageWol = cv2.imread("images/pretemp/header_1_wol.png", 0)
+    createImagesFromImageBoxes(
+        imageToProcess=image,
+        imageWoLines=imageWol,
+        savePreprocessingImages=False,
+        originalName="header",
+        verticalDialationIterations= 9 if image_type == Image_type.scan else 3,
+        horizontalDialationIterations= 9 if image_type == Image_type.scan else 3,
+        check_function=check_valid_header_boxes,
+    )
 
-##### GET ITEMS #####
-items = getItems(invoice_type)
-print(items)
+    # Chequeamos que el encabezado 1 y 2 están bien ubicados (problema viene de ver cual es primero por ser del mismo tamaño)
+    header1 = cv2.imread("images/temp/header_box_1.png")
+    header2 = cv2.imread("images/temp/header_box_2.png")
+    if areHeaderMainBoxesInverted(header1=header1, header2=header2):
+        invertTwoFileNames("images/temp/header_box_1.png", "images/temp/header_box_2.png")
+        invertTwoFileNames("images/temp/header_box_1_wol.png", "images/temp/header_box_2_wol.png")
 
-##### GET FOOTER CONCEPTS #####
-footer = getFooter(invoice_type)
-print(footer)
+    # Recorte del resto del tipo de factura en los dos cuadros donde estorba en la esquina
+    processImage(
+        imageToProcessPath="images/temp/header_box_1_wol.png",
+        rectDimensions=(10, 500),
+        boxWidthTresh=50,
+        boxHeightTresh=1,
+        folder="temp",
+        outputImagePrefix="header_box",
+        outPutImageSufix="_wol",
+        savePreprocessingImages=False,
+    )
 
-# Borramos los archivos generados para el analisis
-deleteFilesInFolder("images/data")
-deleteFilesInFolder("images/pretemp")
-deleteFilesInFolder("images/temp")
-deleteFilesInFolder("images/processing")
+    image = cv2.imread("images/temp/header_box_2_wol.png")
+    cropHeaderBox2(image)
 
-print("Process finished --- %s seconds ---" % (time.time() - start_time))
+    processImage(
+        imageToProcessPath="images/temp/header_box_2_wol.png",
+        rectDimensions=(500, 34),
+        boxWidthTresh=1,
+        boxHeightTresh=100,
+        folder="temp",
+        outputImagePrefix="header_box",
+        outPutImageSufix="_wol",
+        startingIndex=2,
+        savePreprocessingImages=False,
+    )
+
+    # Obtiene el tipo de factura
+    processImage(
+        imageToProcessPath=getSmallestImagePath(dir="temp", fileNamePrefix="header_box"),
+        rectDimensions=(1, 1),
+        boxWidthTresh=25,
+        boxHeightTresh=25,
+        folder="pretemp",
+        outputImagePrefix="invoice_type_image",
+    )
+
+    image = cv2.imread("images/pretemp/invoice_type_image_1.png")
+    addBorder(image, "images/pretemp/invoice_type_image_1.png")
+    image = cv2.imread("images/pretemp/invoice_type_image_1.png")
+    ocr_result = pytesseract.image_to_string(image, lang="spa", config="--psm 6")
+    ocr_result = ocr_result.replace("\n\x0c", "")
+
+    match ocr_result:
+        case "A":
+            invoice_type = Invoice_type.A
+        case "B":
+            invoice_type = Invoice_type.B
+        case "C":
+            invoice_type = Invoice_type.C
+        case _:
+            print("Error")
+
+
+    ##### GET HEADER CONCEPTS #####
+    header = getHeader()
+    print(header)
+
+    ##### GET ITEMS #####
+    items = getItems(invoice_type)
+    print(items)
+
+    ##### GET FOOTER CONCEPTS #####
+    footer = getFooter(invoice_type)
+    print(footer)
+    
+finally:
+
+    # Borramos los archivos generados para el analisis
+    deleteFilesInFolder("images/data")
+    deleteFilesInFolder("images/pretemp")
+    deleteFilesInFolder("images/temp")
+    deleteFilesInFolder("images/processing")
+
+    print("Process finished --- %s seconds ---" % (time.time() - start_time))

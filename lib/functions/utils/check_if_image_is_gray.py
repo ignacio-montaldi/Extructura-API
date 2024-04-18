@@ -1,7 +1,8 @@
 import cv2
+from cv2.typing import MatLike
 
 def checkIfImageIsGray(
-    imageToProcess
+    imageToProcess: MatLike
 ):
     
     # Poner en escala de grises la imágen, nada mas, si es que no viene ya lista

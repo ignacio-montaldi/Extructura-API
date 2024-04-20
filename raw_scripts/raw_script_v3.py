@@ -42,7 +42,7 @@ from lib.functions.utils.remove_lines_from_image import removeLinesFromImage
 start_time = time.time()
 
 starting_image_path = "raw_scripts/data/pdf4.png"
-image_type = Image_type.pdf
+image_type = Image_type.scan
 image = cv2.imread(starting_image_path)
 
 # Preprocesamos la imágen según el tipo de imágen
@@ -55,7 +55,7 @@ match image_type:
         image = edgeCleaning(
             image=image, path="images/data/page_preprocessed.png", paddingToPaint=10, all=True
         )
-        cv2.imwrite("images/data/page_preprocessed.png")
+        cv2.imwrite("images/data/page_preprocessed.png", image)
     case Image_type.scan:
         image = addBorders(image, size=30, color=[125, 0, 255])
         cv2.imwrite("images/data/page_preprocessed.png", image)
@@ -236,8 +236,6 @@ print(items)
 ##### GET FOOTER CONCEPTS #####
 footer = getFooter(invoice_type)
 print(footer)
-
-
 
 # Borramos los archivos generados para el analisis
 deleteFilesInFolder("images/data")

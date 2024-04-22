@@ -41,7 +41,7 @@ from lib.functions.utils.remove_lines_from_image import removeLinesFromImage
 
 start_time = time.time()
 
-starting_image_path = "raw_scripts/data/pdf4.png"
+starting_image_path = "raw_scripts/data/scanner6.png"
 image_type = Image_type.scan
 image = cv2.imread(starting_image_path)
 

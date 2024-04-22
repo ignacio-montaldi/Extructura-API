@@ -36,10 +36,10 @@ def processImage(
 
     # Para demostración, se ve paso a paso lo explicado arriba, se puede borrar después
     if savePreprocessingImages:
-        cv2.imwrite("pretemp/invoice_gray.png", gray)
-        cv2.imwrite("pretemp/invoice_blur.png", blur)
-        cv2.imwrite("pretemp/invoice_thresh.png", thresh)
-        cv2.imwrite("pretemp/invoice_dialate.png", dilate)
+        cv2.imwrite("images/pretemp/invoice_gray.png", gray)
+        cv2.imwrite("images/pretemp/invoice_blur.png", blur)
+        cv2.imwrite("images/pretemp/invoice_thresh.png", thresh)
+        cv2.imwrite("images/pretemp/invoice_dialate.png", dilate)
 
     saveCroppedImages(
         originalImage=gray,

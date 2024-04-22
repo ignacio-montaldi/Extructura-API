@@ -60,8 +60,7 @@ def preprocessInvoice(image_type):
         boxHeightTresh=100,
         folder="images/pretemp",
         outputImagePrefix="invoice_aux",
-        savePreprocessingImages=False,
-        isImageGray=True,
+        savePreprocessingImages=False
     )
 
     # Obtiene de encabezado, además tambien remueve los bordes superiores e inferiores

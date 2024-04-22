@@ -69,9 +69,8 @@ def getFooter(invoice_type):
         exchange_rate = "1"
 
     # Separa por un lado las claves y por otro los valores del pie de la factura
-    image = cv2.imread("images/temp/footer_box_1_wol.png")
     processImage(
-        imageToProcess=image,
+        imageToProcessPath="images/temp/footer_box_1_wol.png",
         rectDimensions=(10, 200),
         boxWidthTresh=1,
         boxHeightTresh=1,
@@ -80,9 +79,8 @@ def getFooter(invoice_type):
     )
 
     # Divide por partes las claves, de aquí usamos cualquiera (la primera) para obtener la moneda en que se operó en la factura
-    image = cv2.imread("images/processing/footer_key_value_2.png")
     processImage(
-        imageToProcess=image,
+        imageToProcessPath="images/processing/footer_key_value_2.png",
         rectDimensions=(200, 1),
         boxWidthTresh=1,
         boxHeightTresh=1,
@@ -91,9 +89,8 @@ def getFooter(invoice_type):
     )
 
     # Divide por partes los valores
-    image = cv2.imread("images/processing/footer_key_value_1.png")
     processImage(
-        imageToProcess=image,
+        imageToProcessPath="images/processing/footer_key_value_1.png",
         rectDimensions=(10, 5),
         boxWidthTresh=1,
         boxHeightTresh=1,

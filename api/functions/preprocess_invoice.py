@@ -23,11 +23,13 @@ def preprocessInvoice(image_type):
     match image_type:
         case Image_type.pdf:
             image = imageCleaning(image)
+            cv2.imwrite("images/data/page_preprocessed.png", image)
         case Image_type.photo:
             image = preprocess_image(image)
             image = edgeCleaning(
                 image=image, path="images/data/page_preprocessed.png", paddingToPaint=10, all=True
             )
+            cv2.imwrite("images/data/page_preprocessed.png")
         case Image_type.scan:
             image = addBorders(image, size=30, color=[125, 0, 255])
             cv2.imwrite("images/data/page_preprocessed.png", image)
@@ -41,7 +43,6 @@ def preprocessInvoice(image_type):
             with Image(filename="images/data/page_preprocessed.png") as img:
                 img.deskew(0.4 * img.quantum_range)
                 img.save(filename="images/data/page_preprocessed.png")
-            image = cv2.imread("images/data/page_preprocessed.png", 0)
 
         case _:
             print("Error")
@@ -52,22 +53,20 @@ def preprocessInvoice(image_type):
 
     # Separación inicial, remueve bordes de los costados
     processImage(
-        imageToProcess=image,
+        imageToProcessPath="images/data/page_preprocessed.png",
         imageWoLines=invoiceWithoutLines,
         rectDimensions=(1, 100),
         boxWidthTresh=100,
         boxHeightTresh=100,
         folder="images/pretemp",
         outputImagePrefix="invoice_aux",
-        savePreprocessingImages=False,
-        isImageGray=True,
+        savePreprocessingImages=False
     )
 
     # Obtiene de encabezado, además tambien remueve los bordes superiores e inferiores
-    image = cv2.imread("images/pretemp/invoice_aux_1.png")
     imageWol = cv2.imread("images/pretemp/invoice_aux_1_wol.png")
     processImage(
-        imageToProcess=image,
+        imageToProcessPath="images/pretemp/invoice_aux_1.png",
         imageWoLines=imageWol,
         rectDimensions=(100, 15),
         boxWidthTresh=100,
@@ -77,10 +76,9 @@ def preprocessInvoice(image_type):
     )
 
     # Obtiene pie, le remueve todo y conserva el encuadrado
-    image = cv2.imread("images/pretemp/invoice_aux_2.png")
     imageWol = cv2.imread("images/pretemp/invoice_aux_2_wol.png")
     processImage(
-        imageToProcess=image,
+        imageToProcessPath="images/pretemp/invoice_aux_2.png",
         imageWoLines=imageWol,
         rectDimensions=(3, 5),
         boxWidthTresh=200,
@@ -108,9 +106,8 @@ def preprocessInvoice(image_type):
     reduceToBiggestByArea("images/temp", "footer_box")
 
     # Obtiene los items del cuerpo de la factura
-    image = cv2.imread("images/pretemp/invoice_aux_1.png")
     processImage(
-        imageToProcess=image,
+        imageToProcessPath="images/pretemp/invoice_aux_1.png",
         rectDimensions=(500, 5),
         boxWidthTresh=100,
         boxHeightTresh=150,
@@ -144,9 +141,8 @@ def preprocessInvoice(image_type):
         invertTwoFileNames("images/temp/header_box_1_wol.png", "images/temp/header_box_2_wol.png")
 
     # Recorte del resto del tipo de factura en los dos cuadros donde estorba en la esquina
-    image = cv2.imread("images/temp/header_box_1_wol.png")
     processImage(
-        imageToProcess=image,
+        imageToProcessPath="images/temp/header_box_1_wol.png",
         rectDimensions=(10, 500),
         boxWidthTresh=50,
         boxHeightTresh=1,
@@ -159,9 +155,8 @@ def preprocessInvoice(image_type):
     image = cv2.imread("images/temp/header_box_2_wol.png")
     cropHeaderBox2(image)
 
-    image = cv2.imread("images/temp/header_box_2_wol.png")
     processImage(
-        imageToProcess=image,
+        imageToProcessPath="images/temp/header_box_2_wol.png",
         rectDimensions=(500, 34),
         boxWidthTresh=1,
         boxHeightTresh=100,

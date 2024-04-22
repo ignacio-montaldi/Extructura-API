@@ -15,7 +15,7 @@ def reduceToBiggestByArea(folder, file_name_prefix):
                 biggestArea = image.shape[0] * image.shape[1]
                 imageToSave = image
 
-    deleteFilesInFolder("./" + folder, fileNamePrefix=file_name_prefix)
+    deleteFilesInFolder(folder, fileNamePrefix=file_name_prefix)
     cv2.imwrite(os.path.join(folder, file_name_prefix) + "_1.png", imageToSave)
     gray_image = cv2.cvtColor(imageToSave, cv2.COLOR_BGR2GRAY)
     invoiceWithoutLines = removeLinesFromImage(gray_image)

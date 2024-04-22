@@ -8,9 +8,8 @@ from lib.models.invoice_header import InvoiceHeader
 
 
 def getHeader():
-    image = cv2.imread("images/temp/header_box_2_wol.png")
     processImage(
-        imageToProcess=image,
+        imageToProcessPath="images/temp/header_box_2_wol.png",
         rectDimensions=(200, 9),
         boxWidthTresh=1,
         boxHeightTresh=1,
@@ -18,9 +17,8 @@ def getHeader():
         outputImagePrefix="header_concept_2",
     )
 
-    image = cv2.imread("images/temp/header_box_1_wol.png")
     processImage(
-        imageToProcess=image,
+        imageToProcessPath="images/temp/header_box_1_wol.png",
         rectDimensions=(25, 1),
         boxWidthTresh=1,
         boxHeightTresh=1,
@@ -28,9 +26,8 @@ def getHeader():
         outputImagePrefix="header_concept_1",
     )
 
-    image = cv2.imread("images/temp/header_box_4_wol.png")
     processImage(
-        imageToProcess=image,
+        imageToProcessPath="images/temp/header_box_4_wol.png",
         rectDimensions=(50, 5),
         boxWidthTresh=1,
         boxHeightTresh=1,

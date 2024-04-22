@@ -20,10 +20,8 @@ def getItems(invoice_type: Invoice_type):
     for file in os.listdir(directory):
         filename = os.fsdecode(file)
         if filename.startswith("item"):
-            img_file = "images/temp/" + filename
-            image = cv2.imread(img_file)
             processImage(
-                imageToProcess=image,
+                imageToProcessPath=("images/temp/" + filename),
                 rectDimensions=(10, 100),
                 startingIndex=1,
                 boxWidthTresh=14,

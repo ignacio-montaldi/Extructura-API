@@ -45,7 +45,7 @@ from lib.functions.testing.test_result import testResult
 
 start_time = time.time()
 
-starting_image_path = "raw_scripts/data/pdf1.png"
+starting_image_path = "raw_scripts/data/pdf6.png"
 image_type = Image_type.pdf
 image = cv2.imread(starting_image_path)
 
@@ -250,7 +250,13 @@ deleteFilesInFolder("images/processing")
 print("Process finished --- %s seconds ---" % (time.time() - start_time))
 
 # Prueba de eficacia del resultado: cambiar el numero para comparar con un json distinto (verificar que exista antes) 
-perfectInvoiceJsonFileName = 1
+
+perfectInvoiceJsonFileName = '01'
 analizedInvoice = Invoice(type=invoice_type.name, header=header, items=items, footer=footer)
 
-testResult(analizedInvoice, jsonPath = 'json/' + str(perfectInvoiceJsonFileName) + '.json') #, perfectInvoice) 
+# testResult(analizedInvoice, jsonPath = 'json/' + perfectInvoiceJsonFileName + '.json') #, perfectInvoice)
+
+#Para generar el json que se modificará para ser el perfecto, eliminar después
+import json
+print(json.dumps(analizedInvoice, default=lambda analizedInvoice: analizedInvoice.__dict__))
+

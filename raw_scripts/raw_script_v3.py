@@ -4,6 +4,7 @@ import os
 import cv2
 import pytesseract
 import time
+
  
 # getting the name of the directory
 # where the this file is present.
@@ -17,11 +18,13 @@ parent = os.path.dirname(current)
 # the sys.path.
 sys.path.append(parent)
 
+from lib.models.invoice_model import Invoice
+
 from api.functions.get_footer import getFooter
 from api.functions.get_header import getHeader
 from api.functions.get_items import getItems
 from lib.enums.image_type_enum import Image_type
-from lib.enums.invoice_type_enum import Invoice_type
+from lib.enums.invoice_type_enum import InvoiceType
 from lib.functions.invoice_related.are_header_boxes_inverted import areHeaderMainBoxesInverted
 from lib.functions.invoice_related.crop_top_right_header_box import cropHeaderBox2
 from lib.functions.utils.add_border import addBorder
@@ -36,13 +39,14 @@ from lib.functions.utils.preprocess_image import preprocess_image
 from lib.functions.utils.process_image import processImage
 from lib.functions.utils.reduce_to_biggest_by_area import reduceToBiggestByArea
 from lib.functions.utils.remove_lines_from_image import removeLinesFromImage
+from lib.functions.testing.test_result import testResult
 
 ###### Código principal ###########################################################################################################################################
 
 start_time = time.time()
 
-starting_image_path = "raw_scripts/data/scanner6.png"
-image_type = Image_type.scan
+starting_image_path = "raw_scripts/data/pdf1.png"
+image_type = Image_type.pdf
 image = cv2.imread(starting_image_path)
 
 # Preprocesamos la imágen según el tipo de imágen
@@ -217,11 +221,11 @@ ocr_result = ocr_result.replace("\n\x0c", "")
 
 match ocr_result:
     case "A":
-        invoice_type = Invoice_type.A
+        invoice_type = InvoiceType.A
     case "B":
-        invoice_type = Invoice_type.B
+        invoice_type = InvoiceType.B
     case "C":
-        invoice_type = Invoice_type.C
+        invoice_type = InvoiceType.C
     case _:
         print("Error")
 
@@ -244,3 +248,9 @@ deleteFilesInFolder("images/temp")
 deleteFilesInFolder("images/processing")
 
 print("Process finished --- %s seconds ---" % (time.time() - start_time))
+
+# Prueba de eficacia del resultado: cambiar el numero para comparar con un json distinto (verificar que exista antes) 
+perfectInvoiceJsonFileName = 1
+analizedInvoice = Invoice(type=invoice_type.name, header=header, items=items, footer=footer)
+
+testResult(analizedInvoice, jsonPath = 'json/' + str(perfectInvoiceJsonFileName) + '.json') #, perfectInvoice) 

@@ -1,7 +1,7 @@
 import cv2
 import pytesseract
 
-from lib.enums.invoice_type_enum import Invoice_type
+from lib.enums.invoice_type_enum import InvoiceType
 from lib.functions.utils.add_border import addBorder
 from lib.functions.utils.get_smallest_image_path import getSmallestImagePath
 from lib.functions.utils.process_image import processImage
@@ -26,11 +26,11 @@ def getInvoiceType():
 
     match ocr_result:
         case "A":
-            invoice_type = Invoice_type.A
+            invoice_type = InvoiceType.A
         case "B":
-            invoice_type = Invoice_type.B
+            invoice_type = InvoiceType.B
         case "C":
-            invoice_type = Invoice_type.C
+            invoice_type = InvoiceType.C
         case _:
             print("Error")
 

@@ -2,7 +2,7 @@ import os
 import cv2
 import pytesseract
 
-from lib.enums.invoice_type_enum import Invoice_type
+from lib.enums.invoice_type_enum import InvoiceType
 
 from lib.models.invoice_type_a_footer import AFooter
 from lib.models.invoice_type_c_footer import CFooter
@@ -99,7 +99,7 @@ def getFooter(invoice_type):
     )
 
     # Creo pie tipo RI o mono
-    if invoice_type == Invoice_type.A:
+    if invoice_type == InvoiceType.A:
         footer = AFooter(
             net_amount_taxed=getFooterConcept(img_file="images/processing/footer_value_1.png"),
             vat_27=getFooterConcept(img_file="images/processing/footer_value_2.png"),

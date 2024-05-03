@@ -2,7 +2,7 @@ import os
 import cv2
 import pytesseract
 
-from lib.enums.invoice_type_enum import Invoice_type
+from lib.enums.invoice_type_enum import InvoiceType
 
 from lib.models.invoice_type_a_item import AItem
 from lib.models.invoice_type_c_item import CItem
@@ -11,7 +11,7 @@ from lib.functions.utils.process_image import processImage
 
 # Devuelve el detalle de los productos
 
-def getItems(invoice_type: Invoice_type):
+def getItems(invoice_type: InvoiceType):
     directory_in_str = "images/temp"
     directory = os.fsencode(directory_in_str)
 
@@ -48,7 +48,7 @@ def getItems(invoice_type: Invoice_type):
                     ocr_result = ocr_result.replace("\n\x0c", "")
                     ocr_result = ocr_result.replace("\n", " ")
                     valuesStr.append(ocr_result)
-            if invoice_type == Invoice_type.A:
+            if invoice_type == InvoiceType.A:
                 item = AItem(
                     valuesStr[0],
                     valuesStr[1],

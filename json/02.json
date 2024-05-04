@@ -1,8 +1,8 @@
 {
     "type": "A",
     "header": {
-        "business_name": "ELASTICOS MA\u00e1M S.R.L,",
-        "business_address": "Av Rodriguez Dura\u00f1ona 2417 - Salta, Salta",
+        "business_name": "ELASTICOS M&M S.R.L.",
+        "business_address": "Av Rodriguez Durañona 2417 - Salta, Salta",
         "vat_condition": 1,
         "document_type": "FACTURA",
         "checkout_aisle_number": "00001",
@@ -14,8 +14,8 @@
         "client_cuit": "30654303254",
         "client_name": "DON DANTESRL",
         "client_vat_condition": 1,
-        "client_address": "Av.Rodriguez Dura\u00f1ona 2222 - Salta, Salta",
-        "sale_method": ": \u2014 Cuenta Corriente"
+        "client_address": "Av.Rodriguez Durañona 2222 - Salta, Salta",
+        "sale_method": "Cuenta Corriente"
     },
     "items": [
         {

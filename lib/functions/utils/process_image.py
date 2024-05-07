@@ -16,6 +16,10 @@ def processImage(
     higherThanHeight=True,
     reverseSorting=False,
     savePreprocessingImages=False,
+    imageName='',
+    imageTypeName= '',
+    printXYWH=False,
+    printXYWHIteration=1
 ):
     
     imageToProcess = cv2.imread(imageToProcessPath)
@@ -53,4 +57,8 @@ def processImage(
         higherThanHeight=higherThanHeight,
         folder=folder,
         reverseSorting=reverseSorting,
+        imageName=imageName,
+        imageTypeValue=imageTypeName,
+        printXYWH=printXYWH,
+        printXYWHIteration=printXYWHIteration
     )

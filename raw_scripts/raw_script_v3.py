@@ -45,7 +45,9 @@ from lib.functions.testing.test_result import testResult
 
 start_time = time.time()
 
-starting_image_path = "raw_scripts/testing/30.png"
+imageName = '30'
+
+starting_image_path = "raw_scripts/testing/" + imageName + ".png"
 image_type = Image_type.pdf
 image = cv2.imread(starting_image_path)
 
@@ -234,7 +236,7 @@ header = getHeader()
 print(header)
 
 ##### GET ITEMS #####
-items = getItems(invoice_type)
+items = getItems(invoice_type, imageName)
 print(items)
 
 ##### GET FOOTER CONCEPTS #####
@@ -251,10 +253,9 @@ print("Process finished --- %s seconds ---" % (time.time() - start_time))
 
 # Prueba de eficacia del resultado: cambiar el numero para comparar con un json distinto (verificar que exista antes) 
 
-perfectInvoiceJsonFileName = '01'
 analizedInvoice = Invoice(type=invoice_type.name, header=header, items=items, footer=footer)
 
-# testResult(analizedInvoice, jsonPath = 'json/' + perfectInvoiceJsonFileName + '.json') #, perfectInvoice)
+# testResult(analizedInvoice, jsonPath = 'json/' + imageName + '.json') #, perfectInvoice)
 
 #Para generar el json que se modificará para ser el perfecto, eliminar después
 import json

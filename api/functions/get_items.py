@@ -11,15 +11,17 @@ from lib.functions.utils.process_image import processImage
 
 # Devuelve el detalle de los productos
 
-def getItems(invoice_type: InvoiceType):
+def getItems(invoice_type: InvoiceType, imageName: str):
     directory_in_str = "images/temp"
     directory = os.fsencode(directory_in_str)
 
     items = []
+    printXYWHIteration=0
 
     for file in os.listdir(directory):
         filename = os.fsdecode(file)
         if filename.startswith("item"):
+            printXYWHIteration= printXYWHIteration + 1
             processImage(
                 imageToProcessPath=("images/temp/" + filename),
                 rectDimensions=(10, 100),
@@ -30,6 +32,10 @@ def getItems(invoice_type: InvoiceType):
                 outputImagePrefix="value",
                 savePreprocessingImages=False,
                 reverseSorting=True,
+                imageName=imageName,
+                imageTypeName= invoice_type.name,
+                printXYWH=True,
+                printXYWHIteration=printXYWHIteration
             )
 
             directory_in_str = "images/temp"

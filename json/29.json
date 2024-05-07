@@ -1,0 +1,39 @@
+{
+    "type": "C",
+    "header": {
+        "business_name": "PERUZZO JORGE ALBERTO",
+        "business_address": ". Ramirez 334 .- Gualeguaychu,.Entre R\u00edos",
+        "vat_condition": 6,
+        "document_type": "FACTURA",
+        "checkout_aisle_number": ": 00002",
+        "document_number": ". 00000075",
+        "issue_date": "17/01/2023",
+        "seller_cuit": "20265381953",
+        "gross_income": "20265381953",
+        "business_opening_date": "- 09/09/2004",
+        "client_cuit": "34938581",
+        "client_name": "BUSCHIAZZO MATIAS",
+        "client_vat_condition": 5,
+        "client_address": "San Mart\u00edn N*1225",
+        "sale_method": ". \u2014 Contado"
+    },
+    "items": [
+        {
+            "cod": "",
+            "title": "Certificado de Conexi\u00f3n de Servicio El\u00e9ctrico",
+            "amount": "1,00",
+            "measure": "unidades",
+            "unit_price": "6900,00.",
+            "discount_perc": "0,00",
+            "discounted_subtotal": "0.00",
+            "subtotal": "6800,00"
+        }
+    ],
+    "footer": {
+        "currency": "ARS",
+        "sub_total": "6900,00",
+        "other_taxes_ammout": "0,00",
+        "total": "6900,00",
+        "exchange_rate": "1"
+    }
+}

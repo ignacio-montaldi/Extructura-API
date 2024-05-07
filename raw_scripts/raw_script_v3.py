@@ -45,7 +45,7 @@ from lib.functions.testing.test_result import testResult
 
 start_time = time.time()
 
-starting_image_path = "raw_scripts/testing/30.png"
+starting_image_path = "raw_scripts/testing/05.png"
 image_type = Image_type.pdf
 image = cv2.imread(starting_image_path)
 

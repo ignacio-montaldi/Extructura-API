@@ -7,7 +7,8 @@ from lib.enums.invoice_type_enum import InvoiceType
 from lib.models.invoice_type_a_item import AItem
 from lib.models.invoice_type_c_item import CItem
 
-from lib.functions.utils.process_image import processImage
+from lib.functions.utils.process_item_image import processItemImage
+
 
 # Devuelve el detalle de los productos
 
@@ -20,22 +21,33 @@ def getItems(invoice_type: InvoiceType):
     for file in os.listdir(directory):
         filename = os.fsdecode(file)
         if filename.startswith("item"):
-            processImage(
+            processItemImage(
                 imageToProcessPath=("images/temp/" + filename),
                 rectDimensions=(10, 100),
-                startingIndex=1,
                 boxWidthTresh=14,
                 boxHeightTresh=0,
                 folder="images/temp",
                 outputImagePrefix="value",
                 savePreprocessingImages=False,
                 reverseSorting=True,
+                invoice_type=invoice_type
             )
 
             directory_in_str = "images/temp"
             directory = os.fsencode(directory_in_str)
 
-            valuesStr = []
+            valuesStr = {
+                '1': '',
+                '2': '',
+                '3': '',
+                '4': '',
+                '5': '',
+                '6': '',
+                '7': '',
+                '8': '',
+                '9': '',
+            }
+            currentKey = 0
 
             for file in os.listdir(directory):
                 filename = os.fsdecode(file)
@@ -47,29 +59,30 @@ def getItems(invoice_type: InvoiceType):
                     )
                     ocr_result = ocr_result.replace("\n\x0c", "")
                     ocr_result = ocr_result.replace("\n", " ")
-                    valuesStr.append(ocr_result)
+                    currentKey = filename[filename.index("_") + 1]
+                    valuesStr[currentKey] = (ocr_result)
             if invoice_type == InvoiceType.A:
                 item = AItem(
-                    valuesStr[0],
-                    valuesStr[1],
-                    valuesStr[2],
-                    valuesStr[3],
-                    valuesStr[4],
-                    valuesStr[5],
-                    valuesStr[6],
-                    valuesStr[7],
-                    valuesStr[8],
+                    valuesStr['1'],
+                    valuesStr['2'],
+                    valuesStr['3'],
+                    valuesStr['4'],
+                    valuesStr['5'],
+                    valuesStr['6'],
+                    valuesStr['7'],
+                    valuesStr['8'],
+                    valuesStr['9'],
                 )
             else:
                 item = CItem(
-                    valuesStr[0],
-                    valuesStr[1],
-                    valuesStr[2],
-                    valuesStr[3],
-                    valuesStr[4],
-                    valuesStr[5],
-                    valuesStr[6],
-                    valuesStr[7],
+                    valuesStr['1'],
+                    valuesStr['2'],
+                    valuesStr['3'],
+                    valuesStr['4'],
+                    valuesStr['5'],
+                    valuesStr['6'],
+                    valuesStr['7'],
+                    valuesStr['8'],
                 )
 
             items.append(item)

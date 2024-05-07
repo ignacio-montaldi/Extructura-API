@@ -1,0 +1,101 @@
+{
+    "type": "A",
+    "header": {
+        "business_name": "DE VINCENTIS LIDIA /",
+        "business_address": "CARMEN col",
+        "vat_condition": 10,
+        "document_type": "FACTURA",
+        "checkout_aisle_number": ". 00005",
+        "document_number": ": 00002658",
+        "issue_date": "04/11/2021",
+        "seller_cuit": "27020877192",
+        "gross_income": "' -27020877192-",
+        "business_opening_date": "01/09/1997",
+        "client_cuit": "30670214644.",
+        "client_name": "PETRO AYVELLANEDA SRL",
+        "client_vat_condition": 1,
+        "client_address": "N. Avneda Y Av Y.:Sarsfield Q - Resistencia, Chaco",
+        "sale_method": ". Contado"
+    },
+    "items": [
+        {
+            "cod": "",
+            "title": "PORCIONES DE RAVIOLES DE VERDURA",
+            "amount": "15,00",
+            "measure": "unidades",
+            "unit_price": "123,97-",
+            "discount_perc": "0,00.",
+            "subtotal": "1859,55",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "2250,06"
+        },
+        {
+            "cod": "",
+            "title": "PORCIONES DE SORRENTINOS DE J8Q",
+            "amount": "41500",
+            "measure": "unidades",
+            "unit_price": "330,58",
+            "discount_perc": "000",
+            "subtotal": "4958,70",
+            "vat_fee": "21%:",
+            "subtotal_inc_fees": "6000,03"
+        },
+        {
+            "cod": "",
+            "title": "PORCIONES DE FIDEOS FRESCOS",
+            "amount": "15,00",
+            "measure": "unidades",
+            "unit_price": "68612",
+            "discount_perc": "0,00.",
+            "subtotal": "99180",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "1200,08"
+        },
+        {
+            "cod": "",
+            "title": "PORCIONES DE ROQUIS DE PAPA",
+            "amount": "10,00",
+            "measure": "unidades",
+            "unit_price": "74,38",
+            "discount_perc": "0,00-",
+            "subtotal": "743,80",
+            "vat_fee": "21%:",
+            "subtotal_inc_fees": "'900,00"
+        },
+        {
+            "cod": "",
+            "title": "PORCIONES DE CANELONES DE HUMITA",
+            "amount": "5,00",
+            "measure": "unidades",
+            "unit_price": "330,58",
+            "discount_perc": "0,00.",
+            "subtotal": "1852,80",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "2000,01"
+        },
+        {
+            "cod": "",
+            "title": "PORCIONES DE CANELONES DE VERDURAS:",
+            "amount": "5,00",
+            "measure": "unidades",
+            "unit_price": "330,58",
+            "discount_perc": "0,00.",
+            "subtotal": "1852,80",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "2000,01"
+        }
+    ],
+    "footer": {
+        "currency": "ARS",
+        "net_amount_taxed": "11859,65",
+        "vat_27": "0,00",
+        "vat_21": "2490,54",
+        "vat_10_5": "0,00",
+        "vat_5": "0,00",
+        "vat_2_5": "0,00",
+        "vat_0": "0,00",
+        "other_taxes_ammout": "0,00",
+        "total": "14350,19",
+        "exchange_rate": "1"
+    }
+}

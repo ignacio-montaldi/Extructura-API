@@ -81,21 +81,21 @@ def processItemImage(
                 else:
                     raise("Error")
             else: 
-                if x<=76: #Pixeles de Cod.
+                if x <= 76: #Pixeles de Cod.
                     index = 1
                 elif x >= 77 and x<=449: #Pixeles de Producto
                     index = 2
                 elif x >= 450 and x<=499: #Pixeles de Cantidad
                     index = 3
-                elif x >= 500 and x<=660: #Pixeles de U. medida.
+                elif x >= 500 and x<=651: #Pixeles de U. medida.
                     index = 4
-                elif x >= 661 and x<=746: #Pixeles de Precio Unit.
+                elif x >= 651 and x<=746: #Pixeles de Precio Unit.
                     index = 5
                 elif x >= 747 and x<=905: #Pixeles de % Bonif.
                     index = 6
-                elif x >= 906 and x<=1054: #Pixeles de imp. bonif.
+                elif x >= 906 and x<=1045: #Pixeles de imp. bonif.
                     index = 7
-                elif x >= 1055: #Pixeles de subtotal.
+                elif x >= 1045: #Pixeles de subtotal.
                     index = 8         
                 else:
                     raise("Error")

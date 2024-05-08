@@ -45,7 +45,7 @@ from lib.functions.testing.test_result import testResult
 
 start_time = time.time()
 
-starting_image_path = "raw_scripts/testing/17.png"
+starting_image_path = "raw_scripts/testing/11.png"
 image_type = Image_type.pdf
 image = cv2.imread(starting_image_path)
 
@@ -141,10 +141,11 @@ processImage(
     imageToProcessPath="images/pretemp/invoice_aux_1.png",
     rectDimensions=(500, 5),
     boxWidthTresh=100,
-    boxHeightTresh=150,
+    boxHeightTresh=2000,
     folder="images/temp",
     outputImagePrefix="item",
     higherThanHeight=False,
+    savePreprocessingImages=True
 )
 
 # Recorta cada una de las "cajas" del encabezado

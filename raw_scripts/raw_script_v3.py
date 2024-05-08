@@ -18,6 +18,7 @@ parent = os.path.dirname(current)
 # the sys.path.
 sys.path.append(parent)
 
+from lib.functions.utils.delete_file import delete_file
 from lib.models.invoice_model import Invoice
 
 from api.functions.get_footer import getFooter
@@ -27,8 +28,10 @@ from lib.enums.image_type_enum import Image_type
 from lib.enums.invoice_type_enum import InvoiceType
 from lib.functions.invoice_related.are_header_boxes_inverted import areHeaderMainBoxesInverted
 from lib.functions.invoice_related.crop_top_right_header_box import cropHeaderBox2
+from lib.functions.testing.test_result import testResult
 from lib.functions.utils.add_border import addBorder
 from lib.functions.utils.add_borders import addBorders
+from lib.functions.utils.check_if_image_has_lines import checkIfImageHasLines
 from lib.functions.utils.create_images_from_boxes import createImagesFromImageBoxes
 from lib.functions.utils.delete_files_in_folder import deleteFilesInFolder
 from lib.functions.utils.edge_cleaning import edgeCleaning
@@ -39,13 +42,12 @@ from lib.functions.utils.preprocess_image import preprocess_image
 from lib.functions.utils.process_image import processImage
 from lib.functions.utils.reduce_to_biggest_by_area import reduceToBiggestByArea
 from lib.functions.utils.remove_lines_from_image import removeLinesFromImage
-from lib.functions.testing.test_result import testResult
 
 ###### Código principal ###########################################################################################################################################
 
 start_time = time.time()
 
-starting_image_path = "raw_scripts/testing/11.png"
+starting_image_path = "raw_scripts/testing/06.png"
 image_type = Image_type.pdf
 image = cv2.imread(starting_image_path)
 
@@ -136,17 +138,28 @@ createImagesFromImageBoxes(
 
 reduceToBiggestByArea(folder="images/temp", file_name_prefix="footer_box")
 
-# Obtiene los items del cuerpo de la factura
+# Se divide la imágen que tiene los items...
 processImage(
     imageToProcessPath="images/pretemp/invoice_aux_1.png",
     rectDimensions=(500, 5),
     boxWidthTresh=100,
-    boxHeightTresh=2000,
+    boxHeightTresh=2000, #No importa este valor
     folder="images/temp",
     outputImagePrefix="item",
     higherThanHeight=False,
     savePreprocessingImages=True
 )
+
+#... para luego eliminar los recortes que no sean
+directory_in_str = "images/temp"
+directory = os.fsencode(directory_in_str)
+for file in os.listdir(directory):
+    filename = os.fsdecode(file)
+    if filename.startswith("item"):
+        img_file_path = "images/temp/" + filename
+        image = cv2.imread(img_file_path)
+        if checkIfImageHasLines(image):
+           delete_file(img_file_path)
 
 # Recorta cada una de las "cajas" del encabezado
 

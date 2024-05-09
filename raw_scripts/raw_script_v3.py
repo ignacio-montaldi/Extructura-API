@@ -47,7 +47,7 @@ from lib.functions.utils.remove_lines_from_image import removeLinesFromImage
 
 start_time = time.time()
 
-starting_image_path = "raw_scripts/testing/06.png"
+starting_image_path = "raw_scripts/testing/01.png"
 image_type = Image_type.pdf
 image = cv2.imread(starting_image_path)
 
@@ -141,7 +141,7 @@ reduceToBiggestByArea(folder="images/temp", file_name_prefix="footer_box")
 # Se divide la imágen que tiene los items...
 processImage(
     imageToProcessPath="images/pretemp/invoice_aux_1.png",
-    rectDimensions=(500, 5),
+    rectDimensions=(500, 6),
     boxWidthTresh=100,
     boxHeightTresh=2000, #No importa este valor
     folder="images/temp",

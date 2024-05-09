@@ -23,7 +23,7 @@
             "title": "Resmas de papel A4 75 gr Boreal",
             "amount": "60,00",
             "measure": "unidades",
-            "unit_price": "5900,00",
+            "unit_price": "5800,00",
             "discount_perc": "0,00.",
             "subtotal": "354000,00",
             "vat_fee": "21%",
@@ -31,7 +31,7 @@
         },
         {
             "cod": "0002",
-            "title": "Bol\u00edgrafos Bic caja x 50 unidades",
+            "title": "Bol\u00edgrafos Biccaja x 50 unidades",
             "amount": "1,00",
             "measure": "unidades",
             "unit_price": "22230,00",
@@ -48,7 +48,7 @@
             "unit_price": "690,00",
             "discount_perc": "0,00.",
             "subtotal": "69000,00",
-            "vat_fee": "21%",
+            "vat_fee": "21%:",
             "subtotal_inc_fees": "83490,00"
         },
         {
@@ -57,7 +57,7 @@
             "amount": "1,00",
             "measure": "unidades",
             "unit_price": "9130,00",
-            "discount_perc": ".0,00.",
+            "discount_perc": "0,00.",
             "subtotal": "9130,00",
             "vat_fee": "21%",
             "subtotal_inc_fees": "11047,30"
@@ -68,9 +68,9 @@
             "amount": "1,00",
             "measure": "unidades",
             "unit_price": "8900,00",
-            "discount_perc": "0,00.",
+            "discount_perc": ".0,00.",
             "subtotal": "-8900,00",
-            "vat_fee": "21%:",
+            "vat_fee": "21%",
             "subtotal_inc_fees": "10769,00"
         }
     ],

@@ -42,7 +42,7 @@
         },
         {
             "cod": "0000",
-            "title": "M/OBRA CAMBIO HOJA Y P*FIJO",
+            "title": "M/OBRA CAMBIO HOJA Y P\u201d*FIJO",
             "amount": "1,00",
             "measure": "unidades",
             "unit_price": "9752,08",

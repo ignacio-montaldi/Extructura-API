@@ -20,33 +20,33 @@
     "items": [
         {
             "cod": "",
-            "title": "Alineaci\u00f3n eje delantero Iveco MOI 376",
+            "title": "Alineaci\u00f3n eje delantero Iveco MQI 376",
             "amount": "1,00",
             "measure": "unidades",
             "unit_price": "750,00",
-            "discount_perc": "0,00",
+            "discount_perc": "000",
             "subtotal": "750,00",
             "vat_fee": "21%",
             "subtotal_inc_fees": "907,50"
         },
         {
             "cod": "",
-            "title": "Alineaci\u00f3n eje tr\u00e1sero Iveco MOI 376",
-            "amount": "2.00",
+            "title": "Alineaci\u00f3n eje trasero Iveco MOI 376",
+            "amount": "200",
             "measure": "unidades",
             "unit_price": "600,00",
-            "discount_perc": "0,00",
+            "discount_perc": "000",
             "subtotal": "1200,00",
             "vat_fee": "21%",
             "subtotal_inc_fees": "1452,00"
         },
         {
             "cod": "",
-            "title": "Balanceo de montana AB 244 2ZD",
-            "amount": "400",
+            "title": "Balanceo de montana AB 244 7D",
+            "amount": "4,00",
             "measure": "unidades",
             "unit_price": "150,00",
-            "discount_perc": "0,00",
+            "discount_perc": "000",
             "subtotal": "600,00",
             "vat_fee": "21%",
             "subtotal_inc_fees": "726,00"

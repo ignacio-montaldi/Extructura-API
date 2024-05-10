@@ -53,7 +53,7 @@ deleteFilesInFolder("images/processing")
 
 start_time = time.time()
 
-starting_image_path = "raw_scripts/testing/28.png"
+starting_image_path = "raw_scripts/testing/30.png"
 image_type = Image_type.pdf
 image = cv2.imread(starting_image_path)
 

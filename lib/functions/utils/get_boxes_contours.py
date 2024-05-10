@@ -5,7 +5,7 @@ from lib.functions.utils.sort_contours import sortContours
 
 
 def getBoxesContours(img, originalName, savePreprocessingImages=False, verticalDialationIterations= 3,
-    horizontalDialationIterations= 3):
+    horizontalDialationIterations= 3, verticalErotionIterations = 3, horizontalErotionIterations=3):
     # Thresholding the image
     (thresh, img_bin) = cv2.threshold(
         img, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU
@@ -24,11 +24,11 @@ def getBoxesContours(img, originalName, savePreprocessingImages=False, verticalD
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
 
     # Morphological operation to detect vertical lines from an image
-    img_temp1 = cv2.erode(img_bin, verticle_kernel, iterations=3)
+    img_temp1 = cv2.erode(img_bin, verticle_kernel, iterations=verticalErotionIterations)
     verticle_lines_img = cv2.dilate(img_temp1, verticle_kernel, iterations=verticalDialationIterations)
 
     # Morphological operation to detect horizontal lines from an image
-    img_temp2 = cv2.erode(img_bin, hori_kernel, iterations=3)
+    img_temp2 = cv2.erode(img_bin, hori_kernel, iterations=horizontalErotionIterations)
     horizontal_lines_img = cv2.dilate(img_temp2, hori_kernel, iterations=horizontalDialationIterations)
 
     # Weighting parameters, this will decide the quantity of an image to be added to make a new image.

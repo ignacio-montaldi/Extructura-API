@@ -18,7 +18,7 @@ def imageCleaning(image):
     sizes = stats[1:, -1] #get CC_STAT_AREA component
     final = np.zeros((labels.shape), np.uint8)
     for i in range(0, nlabels - 1):
-            if sizes[i] >= 10:   #filter small dotted regions
+            if sizes[i] >= 3:   #filter small dotted regions
                 final[labels == i + 1] = 255
                 
     return ~final

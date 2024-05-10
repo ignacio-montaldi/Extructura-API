@@ -208,18 +208,6 @@ image = cv2.imread("images/temp/header_box_2.png")
 imageWol = cv2.imread("images/temp/header_box_2_wol.png")
 paintHeaderBox2TitleAndBox(image, imageWol)
 
-# processImage(
-#     imageToProcessPath="images/temp/header_box_2_wol.png",
-#     rectDimensions=(2000, 10),
-#     boxWidthTresh=1,
-#     boxHeightTresh=60,
-#     folder="images/temp",
-#     outputImagePrefix="header_box",
-#     outPutImageSufix="_wol",
-#     startingIndex=2,
-#     savePreprocessingImages=True,
-# )
-
 # Obtiene el tipo de factura
 processImage(
     imageToProcessPath=getSmallestImagePath(

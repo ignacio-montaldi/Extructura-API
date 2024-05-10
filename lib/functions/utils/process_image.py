@@ -53,4 +53,5 @@ def processImage(
         higherThanHeight=higherThanHeight,
         folder=folder,
         reverseSorting=reverseSorting,
+        printDimensions=savePreprocessingImages
     )

@@ -1,9 +1,9 @@
 {
     "type": "B",
     "header": {
-        "business_name": "NEXT LEVEL SOLUTIONS \u2014 E",
-        "business_address": "SAS",
-        "vat_condition": 5,
+        "business_name": "NEXT LEVEL SOLUTIONS SAS",
+        "business_address": "Rondeau 2858 Piso:3 B - Ciudad de Buenos Aires",
+        "vat_condition": 1,
         "document_type": "FACTURA",
         "checkout_aisle_number": "00001",
         "document_number": "00000387",

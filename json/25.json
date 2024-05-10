@@ -2,28 +2,28 @@
     "type": "C",
     "header": {
         "business_name": "BORDA MARCELO FLAVIO",
-        "business_address": ": Jose Hernandez 869 Dpto:309 - Rio Grande; \u201cTierra del Fuego",
+        "business_address": "Jose Hernandez 869 Dpto:309 - Rio Grande, Tierra del Fuego",
         "vat_condition": 6,
         "document_type": "FACTURA",
-        "checkout_aisle_number": ": 00001",
-        "document_number": ". 00000032",
+        "checkout_aisle_number": "00001",
+        "document_number": "00000032",
         "issue_date": "20/03/2023",
         "seller_cuit": "20207833682",
-        "gross_income": ".0991509543",
-        "business_opening_date": "- 01/08/2020",
+        "gross_income": "9991509543",
+        "business_opening_date": "1)01/08/2020",
         "client_cuit": "30708147938",
-        "client_name": "TUBOS DAK SOCIEDAD ANONIMA.",
+        "client_name": "TUBOS DAK SOCIEDAD ANONIMA",
         "client_vat_condition": 1,
-        "client_address": ":calle Sin Nombre 21 1823 - Rio Grande, Tierra del Fuego",
-        "sale_method": ". \u2014 Contado"
+        "client_address": "Calle Sin Nombre 21 1823 - Rio Grande, Tierra del Fuego",
+        "sale_method": "Contado"
     },
     "items": [
         {
             "cod": "",
-            "title": "M/O SERVICIO TECNICO PREVENTIVO 8000 HS COMPRESOR  KAESER SM16 N*.SERIE 1250- 6839631",
+            "title": "M/O SERVICIO TECNICO PREVENTIVO 8000 HS COMPRESOR  KAESER SM16 N* SERIE 1250- 6839631",
             "amount": "1,00",
             "measure": "unidades",
-            "unit_price": "56000,00.",
+            "unit_price": "56000,00",
             "discount_perc": "0,00",
             "discounted_subtotal": "0.00",
             "subtotal": "56000,00"

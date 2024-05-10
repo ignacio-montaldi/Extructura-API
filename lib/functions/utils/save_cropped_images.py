@@ -13,6 +13,7 @@ def saveCroppedImages(
     higherThanHeight,
     folder,
     reverseSorting,
+    printDimensions
 ):
     # Encuentra los contornos
     cnts = cv2.findContours(
@@ -31,6 +32,8 @@ def saveCroppedImages(
     for c in cnts:
         x, y, w, h = cv2.boundingRect(c)
         if higherThanHeight:
+            if printDimensions:
+                print(h)
             if w > boxWidthTresh and h > boxHeightTresh:
                 roi = originalImage[y : y + h, x : x + w]
                 fileName = (

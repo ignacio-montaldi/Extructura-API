@@ -4,7 +4,7 @@ import cv2
 from lib.enums.image_type_enum import Image_type
 
 from lib.functions.invoice_related.are_header_boxes_inverted import areHeaderMainBoxesInverted
-from lib.functions.invoice_related.crop_top_right_header_box import cropHeaderBox2
+from lib.functions.invoice_related.paint_header_box_2_title_and_box import paintHeaderBox2TitleAndBox
 from lib.functions.utils.add_borders import addBorders
 from lib.functions.utils.create_images_from_boxes import createImagesFromImageBoxes
 from lib.functions.utils.edge_cleaning import edgeCleaning
@@ -127,7 +127,6 @@ def preprocessInvoice(image_type):
     createImagesFromImageBoxes(
         imageToProcess=image,
         imageWoLines=imageWol,
-        savePreprocessingImages=True,
         originalName="header",
         verticalDialationIterations= 9 if image_type == Image_type.scan else 3,horizontalDialationIterations= 9 if image_type == Image_type.scan else 3,
         check_function=check_valid_header_boxes,
@@ -153,7 +152,7 @@ def preprocessInvoice(image_type):
     )
 
     image = cv2.imread("images/temp/header_box_2_wol.png")
-    cropHeaderBox2(image)
+    paintHeaderBox2TitleAndBox(image)
 
     processImage(
         imageToProcessPath="images/temp/header_box_2_wol.png",

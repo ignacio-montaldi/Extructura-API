@@ -134,4 +134,4 @@ def isBoxAFooterConceptKey(x, y, w, h):
 
 
 def isBoxAFooterConceptValue(x, y, w, h):
-    return x > 950 and (w > 90 and w < 120)
+    return x > 950 and (w > 90 and w < 150)

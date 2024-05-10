@@ -27,7 +27,7 @@ from api.functions.get_items import getItems
 from lib.enums.image_type_enum import Image_type
 from lib.enums.invoice_type_enum import InvoiceType
 from lib.functions.invoice_related.are_header_boxes_inverted import areHeaderMainBoxesInverted
-from lib.functions.invoice_related.crop_top_right_header_box import cropHeaderBox2
+from lib.functions.invoice_related.paint_header_box_2_title_and_box import paintHeaderBox2TitleAndBox
 from lib.functions.testing.test_result import testResult
 from lib.functions.utils.add_border import addBorder
 from lib.functions.utils.add_borders import addBorders
@@ -45,9 +45,15 @@ from lib.functions.utils.remove_lines_from_image import removeLinesFromImage
 
 ###### Código principal ###########################################################################################################################################
 
+# Borramos los archivos en las carpetas, por si quedó basura
+deleteFilesInFolder("images/data")
+deleteFilesInFolder("images/pretemp")
+deleteFilesInFolder("images/temp")
+deleteFilesInFolder("images/processing")
+
 start_time = time.time()
 
-starting_image_path = "raw_scripts/testing/13.png"
+starting_image_path = "raw_scripts/testing/17.png"
 image_type = Image_type.pdf
 image = cv2.imread(starting_image_path)
 
@@ -147,7 +153,6 @@ processImage(
     folder="images/temp",
     outputImagePrefix="item",
     higherThanHeight=False,
-    savePreprocessingImages=True
 )
 
 #... para luego eliminar los recortes que no sean
@@ -197,23 +202,23 @@ processImage(
     folder="images/temp",
     outputImagePrefix="header_box",
     outPutImageSufix="_wol",
-    savePreprocessingImages=False,
 )
 
-image = cv2.imread("images/temp/header_box_2_wol.png")
-cropHeaderBox2(image)
+image = cv2.imread("images/temp/header_box_2.png")
+imageWol = cv2.imread("images/temp/header_box_2_wol.png")
+paintHeaderBox2TitleAndBox(image, imageWol)
 
-processImage(
-    imageToProcessPath="images/temp/header_box_2_wol.png",
-    rectDimensions=(500, 34),
-    boxWidthTresh=1,
-    boxHeightTresh=100,
-    folder="images/temp",
-    outputImagePrefix="header_box",
-    outPutImageSufix="_wol",
-    startingIndex=2,
-    savePreprocessingImages=False,
-)
+# processImage(
+#     imageToProcessPath="images/temp/header_box_2_wol.png",
+#     rectDimensions=(2000, 10),
+#     boxWidthTresh=1,
+#     boxHeightTresh=60,
+#     folder="images/temp",
+#     outputImagePrefix="header_box",
+#     outPutImageSufix="_wol",
+#     startingIndex=2,
+#     savePreprocessingImages=True,
+# )
 
 # Obtiene el tipo de factura
 processImage(

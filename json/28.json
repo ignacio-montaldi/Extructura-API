@@ -1,0 +1,57 @@
+{
+    "type": "A",
+    "header": {
+        "business_name": "COLAVECCHIA MIGUEL JUAN",
+        "business_address": "Av. Presidente Bartolome Mitre 915 Dpto:1 - Avellaneda, Buenos Aires",
+        "vat_condition": 1,
+        "document_type": "FACTURA",
+        "checkout_aisle_number": "00026",
+        "document_number": "00000335",
+        "issue_date": "24/02/2022",
+        "seller_cuit": "20147213807",
+        "gross_income": "20147219807",
+        "business_opening_date": "01/060/2012",
+        "client_cuit": "30577207180",
+        "client_name": "COORDINACION ECOLOGICA AREA METROPOLITANA",
+        "client_vat_condition": 1,
+        "client_address": "Aicorta Amancio Av. 3000 - Capital Federal, Ciudad de Buenos",
+        "sale_method": "Contado"
+    },
+    "items": [
+        {
+            "cod": "",
+            "title": "ng-800u",
+            "amount": "1,00",
+            "measure": "unidades",
+            "unit_price": "660,33",
+            "discount_perc": "0,00",
+            "subtotal": "660,33",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "799,00"
+        },
+        {
+            "cod": "",
+            "title": "pilas A\u00d1A panasonic",
+            "amount": "2,00",
+            "measure": "unidades",
+            "unit_price": "61,98",
+            "discount_perc": "0,00",
+            "subtotal": "123,86",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "149,839"
+        }
+    ],
+    "footer": {
+        "currency": "ARS",
+        "net_amount_taxed": "784,29",
+        "vat_27": "0,00",
+        "vat_21": "164,70",
+        "vat_10_5": "0,00",
+        "vat_5": "0,00",
+        "vat_2_5": "0,00",
+        "vat_0": "0,00",
+        "other_taxes_ammout": "0,00",
+        "total": "948,99",
+        "exchange_rate": "1"
+    }
+}

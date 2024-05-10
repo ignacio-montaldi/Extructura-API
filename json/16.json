@@ -1,0 +1,99 @@
+{
+    "type": "C",
+    "header": {
+        "business_name": "ROBLES HUARANCA MIGUEL ANGEL",
+        "business_address": "Av Bolivia 35 Viv.Peatonal 1 94 - San Salvador De Jujuy, Jujuy",
+        "vat_condition": 6,
+        "document_type": "FACTURA",
+        "checkout_aisle_number": "00002",
+        "document_number": "00000795",
+        "issue_date": "08/01/2024",
+        "seller_cuit": "20930802205",
+        "gross_income": "A-1-44580",
+        "business_opening_date": "(01/12/2010",
+        "client_cuit": "30654303254",
+        "client_name": "DON DANTESRL",
+        "client_vat_condition": 1,
+        "client_address": "Av.Rodriguez Dura\u00f1ona 2222 - Salta, Salta",
+        "sale_method": "Contado"
+    },
+    "items": [
+        {
+            "cod": "0001",
+            "title": "HONORARIOS A.T.A. PALPALACRT NRO. 031AS095/2023",
+            "amount": "2.00",
+            "measure": "unidades",
+            "unit_price": "8000,00",
+            "discount_perc": "0,00",
+            "discounted_subtotal": "0.00",
+            "subtotal": "18000,00"
+        },
+        {
+            "cod": "0002",
+            "title": "HONORARIOS A.T-A. PALPALA CRT NRO. 031AS096/2023",
+            "amount": "500",
+            "measure": "unidades",
+            "unit_price": "8000,00",
+            "discount_perc": "0,00",
+            "discounted_subtotal": "000",
+            "subtotal": "40000,00"
+        },
+        {
+            "cod": "0003",
+            "title": "HONORARIOS A.T.A. PALPALA CRT NRO. 031AS098/2023",
+            "amount": "2.00",
+            "measure": "unidades",
+            "unit_price": "8000,00",
+            "discount_perc": "0,00",
+            "discounted_subtotal": "0.00",
+            "subtotal": "18000,00"
+        },
+        {
+            "cod": "0004",
+            "title": "HONORARIOS A.T-A. PALPALA CRT NRO. 031AS099/2023",
+            "amount": "4.00",
+            "measure": "unidades",
+            "unit_price": "8000,00",
+            "discount_perc": "0,00",
+            "discounted_subtotal": "000",
+            "subtotal": "32000,00"
+        },
+        {
+            "cod": "0005",
+            "title": "HONORARIOS A.T.A. PALPALA CRT NRO. 031AS101/2023",
+            "amount": "500",
+            "measure": "unidades",
+            "unit_price": "8000,00",
+            "discount_perc": "0,00",
+            "discounted_subtotal": "0.00",
+            "subtotal": "40000,00"
+        },
+        {
+            "cod": "0006",
+            "title": "HONORARIOS A.T-A. PALPALA CRT NRO. 031AS102/2023",
+            "amount": "600",
+            "measure": "unidades",
+            "unit_price": "8000,00",
+            "discount_perc": "0,00",
+            "discounted_subtotal": "000",
+            "subtotal": "48000,00"
+        },
+        {
+            "cod": "0007",
+            "title": "HONORARIOS A.T.A. PALPALACRT NRO. 031AS103/2023",
+            "amount": "300",
+            "measure": "unidades",
+            "unit_price": "8000,00",
+            "discount_perc": "0,00",
+            "discounted_subtotal": "0.00",
+            "subtotal": "24000,00"
+        }
+    ],
+    "footer": {
+        "currency": "ARS",
+        "sub_total": "216000,00",
+        "other_taxes_ammout": "0,00",
+        "total": "216000,00",
+        "exchange_rate": "1"
+    }
+}

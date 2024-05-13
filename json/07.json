@@ -1,0 +1,91 @@
+{
+    "type": "A",
+    "header": {
+        "business_name": "INTERJAMA S.R.L.",
+        "business_address": "Ruta Nacional N 52 Km 252 Q Piso:0 Dpto:0 - Susques, Jujuy",
+        "vat_condition": 1,
+        "document_type": "FACTURA",
+        "checkout_aisle_number": "00001",
+        "document_number": "00001083",
+        "issue_date": "01/12/2023",
+        "seller_cuit": "30714865044",
+        "gross_income": "A-1-55049",
+        "business_opening_date": "01/07/2015",
+        "client_cuit": "30654303254",
+        "client_name": "DON DANTESRL",
+        "client_vat_condition": 1,
+        "client_address": "Av.Rodriguez Dura\u00f1ona 2222 - Salta, Salta",
+        "sale_method": "Otra"
+    },
+    "items": [
+        {
+            "cod": "0001",
+            "title": "Tr\u00e1mites en aduana para cancelaci\u00f3n de transito de exportaci\u00f3n Salida Cargado.",
+            "amount": "16,00",
+            "measure": "otras unidades",
+            "unit_price": "3500,00",
+            "discount_perc": "000",
+            "subtotal": "56000.00",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "67760,00"
+        },
+        {
+            "cod": "0002",
+            "title": "Tr\u00e1mites en aduana para el ingreso de camiones en lastre (MANI) Impresi\u00f3n de MIC/DTA. * - -",
+            "amount": "1700",
+            "measure": "otras unidades",
+            "unit_price": "5500,00",
+            "discount_perc": "0,00",
+            "subtotal": "93500,00",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "113135,00"
+        },
+        {
+            "cod": "TARE",
+            "title": "Reposici\u00f3n de tarifa reducida de aduana cobrada a trav\u00e9s del sistema Inform\u00e1tico Malvinas aplicado en horarios inh\u00e1bil (cami\u00f3n en lastre) -",
+            "amount": "7,00",
+            "measure": "otras unidades",
+            "unit_price": "2300,00",
+            "discount_perc": "0,00",
+            "subtotal": "168100,00 \u2014 No gravado",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "18100,00"
+        },
+        {
+            "cod": "TARE",
+            "title": "Reposici\u00f3n de tarifa reducida de aduana cobrada a trav\u00e9s del sistema Inform\u00e1tico Malvinas aplicado en horarios inh\u00e1bil (cami\u00f3n cargado) -",
+            "amount": "7,00",
+            "measure": "otras unidades",
+            "unit_price": "3500,00",
+            "discount_perc": "0,00",
+            "subtotal": "24500,00 No gravado",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "24500,00"
+        },
+        {
+            "cod": "TARE",
+            "title": "Reposici\u00f3n de tarifa reducida de aduana cobrada a trav\u00e9s del sistema Inform\u00e1tico Malvinas aplicado en horarios inh\u00e1bil (cami\u00f3n cargado) -",
+            "amount": "2,00",
+            "measure": "otras unidades",
+            "unit_price": "4700,00",
+            "discount_perc": "0,00",
+            "subtotal": "9400,00 _ No gravado",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "9400,00"
+        }
+    ],
+    "footer": {
+        "currency": "ARS",
+        "net_amount_taxed": "149500,00",
+        "net_amount_untaxed": "50000,00",
+        "vat_27": "0,00",
+        "vat_21": "31395,00",
+        "vat_10_5": "0,00",
+        "vat_5": "0,00",
+        "vat_2_5": "0,00",
+        "vat_0": "0,00",
+        "other_taxes_ammout": "0,00",
+        "total": "230895,00",
+        "exchange_rate": "1"
+    }
+}

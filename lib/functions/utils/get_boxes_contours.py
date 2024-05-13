@@ -51,13 +51,13 @@ def getBoxesContours(img, originalName, savePreprocessingImages=False, verticalD
     contours = sortContours(contours, method="top-to-bottom")
 
     if savePreprocessingImages:
-        cv2.imwrite("pretemp/" + originalName + "_binirized_image.jpg", img_bin)
+        cv2.imwrite("images/pretemp/" + originalName + "_binirized_image.jpg", img_bin)
         cv2.imwrite(
-            "pretemp/" + originalName + "_verticle_lines.jpg", verticle_lines_img
+            "images/pretemp/" + originalName + "_verticle_lines.jpg", verticle_lines_img
         )
         cv2.imwrite(
-            "pretemp/" + originalName + "_horizontal_lines.jpg", horizontal_lines_img
+            "images/pretemp/" + originalName + "_horizontal_lines.jpg", horizontal_lines_img
         )
-        cv2.imwrite("pretemp/" + originalName + "_combined_lines.jpg", img_final_bin)
+        cv2.imwrite("images/pretemp/" + originalName + "_combined_lines.jpg", img_final_bin)
 
     return contours

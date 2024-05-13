@@ -94,7 +94,7 @@ cv2.imwrite("images/data/page_without_lines.png", invoiceWithoutLines)
 processImage(
     imageToProcessPath="images/data/page_preprocessed.png",
     imageWoLines=invoiceWithoutLines,
-    rectDimensions=(1, 100),
+    rectDimensions=(1, 80),
     boxWidthTresh=100,
     boxHeightTresh=100,
     folder="images/pretemp",

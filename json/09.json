@@ -33,6 +33,7 @@
     "footer": {
         "currency": "ARS",
         "net_amount_taxed": "20000,00",
+        "net_amount_untaxed": null,
         "vat_27": "0,00",
         "vat_21": "4200,00",
         "vat_10_5": "0,00",

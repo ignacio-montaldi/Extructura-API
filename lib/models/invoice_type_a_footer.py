@@ -2,6 +2,7 @@ class AFooter:
     def __init__(
         self,
         currency,
+        net_amount_untaxed,
         net_amount_taxed,
         vat_27,
         vat_21,
@@ -15,6 +16,7 @@ class AFooter:
     ):
         self.currency = currency
         self.net_amount_taxed = net_amount_taxed
+        self.net_amount_untaxed = net_amount_untaxed
         self.vat_27 = vat_27
         self.vat_21 = vat_21
         self.vat_10_5 = vat_10_5

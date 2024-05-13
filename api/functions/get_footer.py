@@ -29,7 +29,6 @@ def getFooter(invoice_type):
 
     for c in cnts:
         x, y, w, h = cv2.boundingRect(c)
-        print(x,y,w,h)
         if (x > 30 and x < 60) and (w > 915 and w < 960):
             has_exchange_box = True
         if (not isBoxAFooterConceptKey(x, y, w, h)) and (not isBoxAFooterConceptValue(x, y, w, h)):
@@ -129,7 +128,7 @@ def getFooter(invoice_type):
     return footer
 
 def isBoxAFooterConceptKey(x, y, w, h):
-    return ((x > 680 and x < 760) or (x > 30 and x < 60)) and (
+    return ((x > 670 and x < 760) or (x > 30 and x < 60)) and (
         (w > 230 and w < 260) or (w > 915 and w < 960)
     )
 

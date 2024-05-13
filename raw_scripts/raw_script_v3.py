@@ -170,14 +170,14 @@ for file in os.listdir(directory):
 
 def check_valid_header_boxes(height, width):
     ratio = height / width
-    return height > 70 and height < 240 and width > 80 and height < 1130 and ratio > 0.1 and ratio < 1
+    return height > 70 and height < 240 and width > 80 and ratio > 0.1 and ratio < 2
 
 image = cv2.imread("images/pretemp/header_1.png", 0)
 imageWol = cv2.imread("images/pretemp/header_1_wol.png", 0)
 createImagesFromImageBoxes(
     imageToProcess=image,
     imageWoLines=imageWol,
-    savePreprocessingImages=False,
+    savePreprocessingImages=True,
     originalName="header",
     verticalDialationIterations=9 if image_type == Image_type.scan else 3,
     horizontalDialationIterations=9 if image_type == Image_type.scan else 3,

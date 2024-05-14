@@ -2,7 +2,7 @@
     "type": "A",
     "header": {
         "business_name": "DON DANTESRL",
-        "business_address": "Av.Rodriguez Dura\u00f1ona 2222 - Salta, Salta",
+        "business_address": "Av.Rodriguez Durañona 2222 - Salta, Salta",
         "vat_condition": 1,
         "document_type": "FACTURA",
         "checkout_aisle_number": "00003",
@@ -14,7 +14,7 @@
         "client_cuit": "30710585764",
         "client_name": "DJV SR",
         "client_vat_condition": 1,
-        "client_address": "Av Dura\u00f1ona \u2014 Pque Industria 2205 - Salta, Salta",
+        "client_address": "Av Durañona — Pque Industria 2205 - Salta, Salta",
         "sale_method": "Contado"
     },
     "items": [

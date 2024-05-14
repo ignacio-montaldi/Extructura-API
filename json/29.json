@@ -2,7 +2,7 @@
     "type": "C",
     "header": {
         "business_name": "PERUZZO JORGE ALBERTO",
-        "business_address": "Ramirez 334 - Gualeguaychu, Entre R\u00edos",
+        "business_address": "Ramirez 334 - Gualeguaychu, Entre Ríos",
         "vat_condition": 6,
         "document_type": "FACTURA",
         "checkout_aisle_number": "00002",
@@ -14,13 +14,13 @@
         "client_cuit": "34938581",
         "client_name": "BUSCHIAZZO MATIAS",
         "client_vat_condition": 5,
-        "client_address": "San Mart\u00edn N?1225",
+        "client_address": "San Martín N?1225",
         "sale_method": "Contado"
     },
     "items": [
         {
             "cod": "",
-            "title": "Certificado de Conexi\u00f3n de Servicio El\u00e9ctrico",
+            "title": "Certificado de Conexión de Servicio Eléctrico",
             "amount": "1,00",
             "measure": "unidades",
             "unit_price": "6900,00",

@@ -2,7 +2,7 @@
     "type": "A",
     "header": {
         "business_name": "Cuit Juridica de Prueba",
-        "business_address": "8 De Diciembre Diciembre ------\u2014------- 153 Piso:P B. Dpto:9* - Ciuda",
+        "business_address": "8 De Diciembre Diciembre ------—------- 153 Piso:P B. Dpto:9* - Ciuda",
         "vat_condition": 1,
         "document_type": "FACTURA",
         "checkout_aisle_number": "00010",

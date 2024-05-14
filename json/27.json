@@ -20,7 +20,7 @@
     "items": [
         {
             "cod": "o",
-            "title": "Provisi\u00f3n, preparaci\u00f3n y distribuci\u00f3n de alimentos",
+            "title": "Provisión, preparación y distribución de alimentos",
             "amount": "1,00",
             "measure": "7667124,29",
             "unit_price": "",
@@ -31,7 +31,7 @@
         },
         {
             "cod": "02",
-            "title": "Provisi\u00f3n, preparaci\u00f3n y distribuci\u00f3n de alimentos (Producto harina)",
+            "title": "Provisión, preparación y distribución de alimentos (Producto harina)",
             "amount": "1,00",
             "measure": "580711,13",
             "unit_price": "",

@@ -2,7 +2,7 @@
     "type": "A",
     "header": {
         "business_name": "DON DANTESRL",
-        "business_address": "Av.Rodriguez Dura\u00f1ona 2222 - Salta, Salta",
+        "business_address": "Av.Rodriguez Durañona 2222 - Salta, Salta",
         "vat_condition": 1,
         "document_type": "FACTURA",
         "checkout_aisle_number": "00003",
@@ -12,9 +12,9 @@
         "gross_income": "917-622880-5",
         "business_opening_date": "18/08/1992",
         "client_cuit": "30507950843",
-        "client_name": "MOLINO CA\u00d1UELAS SOCIEDAD ANONIMA COMERCIAL",
+        "client_name": "MOLINO CAÑUELAS SOCIEDAD ANONIMA COMERCIAL",
         "client_vat_condition": 1,
-        "client_address": "Keremetafaria\u00f1uelas, Buenos Aires",
+        "client_address": "Keremetafariañuelas, Buenos Aires",
         "sale_method": "Contado"
     },
     "items": [

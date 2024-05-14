@@ -53,7 +53,9 @@ deleteFilesInFolder("images/processing")
 
 start_time = time.time()
 
-starting_image_path = "raw_scripts/testing/30.png"
+invoiceFileName = '01'
+
+starting_image_path = "raw_scripts/testing/"+ invoiceFileName +".png"
 image_type = Image_type.pdf
 image = cv2.imread(starting_image_path)
 
@@ -258,12 +260,17 @@ print("Process finished --- %s seconds ---" % (time.time() - start_time))
 
 # Prueba de eficacia del resultado: cambiar el numero para comparar con un json distinto (verificar que exista antes) 
 
-perfectInvoiceJsonFileName = '01'
 analizedInvoice = Invoice(type=invoice_type.name, header=header, items=items, footer=footer)
 
-# testResult(analizedInvoice, jsonPath = 'json/' + perfectInvoiceJsonFileName + '.json') #, perfectInvoice)
+# testResult(analizedInvoice, jsonPath = 'json/' + invoiceFileName + '.json') #, perfectInvoice)
 
 #Para generar el json que se modificará para ser el perfecto, eliminar después
 import json
-print(json.dumps(analizedInvoice, default=lambda analizedInvoice: analizedInvoice.__dict__))
+jsonFileContent = json.dumps(analizedInvoice, default=lambda analizedInvoice: analizedInvoice.__dict__, ensure_ascii=False)
+
+# Convierto el json perfecto guardado    
+with open('json/' + invoiceFileName + '.json', 'w') as file:
+    file.write(jsonFileContent)
+
+
 

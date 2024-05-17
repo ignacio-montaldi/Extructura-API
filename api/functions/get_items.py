@@ -23,8 +23,8 @@ def getItems(invoice_type: InvoiceType, imageName: str):
     for file in os.listdir(directory):
         filename = os.fsdecode(file)
         if filename.startswith("item"):
+            printXYWHIteration = printXYWHIteration+1
             processItemImage(
-                printXYWHIteration= printXYWHIteration + 1
                 imageToProcessPath=("images/temp/" + filename),
                 rectDimensions=(5, 250),
                 boxWidthTresh=14,
@@ -35,9 +35,7 @@ def getItems(invoice_type: InvoiceType, imageName: str):
                 reverseSorting=True,
                 invoice_type=invoice_type,
                 imageName=imageName,
-                imageTypeName= invoice_type.name,
-                printXYWH=True,
-                printXYWHIteration=printXYWHIteration
+                printXYWHIteration= printXYWHIteration
             )
 
             directory_in_str = "images/temp/"

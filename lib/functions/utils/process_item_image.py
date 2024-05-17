@@ -14,7 +14,9 @@ def processItemImage(
     outPutImageSufix="",
     reverseSorting=False,
     savePreprocessingImages=False,
-    invoice_type=InvoiceType.C
+    invoice_type=InvoiceType.C,
+    imageName='',
+    printXYWHIteration=1
 ):
     
     imageToProcess = cv2.imread(imageToProcessPath)
@@ -53,11 +55,16 @@ def processItemImage(
     index = 0
     if reverseSorting:
         cnts.reverse()
+        
+    valueCount = 0
 
     # Guarda las imágenes recortadas según sus contornos, si sus ancho/alto son mayores o menores a unos valorores por parámetro
     for c in cnts:
+        valueCount = valueCount +1
         x, y, w, h = cv2.boundingRect(c)
-        print(x)
+        f = open("test.txt", "a")
+        f.write('(\''+str(imageName) +'\''+ ','+str(printXYWHIteration)+','+str(valueCount)+','+str(x)+','+str(y)+','+str(w)+','+str(h)+','+'\''+str(invoice_type.name)+'\'),'+ "\n" )
+        f.close()
         if w > boxWidthTresh and h > boxHeightTresh:
             roi = gray[y : y + h, x : x + w]
             if invoice_type == InvoiceType.A:

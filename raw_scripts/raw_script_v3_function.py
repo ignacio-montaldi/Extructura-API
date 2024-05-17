@@ -241,7 +241,7 @@ def main_code(invoiceFileNameNumber):
     print(header)
 
     ##### GET ITEMS #####
-    items = getItems(invoice_type)
+    items = getItems(invoice_type, invoiceFileName)
     print(items)
 
     ##### GET FOOTER CONCEPTS #####

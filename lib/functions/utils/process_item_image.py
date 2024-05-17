@@ -2,6 +2,7 @@ import cv2
 
 from lib.enums.invoice_type_enum import InvoiceType
 from lib.functions.utils.check_if_image_is_gray import checkIfImageIsGray
+from lib.functions.utils.delete_file import delete_file
 
 def processItemImage(
     imageToProcessPath: str,
@@ -15,7 +16,6 @@ def processItemImage(
     savePreprocessingImages=False,
     invoice_type=InvoiceType.C
 ):
-    
     
     imageToProcess = cv2.imread(imageToProcessPath)
     
@@ -57,26 +57,27 @@ def processItemImage(
     # Guarda las imágenes recortadas según sus contornos, si sus ancho/alto son mayores o menores a unos valorores por parámetro
     for c in cnts:
         x, y, w, h = cv2.boundingRect(c)
+        print(x)
         if w > boxWidthTresh and h > boxHeightTresh:
             roi = gray[y : y + h, x : x + w]
             if invoice_type == InvoiceType.A:
-                if x<=77: #Pixeles de Cod.
+                if x<=76: #Pixeles de Cod.
                     index = 1
-                elif x > 77 and x<=477: #Pixeles de Producto
+                elif x > 76 and x<=477: #Pixeles de Producto
                     index = 2
                 elif x > 477 and x<=539: #Pixeles de Cantidad
                     index = 3
-                elif x > 539 and x<=666: #Pixeles de U. medida.
+                elif x > 539 and x<=649: #Pixeles de U. medida.
                     index = 4
-                elif x > 666 and x<=758: #Pixeles de Precio Unit.
+                elif x > 649 and x<=758: #Pixeles de Precio Unit.
                     index = 5
-                elif x > 758 and x<=845: #Pixeles de % Bonif.
+                elif x > 758 and x<=837: #Pixeles de % Bonif.
                     index = 6
-                elif x > 845 and x<=940: #Pixeles de subtotal.
+                elif x > 837 and x<=937: #Pixeles de subtotal.
                     index = 7
-                elif x > 940 and x<=1045: #Pixeles de alicuota iva.
+                elif x > 937 and x<=1036: #Pixeles de alicuota iva.
                     index = 8
-                elif x > 1045: #Pixeles de subtotal c/iva.
+                elif x > 1036: #Pixeles de subtotal c/iva.
                     index = 9         
                 else:
                     raise("Error")
@@ -110,4 +111,6 @@ def processItemImage(
                 + ".png"
             )
             cv2.imwrite(fileName, roi)
+            
+    
         

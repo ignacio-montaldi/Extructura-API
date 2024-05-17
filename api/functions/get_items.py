@@ -7,6 +7,7 @@ from lib.enums.invoice_type_enum import InvoiceType
 from lib.models.invoice_type_a_item import AItem
 from lib.models.invoice_type_c_item import CItem
 
+from lib.functions.utils.delete_file import delete_file
 from lib.functions.utils.process_item_image import processItemImage
 
 
@@ -23,17 +24,17 @@ def getItems(invoice_type: InvoiceType):
         if filename.startswith("item"):
             processItemImage(
                 imageToProcessPath=("images/temp/" + filename),
-                rectDimensions=(10, 100),
+                rectDimensions=(5, 250),
                 boxWidthTresh=14,
                 boxHeightTresh=0,
                 folder="images/temp",
                 outputImagePrefix="value",
-                savePreprocessingImages=False,
+                savePreprocessingImages=True,
                 reverseSorting=True,
                 invoice_type=invoice_type
             )
 
-            directory_in_str = "images/temp"
+            directory_in_str = "images/temp/"
             directory = os.fsencode(directory_in_str)
 
             valuesStr = {
@@ -49,11 +50,11 @@ def getItems(invoice_type: InvoiceType):
             }
             currentKey = 0
 
-            for file in os.listdir(directory):
+            for file in os.listdir(directory):                
                 filename = os.fsdecode(file)
                 if filename.startswith("value"):
-                    img_file = "images/temp/" + filename
-                    image = cv2.imread(img_file)
+                    img_file_path = "images/temp/" + filename
+                    image = cv2.imread(img_file_path)
                     ocr_result = pytesseract.image_to_string(
                         image, lang="spa", config="--psm 6"
                     )
@@ -61,6 +62,8 @@ def getItems(invoice_type: InvoiceType):
                     ocr_result = ocr_result.replace("\n", " ")
                     currentKey = filename[filename.index("_") + 1]
                     valuesStr[currentKey] = (ocr_result)
+                    #Elimino la imágen al terminar
+                    delete_file(img_file_path)
             if invoice_type == InvoiceType.A:
                 item = AItem(
                     valuesStr['1'],

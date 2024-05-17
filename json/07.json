@@ -24,15 +24,15 @@
             "amount": "16,00",
             "measure": "otras unidades",
             "unit_price": "3500,00",
-            "discount_perc": "000",
-            "subtotal": "56000.00",
+            "discount_perc": "0,00",
+            "subtotal": "56000,00",
             "vat_fee": "21%",
-            "subtotal_inc_fees": "67760,00"
+            "subtotal_inc_fees": "6776000"
         },
         {
             "cod": "0002",
             "title": "Trámites en aduana para el ingreso de camiones en lastre (MANI) Impresión de MIC/DTA. * - -",
-            "amount": "1700",
+            "amount": "17,00",
             "measure": "otras unidades",
             "unit_price": "5500,00",
             "discount_perc": "0,00",
@@ -47,8 +47,8 @@
             "measure": "otras unidades",
             "unit_price": "2300,00",
             "discount_perc": "0,00",
-            "subtotal": "168100,00 — No gravado",
-            "vat_fee": "21%",
+            "subtotal": "No gravado",
+            "vat_fee": "",
             "subtotal_inc_fees": "18100,00"
         },
         {
@@ -58,8 +58,8 @@
             "measure": "otras unidades",
             "unit_price": "3500,00",
             "discount_perc": "0,00",
-            "subtotal": "24500,00 No gravado",
-            "vat_fee": "21%",
+            "subtotal": "No gravado",
+            "vat_fee": "",
             "subtotal_inc_fees": "24500,00"
         },
         {
@@ -69,8 +69,8 @@
             "measure": "otras unidades",
             "unit_price": "4700,00",
             "discount_perc": "0,00",
-            "subtotal": "9400,00 _ No gravado",
-            "vat_fee": "21%",
+            "subtotal": "No gravado",
+            "vat_fee": "",
             "subtotal_inc_fees": "9400,00"
         }
     ],

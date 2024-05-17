@@ -63,47 +63,47 @@ def processItemImage(
         valueCount = valueCount +1
         x, y, w, h = cv2.boundingRect(c)
         f = open("test.txt", "a")
-        f.write('(\''+str(imageName) +'\''+ ','+str(printXYWHIteration)+','+str(valueCount)+','+str(x)+','+str(y)+','+str(w)+','+str(h)+','+'\''+str(invoice_type.name)+'\'),'+ "\n" )
+        f.write('(\''+str(imageName) +'\''+ ','+str(printXYWHIteration)+','+str(valueCount)+','+str(x)+','+str(y)+','+str(w)+','+str(h)+','+'\''+str(invoice_type.name)+'\''+ "\n" )
         f.close()
         if w > boxWidthTresh and h > boxHeightTresh:
             roi = gray[y : y + h, x : x + w]
             if invoice_type == InvoiceType.A:
-                if x<=76: #Pixeles de Cod.
+                if x<=77: #Pixeles de Cod.
                     index = 1
-                elif x > 76 and x<=477: #Pixeles de Producto
+                elif x > 77 and x<=478: #Pixeles de Producto
                     index = 2
-                elif x > 477 and x<=539: #Pixeles de Cantidad
+                elif x > 478 and x<=540: #Pixeles de Cantidad
                     index = 3
-                elif x > 539 and x<=649: #Pixeles de U. medida.
+                elif x > 540 and x<=650: #Pixeles de U. medida.
                     index = 4
-                elif x > 649 and x<=758: #Pixeles de Precio Unit.
+                elif x > 650 and x<=760: #Pixeles de Precio Unit.
                     index = 5
-                elif x > 758 and x<=837: #Pixeles de % Bonif.
+                elif x > 760 and x<=838: #Pixeles de % Bonif.
                     index = 6
-                elif x > 837 and x<=937: #Pixeles de subtotal.
+                elif x > 838 and x<=930: #Pixeles de subtotal.
                     index = 7
-                elif x > 937 and x<=1036: #Pixeles de alicuota iva.
+                elif x > 930 and x<=1037: #Pixeles de alicuota iva.
                     index = 8
-                elif x > 1036: #Pixeles de subtotal c/iva.
+                elif x > 1037: #Pixeles de subtotal c/iva.
                     index = 9         
                 else:
                     raise("Error")
             else: 
-                if x <= 71: #Pixeles de Cod.
+                if x <= 72: #Pixeles de Cod.
                     index = 1
-                elif x > 71 and x<=423: #Pixeles de Producto
+                elif x > 72 and x<=424: #Pixeles de Producto
                     index = 2
-                elif x > 423 and x<=469: #Pixeles de Cantidad
+                elif x > 424 and x<=470: #Pixeles de Cantidad
                     index = 3
-                elif x > 469 and x<=628: #Pixeles de U. medida.
+                elif x > 470 and x<=629: #Pixeles de U. medida.
                     index = 4
-                elif x > 628 and x<=701: #Pixeles de Precio Unit.
+                elif x > 629 and x<=702: #Pixeles de Precio Unit.
                     index = 5
-                elif x > 701 and x<=850: #Pixeles de % Bonif.
+                elif x > 702 and x<=851: #Pixeles de % Bonif.
                     index = 6
-                elif x > 850 and x<=999: #Pixeles de imp. bonif.
+                elif x > 851 and x<=1000: #Pixeles de imp. bonif.
                     index = 7
-                elif x > 999: #Pixeles de subtotal.
+                elif x > 1000: #Pixeles de subtotal.
                     index = 8         
                 else:
                     raise("Error")

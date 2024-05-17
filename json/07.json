@@ -23,11 +23,11 @@
             "title": "Trámites en aduana para cancelación de transito de exportación Salida Cargado.",
             "amount": "16,00",
             "measure": "otras unidades",
-            "unit_price": "3500,00",
-            "discount_perc": "0,00",
-            "subtotal": "56000,00",
+            "unit_price": "350000",
+            "discount_perc": "000",
+            "subtotal": "56000.00",
             "vat_fee": "21%",
-            "subtotal_inc_fees": "6776000"
+            "subtotal_inc_fees": "67760,00"
         },
         {
             "cod": "0002",
@@ -47,9 +47,9 @@
             "measure": "otras unidades",
             "unit_price": "2300,00",
             "discount_perc": "0,00",
-            "subtotal": "No gravado",
-            "vat_fee": "",
-            "subtotal_inc_fees": "18100,00"
+            "subtotal": "16100,00",
+            "vat_fee": "No gravado",
+            "subtotal_inc_fees": "16100,00"
         },
         {
             "cod": "TARE",
@@ -58,8 +58,8 @@
             "measure": "otras unidades",
             "unit_price": "3500,00",
             "discount_perc": "0,00",
-            "subtotal": "No gravado",
-            "vat_fee": "",
+            "subtotal": "24500,00",
+            "vat_fee": "No gravado",
             "subtotal_inc_fees": "24500,00"
         },
         {
@@ -69,9 +69,9 @@
             "measure": "otras unidades",
             "unit_price": "4700,00",
             "discount_perc": "0,00",
-            "subtotal": "No gravado",
-            "vat_fee": "",
-            "subtotal_inc_fees": "9400,00"
+            "subtotal": "8400,00",
+            "vat_fee": "No gravado",
+            "subtotal_inc_fees": "8400,00"
         }
     ],
     "footer": {

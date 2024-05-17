@@ -24,9 +24,9 @@
             "amount": "8.00",
             "measure": "unidades",
             "unit_price": "2500,00",
-            "discount_perc": "000",
+            "discount_perc": "0,00",
             "subtotal": "20000,00",
-            "vat_fee": "21%",
+            "vat_fee": "%",
             "subtotal_inc_fees": "24200,00"
         }
     ],

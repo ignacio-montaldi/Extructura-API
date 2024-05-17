@@ -26,8 +26,8 @@ def getItems(invoice_type: InvoiceType, imageName: str):
             printXYWHIteration = printXYWHIteration+1
             processItemImage(
                 imageToProcessPath=("images/temp/" + filename),
-                rectDimensions=(5, 250),
-                boxWidthTresh=14,
+                rectDimensions=(7, 250),
+                boxWidthTresh=5,
                 boxHeightTresh=0,
                 folder="images/temp",
                 outputImagePrefix="value",

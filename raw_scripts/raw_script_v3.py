@@ -53,7 +53,7 @@ deleteFilesInFolder("images/processing")
 
 start_time = time.time()
 
-invoiceFileName = '07'
+invoiceFileName = '05'
 
 starting_image_path = "raw_scripts/testing/"+ invoiceFileName +".png"
 image_type = Image_type.pdf

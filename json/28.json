@@ -31,14 +31,14 @@
         },
         {
             "cod": "",
-            "title": "pilas AÑA panasonic",
+            "title": "pilas AA panasonic",
             "amount": "2,00",
             "measure": "unidades",
             "unit_price": "61,98",
             "discount_perc": "0,00",
-            "subtotal": "123,86",
+            "subtotal": "123,96",
             "vat_fee": "21%",
-            "subtotal_inc_fees": "149,839"
+            "subtotal_inc_fees": "149,99"
         }
     ],
     "footer": {

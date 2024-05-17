@@ -3,7 +3,6 @@ import sys
 import os
 import cv2
 import pytesseract
-import time
 
  
 # getting the name of the directory
@@ -51,8 +50,6 @@ def main_code(invoiceFileNameNumber):
     deleteFilesInFolder("images/pretemp")
     deleteFilesInFolder("images/temp")
     deleteFilesInFolder("images/processing")
-
-    start_time = time.time()
 
     invoiceFileName = invoiceFileNameNumber
 
@@ -244,7 +241,7 @@ def main_code(invoiceFileNameNumber):
     print(header)
 
     ##### GET ITEMS #####
-    items = getItems(invoice_type)
+    items = getItems(invoice_type, invoiceFileName)
     print(items)
 
     ##### GET FOOTER CONCEPTS #####
@@ -256,8 +253,6 @@ def main_code(invoiceFileNameNumber):
     deleteFilesInFolder("images/pretemp")
     deleteFilesInFolder("images/temp")
     deleteFilesInFolder("images/processing")
-
-    print("Process finished --- %s seconds ---" % (time.time() - start_time))
 
     # Prueba de eficacia del resultado: cambiar el numero para comparar con un json distinto (verificar que exista antes) 
 

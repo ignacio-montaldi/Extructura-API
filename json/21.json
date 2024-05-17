@@ -23,7 +23,7 @@
             "title": "PORCIONES DE RAVIOLES DE VERDURA",
             "amount": "15,00",
             "measure": "unidades",
-            "unit_price": "123,97",
+            "unit_price": "123,897",
             "discount_perc": "0,00",
             "subtotal": "1859,55",
             "vat_fee": "21%",
@@ -32,7 +32,7 @@
         {
             "cod": "",
             "title": "PORCIONES DE SORRENTINOS DE J2Q",
-            "amount": "415,00",
+            "amount": "15,00",
             "measure": "unidades",
             "unit_price": "330,58",
             "discount_perc": "0,00",
@@ -69,7 +69,7 @@
             "measure": "unidades",
             "unit_price": "330,58",
             "discount_perc": "0,00",
-            "subtotal": "1652,80",
+            "subtotal": "1852,80",
             "vat_fee": "21%",
             "subtotal_inc_fees": "2000,01"
         },
@@ -80,7 +80,7 @@
             "measure": "unidades",
             "unit_price": "330,58",
             "discount_perc": "0,00",
-            "subtotal": "1652,80",
+            "subtotal": "1852,80",
             "vat_fee": "21%",
             "subtotal_inc_fees": "2000,01"
         }

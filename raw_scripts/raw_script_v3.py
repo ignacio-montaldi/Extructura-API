@@ -53,7 +53,7 @@ deleteFilesInFolder("images/processing")
 
 start_time = time.time()
 
-invoiceFileName = '01'
+invoiceFileName = '05'
 
 starting_image_path = "raw_scripts/testing/"+ invoiceFileName +".png"
 image_type = Image_type.pdf
@@ -243,7 +243,7 @@ header = getHeader()
 print(header)
 
 ##### GET ITEMS #####
-items = getItems(invoice_type)
+items = getItems(invoice_type, invoiceFileName)
 print(items)
 
 ##### GET FOOTER CONCEPTS #####
@@ -269,7 +269,7 @@ import json
 jsonFileContent = json.dumps(analizedInvoice, default=lambda analizedInvoice: analizedInvoice.__dict__, ensure_ascii=False)
 
 # Convierto el json perfecto guardado    
-with open('json/' + invoiceFileName + '.json', 'w') as file:
+with open('json/' + invoiceFileName + '.json', 'w', encoding='utf8') as file:
     file.write(jsonFileContent)
 
 

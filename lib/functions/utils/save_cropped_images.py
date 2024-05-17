@@ -31,6 +31,7 @@ def saveCroppedImages(
     # Guarda las imágenes recortadas según sus contornos, si sus ancho/alto son mayores o menores a unos valorores por parámetro
     for c in cnts:
         x, y, w, h = cv2.boundingRect(c)
+
         if higherThanHeight:
             if printDimensions:
                 print(h)

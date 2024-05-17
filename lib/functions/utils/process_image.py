@@ -16,6 +16,7 @@ def processImage(
     higherThanHeight=True,
     reverseSorting=False,
     savePreprocessingImages=False,
+ 
 ):
     
     imageToProcess = cv2.imread(imageToProcessPath)

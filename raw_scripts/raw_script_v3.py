@@ -243,7 +243,7 @@ header = getHeader()
 print(header)
 
 ##### GET ITEMS #####
-items = getItems(invoice_type)
+items = getItems(invoice_type, imageName)
 print(items)
 
 ##### GET FOOTER CONCEPTS #####

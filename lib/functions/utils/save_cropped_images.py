@@ -29,8 +29,14 @@ def saveCroppedImages(
         cnts.reverse()
 
     # Guarda las imágenes recortadas según sus contornos, si sus ancho/alto son mayores o menores a unos valorores por parámetro
+    printXYWHSubIteration = 0
     for c in cnts:
         x, y, w, h = cv2.boundingRect(c)
+        if printXYWH:
+            printXYWHSubIteration = printXYWHSubIteration + 1
+            f = open("test.txt", "a")
+            f.write(str(imageName) + ";" + str(printXYWHIteration) + ";" + str(printXYWHSubIteration) + ";" + str(x) + ";" + str(y)+ ";" + str(w)+ ";" + str(h) + ";" + str(imageTypeValue) + "\n")
+            f.close()
         if higherThanHeight:
             if printDimensions:
                 print(h)

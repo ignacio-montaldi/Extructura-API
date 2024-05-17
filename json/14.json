@@ -21,7 +21,7 @@
         {
             "cod": "0001",
             "title": "HONORARIOS A.T.A. PALPALA CRT NRO. 031AS081/2023",
-            "amount": "2.00",
+            "amount": "2,00",
             "measure": "unidades",
             "unit_price": "4000,00",
             "discount_perc": "0,00",
@@ -35,13 +35,13 @@
             "measure": "unidades",
             "unit_price": "4000,00",
             "discount_perc": "0,00",
-            "discounted_subtotal": "000",
+            "discounted_subtotal": "0.00",
             "subtotal": "2000000"
         },
         {
             "cod": "0003",
             "title": "HONORARIOS A.T.A. PALPALA CRT NRO. 031AS085/2023",
-            "amount": "2.00",
+            "amount": "2,00",
             "measure": "unidades",
             "unit_price": "4000,00",
             "discount_perc": "0,00",
@@ -55,8 +55,8 @@
             "measure": "unidades",
             "unit_price": "4000,00",
             "discount_perc": "0,00",
-            "discounted_subtotal": "000",
-            "subtotal": "800000"
+            "discounted_subtotal": "0.00",
+            "subtotal": "8000.00"
         }
     ],
     "footer": {

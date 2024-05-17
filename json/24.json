@@ -2,7 +2,7 @@
     "type": "A",
     "header": {
         "business_name": "ZABALA SERGIO FABIAN",
-        "business_address": "Ruta 15 Km 37- Loteo Ruiz - Lote 15/16 - 0- Ugarteche, Mendoza",
+        "business_address": "Ruta 15 Km 37- Loteo Ruiz - Lote 15/16 - 0 - Ugarteche, Mendoza",
         "vat_condition": 1,
         "document_type": "FACTURA",
         "checkout_aisle_number": "0005",
@@ -25,7 +25,7 @@
             "measure": "unidades",
             "unit_price": "1394,87",
             "discount_perc": "0,00",
-            "subtotal": "1394,97",
+            "subtotal": "1394,37",
             "vat_fee": "21%",
             "subtotal_inc_fees": "1687,91"
         }

@@ -15,7 +15,7 @@
         "client_name": "DON DANTESRL",
         "client_vat_condition": 1,
         "client_address": "Av.Rodriguez Durañona 2222 - Salta, Salta",
-        "sale_method": ": — Cuenta Corriente"
+        "sale_method": "— Cuenta Corriente"
     },
     "items": [
         {
@@ -56,9 +56,9 @@
             "title": "BUJE BARRA ESTABILIZADORA TRASERA CENTRAL",
             "amount": "2,00",
             "measure": "unidades",
-            "unit_price": "41323",
+            "unit_price": "413,23",
             "discount_perc": "0,00",
-            "subtotal": "82646",
+            "subtotal": "826,46",
             "vat_fee": "21%",
             "subtotal_inc_fees": "1000,02"
         }

@@ -10,8 +10,8 @@
         "issue_date": "24/02/2022",
         "seller_cuit": "20147213807",
         "gross_income": "20147219807",
-        "business_opening_date": "01/060/2012",
-        "client_cuit": "30577207180",
+        "business_opening_date": "01/06/2012",
+        "client_cuit": "305772071980",
         "client_name": "COORDINACION ECOLOGICA AREA METROPOLITANA",
         "client_vat_condition": 1,
         "client_address": "Aicorta Amancio Av. 3000 - Capital Federal, Ciudad de Buenos",
@@ -31,12 +31,12 @@
         },
         {
             "cod": "",
-            "title": "pilas AA panasonic",
+            "title": "pilas AÑA panasonic",
             "amount": "2,00",
             "measure": "unidades",
             "unit_price": "61,98",
             "discount_perc": "0,00",
-            "subtotal": "123,96",
+            "subtotal": "123,36",
             "vat_fee": "21%",
             "subtotal_inc_fees": "149,99"
         }

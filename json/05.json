@@ -25,13 +25,13 @@
             "measure": "unidades",
             "unit_price": "71292,99",
             "discount_perc": "0,00",
-            "discounted_subtotal": "000",
+            "discounted_subtotal": "0,00",
             "subtotal": "71292,99"
         }
     ],
     "footer": {
         "currency": "ARS",
-        "sub_total": "71292,99",
+        "sub_total": "71292,39",
         "other_taxes_ammout": "0,00",
         "total": "71292,99",
         "exchange_rate": "1"

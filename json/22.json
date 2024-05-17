@@ -11,7 +11,7 @@
         "seller_cuit": "20343632038",
         "gross_income": "20343832038",
         "business_opening_date": "06/03/2017",
-        "client_cuit": "30631020163",
+        "client_cuit": "30631029163",
         "client_name": "PROOBRA S.A.",
         "client_vat_condition": 1,
         "client_address": "San Luis 1345 Piso:05 Dpto:A B - Posadas, Misiones",
@@ -20,11 +20,11 @@
     "items": [
         {
             "cod": "",
-            "title": "Alineación eje delantero Iveco MQI 376",
+            "title": "Alineación eje delantero Iveco MOI 376",
             "amount": "1,00",
             "measure": "unidades",
             "unit_price": "750,00",
-            "discount_perc": "000",
+            "discount_perc": "0,00",
             "subtotal": "750,00",
             "vat_fee": "21%",
             "subtotal_inc_fees": "807,50"
@@ -32,10 +32,10 @@
         {
             "cod": "",
             "title": "Alineación eje trasero Iveco MOI 376",
-            "amount": "200",
+            "amount": "2,00",
             "measure": "unidades",
             "unit_price": "600,00",
-            "discount_perc": "000",
+            "discount_perc": "0,00",
             "subtotal": "1200,00",
             "vat_fee": "21%",
             "subtotal_inc_fees": "1452,00"

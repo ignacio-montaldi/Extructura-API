@@ -10,7 +10,7 @@
         "issue_date": "20/03/2023",
         "seller_cuit": "20207833682",
         "gross_income": "9991509543",
-        "business_opening_date": "1)01/08/2020",
+        "business_opening_date": "(01/08/2020",
         "client_cuit": "30708147938",
         "client_name": "TUBOS DAK SOCIEDAD ANONIMA",
         "client_vat_condition": 1,
@@ -21,7 +21,7 @@
         {
             "cod": "",
             "title": "M/O SERVICIO TECNICO PREVENTIVO 8000 HS COMPRESOR  KAESER SM16 N* SERIE 1250- 6839631",
-            "amount": "1.00",
+            "amount": "1,00",
             "measure": "unidades",
             "unit_price": "56000,00",
             "discount_perc": "0,00",

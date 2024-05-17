@@ -9,7 +9,7 @@
         "document_number": "00000193",
         "issue_date": "22/04/2024",
         "seller_cuit": "27163083375",
-        "gross_income": "27103033375",
+        "gross_income": "271030383375",
         "business_opening_date": "1(05/03/2018",
         "client_cuit": "30710185022",
         "client_name": "INVLAC CONSTRUCCIONES S.R.LS. R.L.",
@@ -21,7 +21,7 @@
         {
             "cod": "",
             "title": "Servicio de hospedaje",
-            "amount": "1.00",
+            "amount": "1,00",
             "measure": "otras unidades",
             "unit_price": "10000,00",
             "discount_perc": "0,00",

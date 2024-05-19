@@ -50,6 +50,8 @@ def main_code(invoiceFileNameNumber):
     deleteFilesInFolder("images/pretemp")
     deleteFilesInFolder("images/temp")
     deleteFilesInFolder("images/processing")
+    deleteFilesInFolder("images/processing/header_concepts")
+    deleteFilesInFolder("images/processing/header_concepts/header_concepts_subdivided")
 
     invoiceFileName = invoiceFileNameNumber
 
@@ -226,7 +228,7 @@ def main_code(invoiceFileNameNumber):
         image, lang="spa", config="--psm 6")
     ocr_result = ocr_result.replace("\n\x0c", "")
 
-    match ocr_result:
+    match ocr_result[0]:
         case "A":
             invoice_type = InvoiceType.A
         case "B":
@@ -237,7 +239,7 @@ def main_code(invoiceFileNameNumber):
             print("Error")
 
     ##### GET HEADER CONCEPTS #####
-    header = getHeader()
+    header = getHeader(invoiceFileName)
     print(header)
 
     ##### GET ITEMS #####
@@ -253,6 +255,8 @@ def main_code(invoiceFileNameNumber):
     deleteFilesInFolder("images/pretemp")
     deleteFilesInFolder("images/temp")
     deleteFilesInFolder("images/processing")
+    deleteFilesInFolder("images/processing/header_concepts")
+    deleteFilesInFolder("images/processing/header_concepts/header_concepts_subdivided")
 
     # Prueba de eficacia del resultado: cambiar el numero para comparar con un json distinto (verificar que exista antes) 
 

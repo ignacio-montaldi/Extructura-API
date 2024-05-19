@@ -50,10 +50,12 @@ deleteFilesInFolder("images/data")
 deleteFilesInFolder("images/pretemp")
 deleteFilesInFolder("images/temp")
 deleteFilesInFolder("images/processing")
+deleteFilesInFolder("images/processing/header_concepts")
+deleteFilesInFolder("images/processing/header_concepts/header_concepts_subdivided")
 
 start_time = time.time()
 
-invoiceFileName = '05'
+invoiceFileName = '06'
 
 starting_image_path = "raw_scripts/testing/"+ invoiceFileName +".png"
 image_type = Image_type.pdf
@@ -179,7 +181,7 @@ imageWol = cv2.imread("images/pretemp/header_1_wol.png", 0)
 createImagesFromImageBoxes(
     imageToProcess=image,
     imageWoLines=imageWol,
-    savePreprocessingImages=True,
+    savePreprocessingImages=False,
     originalName="header",
     verticalDialationIterations=9 if image_type == Image_type.scan else 3,
     horizontalDialationIterations=9 if image_type == Image_type.scan else 3,
@@ -228,7 +230,7 @@ ocr_result = pytesseract.image_to_string(
     image, lang="spa", config="--psm 6")
 ocr_result = ocr_result.replace("\n\x0c", "")
 
-match ocr_result:
+match ocr_result[0]:
     case "A":
         invoice_type = InvoiceType.A
     case "B":
@@ -239,7 +241,7 @@ match ocr_result:
         print("Error")
 
 ##### GET HEADER CONCEPTS #####
-header = getHeader()
+header = getHeader(invoiceFileName)
 print(header)
 
 ##### GET ITEMS #####
@@ -255,6 +257,8 @@ deleteFilesInFolder("images/data")
 deleteFilesInFolder("images/pretemp")
 deleteFilesInFolder("images/temp")
 deleteFilesInFolder("images/processing")
+deleteFilesInFolder("images/processing/header_concepts")
+deleteFilesInFolder("images/processing/header_concepts/header_concepts_subdivided")
 
 print("Process finished --- %s seconds ---" % (time.time() - start_time))
 

@@ -19,11 +19,15 @@ from raw_scripts.raw_script_v3_function import main_code
 
 start_time = time.time()
 
-i = 1
+i = 11
 while i <= 30:
-    main_code(f"{i:02}")
-    print("Factura "+f"{i:02}"+": ok")
-    i=i+1
+    try:
+        main_code(f"{i:02}")
+        print("Factura "+f"{i:02}"+": ok")
+        i=i+1
+    except:
+        print("Factura "+f"{i:02}"+": bad")
+        i=i+1
 
 print("Process finished --- %s seconds ---" % (time.time() - start_time))
     

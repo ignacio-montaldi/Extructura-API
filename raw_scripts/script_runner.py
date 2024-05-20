@@ -19,7 +19,7 @@ from raw_scripts.raw_script_v3_function import main_code
 
 start_time = time.time()
 
-i = 11
+i = 1
 while i <= 30:
     try:
         main_code(f"{i:02}")

@@ -21,4 +21,6 @@ def imageCleaning(image):
             if sizes[i] >= 3:   #filter small dotted regions
                 final[labels == i + 1] = 255
                 
-    return ~final
+    resizedFinalResult = imutils.resize(~final, height=1684)
+                
+    return resizedFinalResult

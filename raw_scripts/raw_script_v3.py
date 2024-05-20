@@ -55,10 +55,10 @@ deleteFilesInFolder("images/processing/header_concepts/header_concepts_subdivide
 
 start_time = time.time()
 
-invoiceFileName = '06'
+invoiceFileName = 'scanner1'
 
-starting_image_path = "raw_scripts/testing/"+ invoiceFileName +".png"
-image_type = Image_type.pdf
+starting_image_path = "raw_scripts/data/"+ invoiceFileName +".png"
+image_type = Image_type.scan
 image = cv2.imread(starting_image_path)
 
 # Preprocesamos la imágen según el tipo de imágen

@@ -31,7 +31,6 @@ def getItems(invoice_type: InvoiceType, imageName: str):
                 boxHeightTresh=0,
                 folder="images/temp",
                 outputImagePrefix="value",
-                savePreprocessingImages=True,
                 reverseSorting=True,
                 invoice_type=invoice_type,
                 imageName=imageName,

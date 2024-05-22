@@ -167,6 +167,8 @@ def main_code(invoiceFileNameNumber):
             image = cv2.imread(img_file_path)
             if checkIfImageHasLines(image):
                 delete_file(img_file_path)
+            if image.shape[0] <20:
+                delete_file(img_file_path)
 
     # Recorta cada una de las "cajas" del encabezado
 
@@ -179,8 +181,8 @@ def main_code(invoiceFileNameNumber):
     createImagesFromImageBoxes(
         imageToProcess=image,
         imageWoLines=imageWol,
-        savePreprocessingImages=True,
         originalName="header",
+        savePreprocessingImages=True,
         verticalDialationIterations=9 if image_type == Image_type.scan else 3,
         horizontalDialationIterations=9 if image_type == Image_type.scan else 3,
         check_function=check_valid_header_boxes,

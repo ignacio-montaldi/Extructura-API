@@ -130,12 +130,14 @@ def preprocessInvoice(image_type):
             image = cv2.imread(img_file_path)
             if checkIfImageHasLines(image):
                 delete_file(img_file_path)
+            if image.shape[0] <20:
+                delete_file(img_file_path)
 
     # Recorta cada una de las "cajas" del encabezado
 
     def check_valid_header_boxes(height, width):
         ratio = height / width
-        return height > 70 and height < 240 and width > 80 and height < 1130 and ratio > 0.1 and ratio < 1
+        return height > 70 and height < 240 and width > 80 and ratio > 0.1 and ratio < 2
 
     image = cv2.imread("images/pretemp/header_1.png", 0)
     imageWol = cv2.imread("images/pretemp/header_1_wol.png", 0)

@@ -55,9 +55,9 @@ deleteFilesInFolder("images/processing/header_concepts/header_concepts_subdivide
 
 start_time = time.time()
 
-invoiceFileName = 'scanner1'
+invoiceFileName = '17'
 
-starting_image_path = "raw_scripts/data/"+ invoiceFileName +".png"
+starting_image_path = "raw_scripts/testing_foto/"+ invoiceFileName +".png"
 image_type = Image_type.scan
 image = cv2.imread(starting_image_path)
 
@@ -169,6 +169,8 @@ for file in os.listdir(directory):
         image = cv2.imread(img_file_path)
         if checkIfImageHasLines(image):
            delete_file(img_file_path)
+        if image.shape[0] <20:
+            delete_file(img_file_path)
 
 # Recorta cada una de las "cajas" del encabezado
 

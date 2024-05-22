@@ -84,5 +84,10 @@ def get_invoice():
     deleteFilesInFolder("images/processing")
     deleteFilesInFolder("images/processing/header_concepts")
     deleteFilesInFolder("images/processing/header_concepts/header_concepts_subdivided")
-    
+    import json
+    jsonFileContent = json.dumps(invoice, default=lambda analizedInvoice: analizedInvoice.__dict__, ensure_ascii=False)
+
+    # Convierto el json perfecto guardado    
+    with open('json/' + 'API_IMAGE' + '.json', 'w', encoding='utf8') as file:
+        file.write(jsonFileContent)
     return invoice

@@ -55,9 +55,9 @@ deleteFilesInFolder("images/processing/header_concepts/header_concepts_subdivide
 
 start_time = time.time()
 
-invoiceFileName = 'foto6'
+invoiceFileName = '09'
 
-starting_image_path = "raw_scripts/data/"+ invoiceFileName +".png"
+starting_image_path = "raw_scripts/testing_photo/"+ invoiceFileName +".png"
 image_type = Image_type.photo
 image = cv2.imread(starting_image_path)
 

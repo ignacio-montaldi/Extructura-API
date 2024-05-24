@@ -2,7 +2,7 @@
     "type": "A",
     "header": {
         "business_name": "FERRO HUGO ALFREDO",
-        "business_address": "Escalada Av: 781 Dpto:PB - Ciudad de Buenos Aires",
+        "business_address": "Escalada Av, 781 Dplo:PB - Ciudad de Buenos Aires",
         "vat_condition": 1,
         "document_type": "FACTURA",
         "checkout_aisle_number": "00003",
@@ -12,10 +12,10 @@
         "gross_income": "20108286505",
         "business_opening_date": "01/02/2017",
         "client_cuit": "30712430725",
-        "client_name": "ALFA Y OMEGA INTERIORES S.R.L.,",
+        "client_name": "ALFA Y OMEGA INTERIORES S,R.L",
         "client_vat_condition": 1,
-        "client_address": "Carabelas Pje. 281 Piso:7 Dpto:G - Capital Federal, Ciudad de Buenos Aires",
-        "sale_method": "Otra"
+        "client_address": "Carabolas Pjo, 281 Piso:7 Dpto:G - Capital Fedoral, Ciudad de Buenos Aires",
+        "sale_method": "- Ota"
     },
     "items": [
         {
@@ -27,7 +27,7 @@
             "discount_perc": "0,00",
             "subtotal": "66004,13",
             "vat_fee": "21%",
-            "subtotal_inc_fees": "79865,00"
+            "subtotal_inc_fees": "79885,00"
         }
     ],
     "footer": {

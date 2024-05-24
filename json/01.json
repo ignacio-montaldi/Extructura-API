@@ -3,19 +3,19 @@
     "header": {
         "business_name": "DON DANTESRL",
         "business_address": "Av.Rodriguez Durañona 2222 - Salta, Salta",
-        "vat_condition": 1,
-        "document_type": "FACTURA",
-        "checkout_aisle_number": "00003",
-        "document_number": "00005285",
-        "issue_date": "02/06/2022",
-        "seller_cuit": "30654303254",
-        "gross_income": "917-522580-5",
-        "business_opening_date": "18/08/1392",
+        "vat_condition": 0,
+        "document_type": "",
+        "checkout_aisle_number": "00005285",
+        "document_number": "FACTURA",
+        "issue_date": "00003",
+        "seller_cuit": "02/06/2027?",
+        "gross_income": "30654303254",
+        "business_opening_date": "9t/-622880-5",
         "client_cuit": "30690650483",
-        "client_name": "AGENOR SA",
+        "client_name": "AGENORS A",
         "client_vat_condition": 1,
-        "client_address": "Calle Lateral Este 660 Dpto:A - Salta, Salta",
-        "sale_method": "Contado"
+        "client_address": "Calle Laleral Este 650 Dpto:A - Salta, Salta",
+        "sale_method": "- Coniado"
     },
     "items": [
         {

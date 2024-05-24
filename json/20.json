@@ -2,29 +2,29 @@
     "type": "A",
     "header": {
         "business_name": "GARCIA JUAN CARLOS",
-        "business_address": "Placido Martinez 1050 Piso:9 Dpto:A - Corrientes, Corrientes",
+        "business_address": "Placido Marinez 1050 Piso:9 Dpto:A - Corientes, Comientes",
         "vat_condition": 1,
         "document_type": "FACTURA",
         "checkout_aisle_number": "00011",
-        "document_number": "00000237",
+        "document_number": "Mro: 00000237",
         "issue_date": "03/04/2024",
-        "seller_cuit": "20056667483",
+        "seller_cuit": "20056567483",
         "gross_income": "20056667483",
         "business_opening_date": "01/04/2017",
         "client_cuit": "30543055642",
-        "client_name": "IMPULSO S.A.",
+        "client_name": "IMPULSO SA.",
         "client_vat_condition": 1,
-        "client_address": "Av Pedro Ferre 1849 - Corrientes, Corrientes",
-        "sale_method": "Cuenta Corriente"
+        "client_address": "Av Podro Ferro 1849 « Comantes, Comentos",
+        "sale_method": "— Cuenta Corriente"
     },
     "items": [
         {
             "cod": "0001",
-            "title": "Resmas de papel A4 75 gr Boreal",
+            "title": "Resmas dea papel A4 75 gr Boreal",
             "amount": "60,00",
             "measure": "unidades",
             "unit_price": "5900,00",
-            "discount_perc": "0,00",
+            "discount_perc": "0.00",
             "subtotal": "354000,00",
             "vat_fee": "21%",
             "subtotal_inc_fees": "428340,00"
@@ -38,39 +38,39 @@
             "discount_perc": "0,00",
             "subtotal": "22230,00",
             "vat_fee": "21%",
-            "subtotal_inc_fees": "26898,30"
+            "subtotal_inc_fees": "26893,30"
         },
         {
             "cod": "0003",
             "title": "Broches n* 50",
-            "amount": "190,00",
+            "amount": "100.00",
             "measure": "unidades",
             "unit_price": "690,00",
             "discount_perc": "0,00",
             "subtotal": "69000,00",
             "vat_fee": "21%",
-            "subtotal_inc_fees": "83490,00"
+            "subtotal_inc_fees": "83450,09"
         },
         {
             "cod": "0004",
             "title": "Caja identificadores x 50",
             "amount": "1,00",
-            "measure": "unidades",
-            "unit_price": "8130,00",
+            "measure": "umdades",
+            "unit_price": "9130,00",
             "discount_perc": "0,00",
-            "subtotal": "9130,00",
+            "subtotal": "5130,00",
             "vat_fee": "21%",
-            "subtotal_inc_fees": "11047,30"
+            "subtotal_inc_fees": "11047,50"
         },
         {
             "cod": "0005",
-            "title": "Sobres manila 24x30 x 100 unidades",
+            "title": "Sobres mania 24x30 x 100 unidades",
             "amount": "1,00",
             "measure": "unidades",
             "unit_price": "8900,00",
             "discount_perc": "0,00",
-            "subtotal": "8900,00",
-            "vat_fee": "21%",
+            "subtotal": "8900.00",
+            "vat_fee": "1%",
             "subtotal_inc_fees": "10769,00"
         }
     ],

@@ -55,7 +55,7 @@ deleteFilesInFolder("images/processing/header_concepts/header_concepts_subdivide
 
 start_time = time.time()
 
-invoiceFileName = '03'
+invoiceFileName = '13'
 
 starting_image_path = "raw_scripts/testing_photo/"+ invoiceFileName +".png"
 image_type = Image_type.photo
@@ -185,8 +185,8 @@ createImagesFromImageBoxes(
     imageWoLines=imageWol,
     savePreprocessingImages=True,
     originalName="header",
-    verticalDialationIterations=9 if image_type == Image_type.scan else 3,
-    horizontalDialationIterations=9 if image_type == Image_type.scan else 3,
+    verticalDialationIterations=3 if image_type == Image_type.pdf else 9,
+    horizontalDialationIterations=3 if image_type == Image_type.pdf else 9,
     check_function=check_valid_header_boxes,
 )
 

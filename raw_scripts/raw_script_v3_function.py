@@ -44,7 +44,7 @@ from lib.functions.utils.remove_lines_from_image import removeLinesFromImage
 
 ###### Código principal ###########################################################################################################################################
 
-def main_code(invoiceFileNameNumber):
+def main_code(invoiceFileNameNumber, folder, imageType):
     # Borramos los archivos en las carpetas, por si quedó basura
     deleteFilesInFolder("images/data")
     deleteFilesInFolder("images/pretemp")
@@ -55,8 +55,8 @@ def main_code(invoiceFileNameNumber):
 
     invoiceFileName = invoiceFileNameNumber
 
-    starting_image_path = "raw_scripts/testing/"+ invoiceFileName +".png"
-    image_type = Image_type.pdf
+    starting_image_path = "raw_scripts/"+folder+"/"+ invoiceFileName +".png"
+    image_type = imageType
     image = cv2.imread(starting_image_path)
 
     # Preprocesamos la imágen según el tipo de imágen
@@ -174,7 +174,7 @@ def main_code(invoiceFileNameNumber):
 
     def check_valid_header_boxes(height, width):
         ratio = height / width
-        return height > 70 and height < 240 and width > 80 and ratio > 0.1 and ratio < 2
+        return height > 65 and height < 240 and width > 75 and ratio > 0.1 and ratio < 2
 
     image = cv2.imread("images/pretemp/header_1.png", 0)
     imageWol = cv2.imread("images/pretemp/header_1_wol.png", 0)
@@ -183,8 +183,8 @@ def main_code(invoiceFileNameNumber):
         imageWoLines=imageWol,
         originalName="header",
         savePreprocessingImages=True,
-        verticalDialationIterations=9 if image_type == Image_type.scan else 3,
-        horizontalDialationIterations=9 if image_type == Image_type.scan else 3,
+        verticalDialationIterations=3 if image_type == Image_type.pdf else 9,
+        horizontalDialationIterations=3 if image_type == Image_type.pdf else 9,
         check_function=check_valid_header_boxes,
     )
 

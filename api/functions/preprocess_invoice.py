@@ -137,7 +137,7 @@ def preprocessInvoice(image_type):
 
     def check_valid_header_boxes(height, width):
         ratio = height / width
-        return height > 70 and height < 240 and width > 80 and ratio > 0.1 and ratio < 2
+        return height > 65 and height < 240 and width > 75 and ratio > 0.1 and ratio < 2
 
     image = cv2.imread("images/pretemp/header_1.png", 0)
     imageWol = cv2.imread("images/pretemp/header_1_wol.png", 0)

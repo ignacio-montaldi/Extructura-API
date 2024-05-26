@@ -8,7 +8,7 @@
         "checkout_aisle_number": "00011",
         "document_number": "Mro: 00000237",
         "issue_date": "03/04/2024",
-        "seller_cuit": "20056567483",
+        "seller_cuit": "2005656/4683",
         "gross_income": "20056667483",
         "business_opening_date": "01/04/2017",
         "client_cuit": "30543055642",
@@ -20,7 +20,7 @@
     "items": [
         {
             "cod": "0001",
-            "title": "Resmas dea papel A4 75 gr Boreal",
+            "title": "Resmas da papel A4 75 gr Borgal",
             "amount": "60,00",
             "measure": "unidades",
             "unit_price": "5900,00",
@@ -31,7 +31,7 @@
         },
         {
             "cod": "0002",
-            "title": "Bolígrafos Bic caja x 50 unidades",
+            "title": "Boligrafos Bic caja x 50 unidades",
             "amount": "1,00",
             "measure": "unidades",
             "unit_price": "22230,00",
@@ -49,28 +49,28 @@
             "discount_perc": "0,00",
             "subtotal": "69000,00",
             "vat_fee": "21%",
-            "subtotal_inc_fees": "83450,09"
+            "subtotal_inc_fees": "83430,00"
         },
         {
             "cod": "0004",
             "title": "Caja identificadores x 50",
             "amount": "1,00",
-            "measure": "umdades",
+            "measure": "uradades",
             "unit_price": "9130,00",
             "discount_perc": "0,00",
-            "subtotal": "5130,00",
+            "subtotal": "5130.00",
             "vat_fee": "21%",
-            "subtotal_inc_fees": "11047,50"
+            "subtotal_inc_fees": "11047,30"
         },
         {
             "cod": "0005",
-            "title": "Sobres mania 24x30 x 100 unidades",
+            "title": "Sobres mania 24x30 x 100 unidadas",
             "amount": "1,00",
             "measure": "unidades",
             "unit_price": "8900,00",
             "discount_perc": "0,00",
             "subtotal": "8900.00",
-            "vat_fee": "1%",
+            "vat_fee": "2%",
             "subtotal_inc_fees": "10769,00"
         }
     ],

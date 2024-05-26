@@ -55,7 +55,7 @@ deleteFilesInFolder("images/processing/header_concepts/header_concepts_subdivide
 
 start_time = time.time()
 
-invoiceFileName = '13'
+invoiceFileName = 'a'
 
 starting_image_path = "raw_scripts/testing_photo/"+ invoiceFileName +".png"
 image_type = Image_type.photo
@@ -151,12 +151,13 @@ reduceToBiggestByArea(folder="images/temp", file_name_prefix="footer_box")
 # Se divide la imágen que tiene los items...
 processImage(
     imageToProcessPath="images/pretemp/invoice_aux_1.png",
-    rectDimensions=(500, 6),
+    rectDimensions=(500, 6 if image_type == Image_type.pdf else 5),
     boxWidthTresh=100,
     boxHeightTresh=2000, #No importa este valor
     folder="images/temp",
     outputImagePrefix="item",
     higherThanHeight=False,
+    savePreprocessingImages=True
 )
 
 #... para luego eliminar los recortes que no sean
@@ -169,7 +170,7 @@ for file in os.listdir(directory):
         image = cv2.imread(img_file_path)
         if checkIfImageHasLines(image):
            delete_file(img_file_path)
-        if image.shape[0] <20:
+        if image.shape[0] <15:
             delete_file(img_file_path)
 
 # Recorta cada una de las "cajas" del encabezado
@@ -177,6 +178,23 @@ for file in os.listdir(directory):
 def check_valid_header_boxes(height, width):
     ratio = height / width
     return height > 65 and height < 240 and width > 75 and ratio > 0.1 and ratio < 2
+
+def get_header_box_index(x, y, w, h)-> int:
+    #For test
+    # f = open("testHeaderBoxes.txt", "a")
+    # f.write('(\''+str(imageName) +'\''+','+str(x)+','+str(y)+','+str(w)+','+str(h)+','+'\''+str(image_type.name)+'\','+str(h/w)+ "),\n" )
+    # f.close()
+    
+    if (y< 100 and x > 350 and w >350): #Box 1
+        return 1
+    elif (x < 15 and y < 100): #Box 2
+        return 2
+    elif (y< 100 and h <150): #Box 3
+        return 3
+    elif (y> 100 and y<400 and h/w >0.1 and h/w<0.11): #Box 4
+        return 4
+    else:
+        return 0
 
 image = cv2.imread("images/pretemp/header_1.png", 0)
 imageWol = cv2.imread("images/pretemp/header_1_wol.png", 0)
@@ -188,6 +206,9 @@ createImagesFromImageBoxes(
     verticalDialationIterations=3 if image_type == Image_type.pdf else 9,
     horizontalDialationIterations=3 if image_type == Image_type.pdf else 9,
     check_function=check_valid_header_boxes,
+    getIndexFunction=get_header_box_index,
+    # imageName= invoiceFileName,
+    # image_type= image_type
 )
 
 # Chequeamos que el encabezado 1 y 2 están bien ubicados (problema viene de ver cual es primero por ser del mismo tamaño)

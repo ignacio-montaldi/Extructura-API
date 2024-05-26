@@ -23,10 +23,10 @@
             "title": "Servicios",
             "amount": "1,00",
             "measure": "unidades",
-            "unit_price": "211500,00",
+            "unit_price": "21150000",
             "discount_perc": "0,00",
             "discounted_subtotal": "0,00",
-            "subtotal": "211500,00"
+            "subtotal": "211500.00"
         }
     ],
     "footer": {

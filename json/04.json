@@ -24,7 +24,7 @@
             "amount": "1,00",
             "measure": "unidades",
             "unit_price": "10000,00",
-            "discount_perc": "0,00",
+            "discount_perc": "9,00",
             "subtotal": "10000,00",
             "vat_fee": "21%",
             "subtotal_inc_fees": "12100,00"

@@ -20,8 +20,8 @@ from raw_scripts.raw_script_v3_function import main_code
 
 start_time = time.time()
 
-# i = 1
-# #PDF
+i = 1
+#PDF
 # while i <= 30:
 #     try:
 #         main_code(f"{i:02}", "testing", Image_type.pdf)
@@ -35,12 +35,9 @@ i = 1
 #Photo
 while i <= 30:
     try:
-        if(i!=3): #Borrar condición después
-            main_code(f"{i:02}", "testing_photo", Image_type.photo)
-            print("Factura "+f"{i:02}"+": ok")
-            i=i+1
-        else:
-            i=i+1
+        main_code(f"{i:02}", "testing_photo", Image_type.photo)
+        print("Factura "+f"{i:02}"+": ok")
+        i=i+1
     except:
         print("Factura "+f"{i:02}"+": bad")
         i=i+1

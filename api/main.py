@@ -80,7 +80,7 @@ def get_invoice():
     invoice = Invoice(type=invoice_type.name, header=header, items=items, footer=footer)
     good_image_path = "images/data/factura.png"
     image = cv2.imread(good_image_path)
-    cv2.imwrite("raw_scripts/testing_photo/a.png", image)
+    cv2.imwrite("raw_scripts/testing_scan/a.png", image)
     deleteFilesInFolder("images/data")
     deleteFilesInFolder("images/pretemp")
     deleteFilesInFolder("images/temp")

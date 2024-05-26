@@ -8,8 +8,9 @@ def createImagesFromImageBoxes(
     imageWoLines=None,
     check_function=None,
     savePreprocessingImages=False,
-     verticalDialationIterations= 3,
+    verticalDialationIterations= 3,
     horizontalDialationIterations= 3,
+    getIndexFunction=None
 ):
     contours = getBoxesContours(imageToProcess, originalName, savePreprocessingImages, verticalDialationIterations= verticalDialationIterations, horizontalDialationIterations= horizontalDialationIterations,)
      
@@ -18,7 +19,10 @@ def createImagesFromImageBoxes(
         # Returns the location and width,height for every contour
         x, y, w, h = cv2.boundingRect(c)
         if callable(check_function) and check_function(h, w):
-            idx += 1
+            if (callable(getIndexFunction)):
+                idx = getIndexFunction(x, y, w, h)
+            else:
+                idx += 1
             new_img = imageToProcess[y : y + h, x : x + w]
             cv2.imwrite("images/temp/" + originalName + "_box_" + str(idx) + ".png", new_img)
             if imageWoLines is not None:

@@ -101,7 +101,6 @@ def main_code(invoiceFileNameNumber, folder, imageType):
         boxHeightTresh=100,
         folder="images/pretemp",
         outputImagePrefix="invoice_aux",
-        savePreprocessingImages=False,
     )
 
     # Obtiene de encabezado, además tambien remueve los bordes superiores e inferiores
@@ -139,7 +138,6 @@ def main_code(invoiceFileNameNumber, folder, imageType):
     createImagesFromImageBoxes(
         imageToProcess=image,
         imageWoLines=imageWol,
-        savePreprocessingImages=False,
         originalName="footer",
         check_function=check_valid_footer_box,
     )
@@ -154,8 +152,7 @@ def main_code(invoiceFileNameNumber, folder, imageType):
         boxHeightTresh=2000, #No importa este valor
         folder="images/temp",
         outputImagePrefix="item",
-        higherThanHeight=False,
-        savePreprocessingImages=True
+        higherThanHeight=False
     )
 
     #... para luego eliminar los recortes que no sean
@@ -199,7 +196,6 @@ def main_code(invoiceFileNameNumber, folder, imageType):
     createImagesFromImageBoxes(
         imageToProcess=image,
         imageWoLines=imageWol,
-        savePreprocessingImages=True,
         originalName="header",
         verticalDialationIterations=3 if image_type == Image_type.pdf else 9,
         horizontalDialationIterations=3 if image_type == Image_type.pdf else 9,
@@ -262,7 +258,7 @@ def main_code(invoiceFileNameNumber, folder, imageType):
             print("Error")
 
     ##### GET HEADER CONCEPTS #####
-    header = getHeader(invoiceFileName)
+    header = getHeader(invoiceFileName, image_type)
     print(header)
 
     ##### GET ITEMS #####
@@ -292,7 +288,7 @@ def main_code(invoiceFileNameNumber, folder, imageType):
     jsonFileContent = json.dumps(analizedInvoice, default=lambda analizedInvoice: analizedInvoice.__dict__, ensure_ascii=False)
 
     # Convierto el json perfecto guardado    
-    with open('json/' + invoiceFileName + '.json', 'w', encoding='utf8') as file:
+    with open('json/' + invoiceFileName + "_" +str(image_type.name) + '.json', 'w', encoding='utf8') as file:
         file.write(jsonFileContent)
 
 

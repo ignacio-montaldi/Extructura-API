@@ -10,7 +10,8 @@ def paintHeaderBox2TitleAndBox(image, imageWol):
     #Esquina
     image = checkIfImageIsGray(image)
     
-    contours = getBoxesContours(image, "images/temp/header_box_2.png", savePreprocessingImages=False, verticalDialationIterations= 5, horizontalDialationIterations= 5,                                verticalErotionIterations=5,                                horizontalErotionIterations=5)
+    contours = getBoxesContours(image, "images/temp/header_box_2.png", verticalDialationIterations= 5, 
+    horizontalDialationIterations= 5,                                verticalErotionIterations=5,                                horizontalErotionIterations=5)
     
     for c in contours:
         x, y, w, h = cv2.boundingRect(c)

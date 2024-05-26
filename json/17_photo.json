@@ -1,0 +1,39 @@
+{
+    "type": "C",
+    "header": {
+        "business_name": "CUEVAS ABRAHAM MARIA BELEN",
+        "business_address": "Mza 38 Casa 11 - Salta, Salta",
+        "vat_condition": 6,
+        "document_type": "FACTURA",
+        "checkout_aisle_number": "00001",
+        "document_number": "00000002",
+        "issue_date": "05/01/2024",
+        "seller_cuit": "27406282967",
+        "gross_income": "192000",
+        "business_opening_date": "01/11/2023",
+        "client_cuit": "30681243603",
+        "client_name": "Apetlido y Nombre / Razón SoclaliL ABACSRL",
+        "client_vat_condition": 1,
+        "client_address": "Vicente Lopez 1096 - Salla, Sala",
+        "sale_method": "— Cuenta Comienle"
+    },
+    "items": [
+        {
+            "cod": "",
+            "title": "Servicios",
+            "amount": "1,00",
+            "measure": "unidades",
+            "unit_price": "21150000",
+            "discount_perc": "0,00",
+            "discounted_subtotal": "0,00",
+            "subtotal": "211500.00"
+        }
+    ],
+    "footer": {
+        "currency": "USD",
+        "sub_total": "211500,00",
+        "other_taxes_ammout": "0,00",
+        "total": "211500,00",
+        "exchange_rate": "1"
+    }
+}

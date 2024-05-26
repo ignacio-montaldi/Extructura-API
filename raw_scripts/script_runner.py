@@ -22,14 +22,14 @@ start_time = time.time()
 
 i = 1
 #PDF
-# while i <= 30:
-#     try:
-#         main_code(f"{i:02}", "testing", Image_type.pdf)
-#         print("Factura "+f"{i:02}"+": ok")
-#         i=i+1
-#     except:
-#         print("Factura "+f"{i:02}"+": bad")
-#         i=i+1
+while i <= 30:
+    try:
+        main_code(f"{i:02}", "testing", Image_type.pdf)
+        print("Factura "+f"{i:02}"+": ok")
+        i=i+1
+    except:
+        print("Factura "+f"{i:02}"+": bad")
+        i=i+1
         
 i = 1
 #Photo

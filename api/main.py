@@ -30,6 +30,7 @@ def read_root():
 
 
 global invoice_type
+global imageTypeId
 global header
 global footer
 global items
@@ -48,13 +49,15 @@ def send_image(image: Image):
     preprocessInvoice(Image_type(image.imageTypeId))
     global invoice_type
     invoice_type = getInvoiceType()
+    global imageTypeId
+    imageTypeId = image.imageTypeId
     return
 
 
 @app.post("/header")
 def get_header():
     global header
-    header = getHeader('API_IMAGE')
+    header = getHeader('API_IMAGE', imageTypeId)
     return
 
 

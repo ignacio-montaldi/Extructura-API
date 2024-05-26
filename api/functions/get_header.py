@@ -1,4 +1,5 @@
 import cv2
+from lib.enums.image_type_enum import Image_type
 from lib.functions.invoice_related.get_header_concept import getHeaderConcept
 from lib.functions.invoice_related.get_header_concept_inproved import getHeaderConceptImproved
 from lib.functions.invoice_related.get_vat_condition import getVatCondition
@@ -7,16 +8,16 @@ from lib.functions.utils.process_image import processImage
 from lib.models.invoice_header import InvoiceHeader
 
 
-def getHeader(invoiceFileName):
+def getHeader(invoiceFileName, image_type):
     folder_dir = "images/processing"
     
     processImage(
         imageToProcessPath="images/temp/header_box_2_wol.png",
-        rectDimensions=(200, 9),
+        rectDimensions=(200, 9 if image_type == Image_type.pdf else 8),
         boxWidthTresh=1,
         boxHeightTresh=1,
         folder=folder_dir,
-        outputImagePrefix="header_concept_2",
+        outputImagePrefix="header_concept_2"
     )
 
     processImage(
@@ -57,8 +58,7 @@ def getHeader(invoiceFileName):
         boxWidthTresh=3,
         boxHeightTresh=3,
         folder=subdivided_folder_dir,
-        outputImagePrefix="header_concept_4_1",
-        savePreprocessingImages=True
+        outputImagePrefix="header_concept_4_1"
     )
     
     processImage(

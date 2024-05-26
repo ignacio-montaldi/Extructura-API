@@ -55,10 +55,10 @@ deleteFilesInFolder("images/processing/header_concepts/header_concepts_subdivide
 
 start_time = time.time()
 
-invoiceFileName = 'a'
+invoiceFileName = 'scanner1'
 
-starting_image_path = "raw_scripts/testing_photo/"+ invoiceFileName +".png"
-image_type = Image_type.photo
+starting_image_path = "raw_scripts/data/"+ invoiceFileName +".png"
+image_type = Image_type.scan
 image = cv2.imread(starting_image_path)
 
 # Preprocesamos la imágen según el tipo de imágen
@@ -102,8 +102,7 @@ processImage(
     boxWidthTresh=100,
     boxHeightTresh=100,
     folder="images/pretemp",
-    outputImagePrefix="invoice_aux",
-    savePreprocessingImages=False,
+    outputImagePrefix="invoice_aux"
 )
 
 # Obtiene de encabezado, además tambien remueve los bordes superiores e inferiores
@@ -141,7 +140,6 @@ imageWol = cv2.imread("images/pretemp/footer_1_wol.png", 0)
 createImagesFromImageBoxes(
     imageToProcess=image,
     imageWoLines=imageWol,
-    savePreprocessingImages=False,
     originalName="footer",
     check_function=check_valid_footer_box,
 )
@@ -156,8 +154,7 @@ processImage(
     boxHeightTresh=2000, #No importa este valor
     folder="images/temp",
     outputImagePrefix="item",
-    higherThanHeight=False,
-    savePreprocessingImages=True
+    higherThanHeight=False
 )
 
 #... para luego eliminar los recortes que no sean
@@ -201,7 +198,6 @@ imageWol = cv2.imread("images/pretemp/header_1_wol.png", 0)
 createImagesFromImageBoxes(
     imageToProcess=image,
     imageWoLines=imageWol,
-    savePreprocessingImages=True,
     originalName="header",
     verticalDialationIterations=3 if image_type == Image_type.pdf else 9,
     horizontalDialationIterations=3 if image_type == Image_type.pdf else 9,
@@ -264,7 +260,7 @@ match ocr_result[0]:
         print("Error")
 
 ##### GET HEADER CONCEPTS #####
-header = getHeader(invoiceFileName)
+header = getHeader(invoiceFileName, image_type)
 print(header)
 
 ##### GET ITEMS #####
@@ -296,7 +292,7 @@ import json
 jsonFileContent = json.dumps(analizedInvoice, default=lambda analizedInvoice: analizedInvoice.__dict__, ensure_ascii=False)
 
 # Convierto el json perfecto guardado    
-with open('json/' + invoiceFileName + '.json', 'w', encoding='utf8') as file:
+with open('json/' + invoiceFileName  + "_" + str(image_type.name) + '.json', 'w', encoding='utf8') as file:
     file.write(jsonFileContent)
 
 

@@ -63,8 +63,7 @@ def preprocessInvoice(image_type):
         boxWidthTresh=100,
         boxHeightTresh=100,
         folder="images/pretemp",
-        outputImagePrefix="invoice_aux",
-        savePreprocessingImages=False,
+        outputImagePrefix="invoice_aux"
     )
 
     # Obtiene de encabezado, además tambien remueve los bordes superiores e inferiores
@@ -102,7 +101,6 @@ def preprocessInvoice(image_type):
     createImagesFromImageBoxes(
         imageToProcess=image,
         imageWoLines=imageWol,
-        savePreprocessingImages=False,
         originalName="footer",
         check_function=check_valid_footer_box,
     )
@@ -117,8 +115,7 @@ def preprocessInvoice(image_type):
         boxHeightTresh=2000, #No importa este valor
         folder="images/temp",
         outputImagePrefix="item",
-        higherThanHeight=False,
-        savePreprocessingImages=True
+        higherThanHeight=False
     )
 
     #... para luego eliminar los recortes que no sean
@@ -162,7 +159,6 @@ def preprocessInvoice(image_type):
     createImagesFromImageBoxes(
         imageToProcess=image,
         imageWoLines=imageWol,
-        savePreprocessingImages=True,
         originalName="header",
         verticalDialationIterations=3 if image_type == Image_type.pdf else 9,
         horizontalDialationIterations=3 if image_type == Image_type.pdf else 9,

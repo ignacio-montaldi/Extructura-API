@@ -3,6 +3,7 @@ import cv2
 from lib.functions.utils.check_if_image_is_gray import checkIfImageIsGray
 from lib.functions.utils.save_cropped_images import saveCroppedImages
 
+
 def processImage(
     imageToProcessPath: str,
     rectDimensions,
@@ -16,14 +17,12 @@ def processImage(
     higherThanHeight=True,
     reverseSorting=False,
     savePreprocessingImages=False,
- 
 ):
-    
+
     imageToProcess = cv2.imread(imageToProcessPath)
-    
+
     # Poner en escala de grises la imágen, nada mas, si es que no viene ya lista
     gray = checkIfImageIsGray(imageToProcess)
-            
 
     # Difuminar la imágen, permite agrupar objetos (es decir, hacer menos legible su separacion) en la imágen para el siguiente paso Kernel positivo e impar
     blur = cv2.GaussianBlur(gray, (7, 7), 0)
@@ -54,5 +53,5 @@ def processImage(
         higherThanHeight=higherThanHeight,
         folder=folder,
         reverseSorting=reverseSorting,
-        printDimensions=savePreprocessingImages
+        printDimensions=savePreprocessingImages,
     )

@@ -17,6 +17,7 @@ vatConditions = [
     {"id": 14, "name": "Pequeño Contribuyente Eventual Social"},
 ]
 
+
 def getVatCondition(key_to_match):
     max_ratio = 0
     result = 0

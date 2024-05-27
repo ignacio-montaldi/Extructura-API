@@ -24,6 +24,7 @@ from lib.functions.utils.delete_files_in_folder import deleteFilesInFolder
 ################## API ########################
 app = FastAPI()
 
+
 @app.get("/")
 def read_root():
     return {"welcome_message: Bienvenidos a Extructura"}
@@ -57,14 +58,14 @@ def send_image(image: Image):
 @app.post("/header")
 def get_header():
     global header
-    header = getHeader('API_IMAGE', imageTypeId)
+    header = getHeader("API_IMAGE", imageTypeId)
     return
 
 
 @app.post("/items")
 def get_items():
     global items
-    items = getItems(invoice_type, 'a')
+    items = getItems(invoice_type, "a")
     return
 
 
@@ -88,9 +89,14 @@ def get_invoice():
     deleteFilesInFolder("images/processing/header_concepts")
     deleteFilesInFolder("images/processing/header_concepts/header_concepts_subdivided")
     import json
-    jsonFileContent = json.dumps(invoice, default=lambda analizedInvoice: analizedInvoice.__dict__, ensure_ascii=False)
 
-    # Convierto el json perfecto guardado    
-    with open('json/' + 'API_IMAGE' + '.json', 'w', encoding='utf8') as file:
+    jsonFileContent = json.dumps(
+        invoice,
+        default=lambda analizedInvoice: analizedInvoice.__dict__,
+        ensure_ascii=False,
+    )
+
+    # Convierto el json perfecto guardado
+    with open("json/" + "API_IMAGE" + ".json", "w", encoding="utf8") as file:
         file.write(jsonFileContent)
     return invoice

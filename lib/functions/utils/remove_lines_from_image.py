@@ -5,9 +5,9 @@ from lib.functions.utils.check_if_image_is_gray import checkIfImageIsGray
 
 def removeLinesFromImage(image):
     result = image.copy()
-    
+
     image = checkIfImageIsGray(image)
-    
+
     thresh = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
     # Remove horizontal lines
     horizontal_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (20, 1))

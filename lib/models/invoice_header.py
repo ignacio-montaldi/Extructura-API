@@ -1,7 +1,6 @@
 class InvoiceHeader:
     def __init__(
         self,
-      
         business_name,
         business_address,
         vat_condition,

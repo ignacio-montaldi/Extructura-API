@@ -28,7 +28,7 @@ def preprocess_image(original_img):
             break
 
     warped_image = perspectiveTransform(copy, doc.reshape(4, 2) * ratio)
-    
+
     cv2.imwrite("images/data/page_wrapeed.png", warped_image)
 
     finalResult = imageCleaning(warped_image)

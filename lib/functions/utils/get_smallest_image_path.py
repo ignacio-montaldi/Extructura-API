@@ -1,6 +1,7 @@
 import os
 import cv2
 
+
 def getSmallestImagePath(dir, fileNamePrefix):
     directory_in_str = "./" + dir
     directory = os.fsencode(directory_in_str)

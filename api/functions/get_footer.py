@@ -31,7 +31,9 @@ def getFooter(invoice_type):
         x, y, w, h = cv2.boundingRect(c)
         if (x > 30 and x < 60) and (w > 915 and w < 960):
             has_exchange_box = True
-        if (not isBoxAFooterConceptKey(x, y, w, h)) and (not isBoxAFooterConceptValue(x, y, w, h)):
+        if (not isBoxAFooterConceptKey(x, y, w, h)) and (
+            not isBoxAFooterConceptValue(x, y, w, h)
+        ):
             cv2.rectangle(image, (x, y), (x + w, y + h), (255, 255, 255), -1)
 
     cv2.imwrite("images/temp/footer_box_1_wol.png", image)
@@ -56,7 +58,7 @@ def getFooter(invoice_type):
                 cv2.rectangle(image, (x, y), (x + w, y + h), (255, 255, 255), -1)
                 cv2.imwrite("images/temp/footer_box_1_wol.png", image)
 
-    if (os.path.isfile("images/temp/footer_box_2_wol.png")):
+    if os.path.isfile("images/temp/footer_box_2_wol.png"):
         image = cv2.imread("images/temp/footer_box_2_wol.png")
         ocr_result = pytesseract.image_to_string(image, lang="spa", config="--psm 6")
         ocr_result = ocr_result[
@@ -96,35 +98,73 @@ def getFooter(invoice_type):
         boxHeightTresh=1,
         folder="images/processing",
         outputImagePrefix="footer_value",
-    )        
+    )
 
     # Creo pie tipo RI o mono
     if invoice_type == InvoiceType.A:
         values = 0
-    
+
         for file in os.listdir("images/processing/"):
             filename = os.fsdecode(file)
             if filename.startswith("footer_value_"):
-                values= values+1
-                
+                values = values + 1
+
         if values == 10:
-            starting_value=1
+            starting_value = 1
         else:
-            starting_value=0
-        
+            starting_value = 0
+
         footer = AFooter(
-            net_amount_untaxed=getFooterConcept(img_file="images/processing/footer_value_"+str(starting_value)+".png"),
-            net_amount_taxed=getFooterConcept(img_file="images/processing/footer_value_"+str(starting_value +1)+".png"),
-            vat_27=getFooterConcept(img_file="images/processing/footer_value_"+str(starting_value +2)+".png"),
-            vat_21=getFooterConcept(img_file="images/processing/footer_value_"+str(starting_value +3)+".png"),
-            vat_10_5=getFooterConcept(img_file="images/processing/footer_value_"+str(starting_value +4)+".png"),
-            vat_5=getFooterConcept(img_file="images/processing/footer_value_"+str(starting_value +5)+".png"),
-            vat_2_5=getFooterConcept(img_file="images/processing/footer_value_"+str(starting_value +6)+".png"),
-            vat_0=getFooterConcept(img_file="images/processing/footer_value_"+str(starting_value +7)+".png"),
-            other_taxes_ammout=getFooterConcept(
-                img_file="images/processing/footer_value_"+str(starting_value +8)+".png"
+            net_amount_untaxed=getFooterConcept(
+                img_file="images/processing/footer_value_"
+                + str(starting_value)
+                + ".png"
             ),
-            total=getFooterConcept(img_file="images/processing/footer_value_"+str(starting_value +9)+".png"),
+            net_amount_taxed=getFooterConcept(
+                img_file="images/processing/footer_value_"
+                + str(starting_value + 1)
+                + ".png"
+            ),
+            vat_27=getFooterConcept(
+                img_file="images/processing/footer_value_"
+                + str(starting_value + 2)
+                + ".png"
+            ),
+            vat_21=getFooterConcept(
+                img_file="images/processing/footer_value_"
+                + str(starting_value + 3)
+                + ".png"
+            ),
+            vat_10_5=getFooterConcept(
+                img_file="images/processing/footer_value_"
+                + str(starting_value + 4)
+                + ".png"
+            ),
+            vat_5=getFooterConcept(
+                img_file="images/processing/footer_value_"
+                + str(starting_value + 5)
+                + ".png"
+            ),
+            vat_2_5=getFooterConcept(
+                img_file="images/processing/footer_value_"
+                + str(starting_value + 6)
+                + ".png"
+            ),
+            vat_0=getFooterConcept(
+                img_file="images/processing/footer_value_"
+                + str(starting_value + 7)
+                + ".png"
+            ),
+            other_taxes_ammout=getFooterConcept(
+                img_file="images/processing/footer_value_"
+                + str(starting_value + 8)
+                + ".png"
+            ),
+            total=getFooterConcept(
+                img_file="images/processing/footer_value_"
+                + str(starting_value + 9)
+                + ".png"
+            ),
             currency=getFooterCurrency("images/processing/footer_key_1.png"),
             exchange_rate=exchange_rate,
         )
@@ -139,6 +179,7 @@ def getFooter(invoice_type):
             exchange_rate=exchange_rate,
         )
     return footer
+
 
 def isBoxAFooterConceptKey(x, y, w, h):
     return ((x > 610 and x < 760) or (x > 30 and x < 60)) and (

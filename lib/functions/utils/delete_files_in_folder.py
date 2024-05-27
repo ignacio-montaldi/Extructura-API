@@ -3,6 +3,7 @@ import shutil
 
 # Borra los archivos temporales
 
+
 def deleteFilesInFolder(folderPath, fileNamePrefix=None, deleteDirectories=False):
     folder = folderPath
     for filename in os.listdir(folder):

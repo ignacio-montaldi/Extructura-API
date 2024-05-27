@@ -1,0 +1,49 @@
+{
+    "type": "C",
+    "header": {
+        "business_name": "DIEGUEZ FEDERICO OMAR",
+        "business_address": "Ruta 9 Km 1591 Piso:CASA Dpto:33 = Satta, Sata",
+        "vat_condition": 6,
+        "document_type": "FACTURA",
+        "checkout_aisle_number": "00001",
+        "document_number": "O00NNNN40",
+        "issue_date": "09/04/2024",
+        "seller_cuit": "20418704331",
+        "gross_income": "20418704331",
+        "business_opening_date": "01/04/2022",
+        "client_cuit": "30638043315",
+        "client_name": "INGENIERO MEDINA SA",
+        "client_vat_condition": 1,
+        "client_address": "Dean Funes 2401 - Salta, Salta",
+        "sale_method": "— Contado"
+    },
+    "items": [
+        {
+            "cod": "",
+            "title": "Serviclos asistencia Tecnica 3",
+            "amount": "1,00",
+            "measure": "ovas unidades",
+            "unit_price": "675604,00",
+            "discount_perc": "0,00",
+            "discounted_subtotal": "9,00",
+            "subtotal": "675604,00"
+        },
+        {
+            "cod": "",
+            "title": "Complemento 2",
+            "amount": "1,00",
+            "measure": "otras unidados",
+            "unit_price": "80932,00",
+            "discount_perc": "0,00",
+            "discounted_subtotal": "0.00",
+            "subtotal": "80932,00"
+        }
+    ],
+    "footer": {
+        "currency": "USD",
+        "sub_total": "756536,00",
+        "other_taxes_ammout": "0,00",
+        "total": "756536,00",
+        "exchange_rate": "1"
+    }
+}

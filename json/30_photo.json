@@ -1,0 +1,47 @@
+{
+    "type": "A",
+    "header": {
+        "business_name": "SILVA ENRIQUE",
+        "business_address": "Pte, Nestor Carlos Kirchner 6086 - Tristan Suarez, Buenos Alres",
+        "vat_condition": 1,
+        "document_type": "FACTURA",
+        "checkout_aisle_number": "O0006",
+        "document_number": "00000613",
+        "issue_date": "25/02/2072",
+        "seller_cuit": "73118033199",
+        "gross_income": "23-11803319-9",
+        "business_opening_date": "D1/0572010",
+        "client_cuit": "20363083103",
+        "client_name": "PALACIOS NAHUEL YAMIL",
+        "client_vat_condition": 1,
+        "client_address": "La Madrid €65 - Ezeiza, Buenos Arms",
+        "sale_method": "— Contado"
+    },
+    "items": [
+        {
+            "cod": "\f",
+            "title": "bujas",
+            "amount": "4,00\" unciadas",
+            "measure": "",
+            "unit_price": "0.00",
+            "discount_perc": "1322,32",
+            "subtotal": "21%",
+            "vat_fee": "1609.01",
+            "subtotal_inc_fees": ""
+        }
+    ],
+    "footer": {
+        "currency": "ARS",
+        "net_amount_taxed": "1322,32",
+        "net_amount_untaxed": null,
+        "vat_27": "0,80",
+        "vat_21": "277,69",
+        "vat_10_5": "\f",
+        "vat_5": "0,09",
+        "vat_2_5": "0,00",
+        "vat_0": "\f",
+        "other_taxes_ammout": "0,00",
+        "total": "1600,01",
+        "exchange_rate": "1"
+    }
+}

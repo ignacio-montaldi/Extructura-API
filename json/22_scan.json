@@ -1,0 +1,69 @@
+{
+    "type": "A",
+    "header": {
+        "business_name": "BARCHUK DIEGO NICOLAS",
+        "business_address": "Bompland 0 - Santa Ana, Misiones",
+        "vat_condition": 0,
+        "document_type": "FACTURA",
+        "checkout_aisle_number": "0002",
+        "document_number": "00000058",
+        "issue_date": "05/06/2018",
+        "seller_cuit": "20343632038",
+        "gross_income": "203436532038",
+        "business_opening_date": "06/03/2017",
+        "client_cuit": "30631029163",
+        "client_name": "PROOBRA S.A.",
+        "client_vat_condition": 1,
+        "client_address": "San Luis 1345 Piso:05 Dpto:A B - Posadas, Misiones",
+        "sale_method": "—— Cuenta Comente"
+    },
+    "items": [
+        {
+            "cod": "",
+            "title": "1,00",
+            "amount": "unidades",
+            "measure": "",
+            "unit_price": "0,00",
+            "discount_perc": "750,00",
+            "subtotal": "21%",
+            "vat_fee": "907,50",
+            "subtotal_inc_fees": ""
+        },
+        {
+            "cod": "",
+            "title": "2,00",
+            "amount": "unidades",
+            "measure": "",
+            "unit_price": "0,00",
+            "discount_perc": "1200,00",
+            "subtotal": "21%",
+            "vat_fee": "1452,00",
+            "subtotal_inc_fees": ""
+        },
+        {
+            "cod": "",
+            "title": "4,00",
+            "amount": "unidades",
+            "measure": "",
+            "unit_price": "0,00",
+            "discount_perc": "600,00",
+            "subtotal": "21%",
+            "vat_fee": "726,00",
+            "subtotal_inc_fees": ""
+        }
+    ],
+    "footer": {
+        "currency": "ARS",
+        "net_amount_taxed": "2550,00",
+        "net_amount_untaxed": null,
+        "vat_27": "0,00",
+        "vat_21": "535,50",
+        "vat_10_5": "0,00",
+        "vat_5": "0,00",
+        "vat_2_5": "0,00",
+        "vat_0": "0,00",
+        "other_taxes_ammout": "0,00",
+        "total": "3085,50",
+        "exchange_rate": "1"
+    }
+}

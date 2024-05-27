@@ -1,0 +1,39 @@
+{
+    "type": "C",
+    "header": {
+        "business_name": "",
+        "business_address": "ABITBOL GUSTAVO DANIEL",
+        "vat_condition": 6,
+        "document_type": "FACTURA",
+        "checkout_aisle_number": "00003",
+        "document_number": "00000774",
+        "issue_date": "30/09/2022",
+        "seller_cuit": "202888455723",
+        "gross_income": "2028858455723",
+        "business_opening_date": "01/01/2012",
+        "client_cuit": "30654303254",
+        "client_name": "DON DANTES RL",
+        "client_vat_condition": 1,
+        "client_address": "Av.Rodriguez Durañona 2222 - Salta, Salta",
+        "sale_method": "— Contado"
+    },
+    "items": [
+        {
+            "cod": "",
+            "title": "1,00",
+            "amount": "unidades",
+            "measure": "5000,00",
+            "unit_price": "0,00",
+            "discount_perc": "0,00",
+            "discounted_subtotal": "5000,00",
+            "subtotal": ""
+        }
+    ],
+    "footer": {
+        "currency": "ARS",
+        "sub_total": "5000,00",
+        "other_taxes_ammout": "0,00",
+        "total": "5000,00",
+        "exchange_rate": "1"
+    }
+}

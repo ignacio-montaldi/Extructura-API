@@ -1,0 +1,58 @@
+{
+    "type": "A",
+    "header": {
+        "business_name": "DON DANTESRL",
+        "business_address": "Av.Rodriguez Durañona 2222 - Salta, Salta",
+        "vat_condition": 1,
+        "document_type": "FACTURA",
+        "checkout_aisle_number": "00003",
+        "document_number": "00005961",
+        "issue_date": "03/01/2024",
+        "seller_cuit": "30654303254",
+        "gross_income": "917-622880-5",
+        "business_opening_date": "18/08/1992",
+        "client_cuit": "30710585764",
+        "client_name": "DJV SRL",
+        "client_vat_condition": 1,
+        "client_address": "Av Durañona — Pque Industria 2205 - Salta, Salta",
+        "sale_method": "— Contado"
+    },
+    "items": [
+        {
+            "cod": "001",
+            "title": "4,00",
+            "amount": "unidades",
+            "measure": "2500,00",
+            "unit_price": "0,00",
+            "discount_perc": "10000,00",
+            "subtotal": "21%",
+            "vat_fee": "12100,00",
+            "subtotal_inc_fees": ""
+        },
+        {
+            "cod": "002",
+            "title": "3.00",
+            "amount": "unidades",
+            "measure": "2700,00",
+            "unit_price": "0,00",
+            "discount_perc": "8100,00",
+            "subtotal": "21%",
+            "vat_fee": "9801,00",
+            "subtotal_inc_fees": ""
+        }
+    ],
+    "footer": {
+        "currency": "ARS",
+        "net_amount_taxed": "18100,00",
+        "net_amount_untaxed": null,
+        "vat_27": "0,00",
+        "vat_21": "3801,00",
+        "vat_10_5": "0,00",
+        "vat_5": "0,00",
+        "vat_2_5": "0,00",
+        "vat_0": "0,00",
+        "other_taxes_ammout": "0,00",
+        "total": "21901,00",
+        "exchange_rate": "1"
+    }
+}

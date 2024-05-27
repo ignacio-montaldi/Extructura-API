@@ -1,0 +1,80 @@
+{
+    "type": "A",
+    "header": {
+        "business_name": "ELASTICOS MáM S.R.L.",
+        "business_address": "Av Rodriguez Durañona 2417 - Salta, Salta",
+        "vat_condition": 1,
+        "document_type": "FACTURA",
+        "checkout_aisle_number": "DOOO01",
+        "document_number": "Nro: 00602727226",
+        "issue_date": "27/05/2022",
+        "seller_cuit": "30715144510",
+        "gross_income": "30715144510",
+        "business_opening_date": "01/02/2016",
+        "client_cuit": "30654303254",
+        "client_name": "DON DANTESRE",
+        "client_vat_condition": 1,
+        "client_address": "Av.Rodnguez Durañona 2222 - Salla, Salta",
+        "sale_method": "— Cuenta Comente"
+    },
+    "items": [
+        {
+            "cod": "0000",
+            "title": "1,00",
+            "amount": "unidades",
+            "measure": "18595,05",
+            "unit_price": "0,00",
+            "discount_perc": "18595,05",
+            "subtotal": "21%",
+            "vat_fee": "22500,01",
+            "subtotal_inc_fees": ""
+        },
+        {
+            "cod": "0000",
+            "title": "1,00",
+            "amount": "unidades",
+            "measure": "",
+            "unit_price": "9,00",
+            "discount_perc": "205,62",
+            "subtotal": "21%",
+            "vat_fee": "259,01",
+            "subtotal_inc_fees": ""
+        },
+        {
+            "cod": "0000",
+            "title": "1,00",
+            "amount": "unidades",
+            "measure": "9752,08",
+            "unit_price": "0,00",
+            "discount_perc": "9752.08",
+            "subtotal": "21%",
+            "vat_fee": "11800,02",
+            "subtotal_inc_fees": ""
+        },
+        {
+            "cod": "0000",
+            "title": "2,00",
+            "amount": "unidades",
+            "measure": "\f",
+            "unit_price": "0,00",
+            "discount_perc": "826,45",
+            "subtotal": "21%",
+            "vat_fee": "1000,02",
+            "subtotal_inc_fees": ""
+        }
+    ],
+    "footer": {
+        "currency": "ARS",
+        "net_amount_taxed": "29380,21",
+        "net_amount_untaxed": null,
+        "vat_27": "0,00",
+        "vat_21": "6169,85",
+        "vat_10_5": "0,00",
+        "vat_5": "0,00",
+        "vat_2_5": "0,00",
+        "vat_0": "0,00",
+        "other_taxes_ammout": "0,00",
+        "total": "35550,06",
+        "exchange_rate": "1"
+    }
+}

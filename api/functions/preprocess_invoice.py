@@ -3,8 +3,12 @@ import cv2
 
 from lib.enums.image_type_enum import Image_type
 
-from lib.functions.invoice_related.are_header_boxes_inverted import areHeaderMainBoxesInverted
-from lib.functions.invoice_related.paint_header_box_2_title_and_box import paintHeaderBox2TitleAndBox
+from lib.functions.invoice_related.are_header_boxes_inverted import (
+    areHeaderMainBoxesInverted,
+)
+from lib.functions.invoice_related.paint_header_box_2_title_and_box import (
+    paintHeaderBox2TitleAndBox,
+)
 from lib.functions.utils.add_borders import addBorders
 from lib.functions.utils.check_if_image_has_lines import checkIfImageHasLines
 from lib.functions.utils.create_images_from_boxes import createImagesFromImageBoxes
@@ -18,6 +22,7 @@ from lib.functions.utils.process_image import processImage
 from lib.functions.utils.reduce_to_biggest_by_area import reduceToBiggestByArea
 from lib.functions.utils.remove_lines_from_image import removeLinesFromImage
 
+
 def preprocessInvoice(image_type):
     starting_image_path = "images/data/factura.png"
     image = cv2.imread(starting_image_path)
@@ -30,7 +35,10 @@ def preprocessInvoice(image_type):
         case Image_type.photo:
             image = preprocess_image(image)
             image = edgeCleaning(
-                image=image, path="images/data/page_preprocessed.png", paddingToPaint=10, all=True
+                image=image,
+                path="images/data/page_preprocessed.png",
+                paddingToPaint=10,
+                all=True,
             )
             cv2.imwrite("images/data/page_preprocessed.png", image)
         case Image_type.scan:
@@ -38,7 +46,10 @@ def preprocessInvoice(image_type):
             cv2.imwrite("images/data/page_preprocessed.png", image)
             image = preprocess_image(image)
             image = edgeCleaning(
-                image=image, path="images/data/page_preprocessed.png", paddingToPaint=10, all=True
+                image=image,
+                path="images/data/page_preprocessed.png",
+                paddingToPaint=10,
+                all=True,
             )
 
             from wand.image import Image
@@ -64,7 +75,6 @@ def preprocessInvoice(image_type):
         boxHeightTresh=100,
         folder="images/pretemp",
         outputImagePrefix="invoice_aux",
-        savePreprocessingImages=False,
     )
 
     # Obtiene de encabezado, además tambien remueve los bordes superiores e inferiores
@@ -102,7 +112,6 @@ def preprocessInvoice(image_type):
     createImagesFromImageBoxes(
         imageToProcess=image,
         imageWoLines=imageWol,
-        savePreprocessingImages=False,
         originalName="footer",
         check_function=check_valid_footer_box,
     )
@@ -112,15 +121,15 @@ def preprocessInvoice(image_type):
     # Se divide la imágen que tiene los items...
     processImage(
         imageToProcessPath="images/pretemp/invoice_aux_1.png",
-        rectDimensions=(500, 6),
+        rectDimensions=(500, 6 if image_type == Image_type.pdf else 5),
         boxWidthTresh=100,
-        boxHeightTresh=2000, #No importa este valor
+        boxHeightTresh=2000,  # No importa este valor
         folder="images/temp",
         outputImagePrefix="item",
         higherThanHeight=False,
     )
 
-    #... para luego eliminar los recortes que no sean
+    # ... para luego eliminar los recortes que no sean
     directory_in_str = "images/temp"
     directory = os.fsencode(directory_in_str)
     for file in os.listdir(directory):
@@ -130,33 +139,56 @@ def preprocessInvoice(image_type):
             image = cv2.imread(img_file_path)
             if checkIfImageHasLines(image):
                 delete_file(img_file_path)
+            if image.shape[0] < 15:
+                delete_file(img_file_path)
 
     # Recorta cada una de las "cajas" del encabezado
 
     def check_valid_header_boxes(height, width):
         ratio = height / width
-        return height > 70 and height < 240 and width > 80 and height < 1130 and ratio > 0.1 and ratio < 1
+        return height > 65 and height < 240 and width > 75 and ratio > 0.1 and ratio < 2
+
+    def get_header_box_index(x, y, w, h) -> int:
+        # For test
+        # f = open("testHeaderBoxes.txt", "a")
+        # f.write('(\''+str(imageName) +'\''+','+str(x)+','+str(y)+','+str(w)+','+str(h)+','+'\''+str(image_type.name)+'\','+str(h/w)+ "),\n" )
+        # f.close()
+
+        if y < 100 and x > 350 and w > 350:  # Box 1
+            return 1
+        elif x < 15 and y < 100:  # Box 2
+            return 2
+        elif y < 100 and h < 150:  # Box 3
+            return 3
+        elif y > 100 and y < 400 and h / w > 0.1 and h / w < 0.12:  # Box 4
+            return 4
+        else:
+            return 0
 
     image = cv2.imread("images/pretemp/header_1.png", 0)
     imageWol = cv2.imread("images/pretemp/header_1_wol.png", 0)
     createImagesFromImageBoxes(
         imageToProcess=image,
         imageWoLines=imageWol,
-        savePreprocessingImages=False,
         originalName="header",
-        verticalDialationIterations=9 if image_type == Image_type.scan else 3,
-        horizontalDialationIterations=9 if image_type == Image_type.scan else 3,
+        verticalDialationIterations=3 if image_type == Image_type.pdf else 9,
+        horizontalDialationIterations=3 if image_type == Image_type.pdf else 9,
         check_function=check_valid_header_boxes,
+        getIndexFunction=get_header_box_index,
+        # imageName= invoiceFileName,
+        # image_type= image_type
     )
 
     # Chequeamos que el encabezado 1 y 2 están bien ubicados (problema viene de ver cual es primero por ser del mismo tamaño)
     header1 = cv2.imread("images/temp/header_box_1.png")
     header2 = cv2.imread("images/temp/header_box_2.png")
     if areHeaderMainBoxesInverted(header1=header1, header2=header2):
-        invertTwoFileNames("images/temp/header_box_1.png",
-                            "images/temp/header_box_2.png")
-        invertTwoFileNames("images/temp/header_box_1_wol.png",
-                            "images/temp/header_box_2_wol.png")
+        invertTwoFileNames(
+            "images/temp/header_box_1.png", "images/temp/header_box_2.png"
+        )
+        invertTwoFileNames(
+            "images/temp/header_box_1_wol.png", "images/temp/header_box_2_wol.png"
+        )
 
     # Recorte del resto del tipo de factura en los dos cuadros donde estorba en la esquina
     processImage(

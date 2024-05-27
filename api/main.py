@@ -1,4 +1,5 @@
 # Fast API
+import cv2
 from fastapi import FastAPI
 
 # Image Decoding
@@ -23,12 +24,14 @@ from lib.functions.utils.delete_files_in_folder import deleteFilesInFolder
 ################## API ########################
 app = FastAPI()
 
+
 @app.get("/")
 def read_root():
     return {"welcome_message: Bienvenidos a Extructura"}
 
 
 global invoice_type
+global imageTypeId
 global header
 global footer
 global items
@@ -36,25 +39,33 @@ global items
 
 @app.post("/recieve_image")
 def send_image(image: Image):
+    deleteFilesInFolder("images/data")
+    deleteFilesInFolder("images/pretemp")
+    deleteFilesInFolder("images/temp")
+    deleteFilesInFolder("images/processing")
+    deleteFilesInFolder("images/processing/header_concepts")
+    deleteFilesInFolder("images/processing/header_concepts/header_concepts_subdivided")
     with open("images/data/factura.png", "wb") as f:
         f.write(decodebytes(str.encode(image.base64Image)))
     preprocessInvoice(Image_type(image.imageTypeId))
     global invoice_type
     invoice_type = getInvoiceType()
+    global imageTypeId
+    imageTypeId = image.imageTypeId
     return
 
 
 @app.post("/header")
 def get_header():
     global header
-    header = getHeader()
+    header = getHeader("API_IMAGE", imageTypeId)
     return
 
 
 @app.post("/items")
 def get_items():
     global items
-    items = getItems(invoice_type)
+    items = getItems(invoice_type, "a")
     return
 
 
@@ -68,8 +79,24 @@ def get_footer():
 @app.get("/invoice")
 def get_invoice():
     invoice = Invoice(type=invoice_type.name, header=header, items=items, footer=footer)
+    good_image_path = "images/data/factura.png"
+    image = cv2.imread(good_image_path)
+    cv2.imwrite("raw_scripts/testing_scan/a.png", image)
+    deleteFilesInFolder("images/data")
     deleteFilesInFolder("images/pretemp")
     deleteFilesInFolder("images/temp")
     deleteFilesInFolder("images/processing")
-    deleteFilesInFolder("images/data")
+    deleteFilesInFolder("images/processing/header_concepts")
+    deleteFilesInFolder("images/processing/header_concepts/header_concepts_subdivided")
+    import json
+
+    jsonFileContent = json.dumps(
+        invoice,
+        default=lambda analizedInvoice: analizedInvoice.__dict__,
+        ensure_ascii=False,
+    )
+
+    # Convierto el json perfecto guardado
+    with open("json/" + "API_IMAGE" + ".json", "w", encoding="utf8") as file:
+        file.write(jsonFileContent)
     return invoice

@@ -1,0 +1,39 @@
+{
+    "type": "C",
+    "header": {
+        "business_name": "VILTE MARIA DEL SOCORRO",
+        "business_address": "Manuela G De Todd 837 - Salta, Salta",
+        "vat_condition": 6,
+        "document_type": "FACTURA",
+        "checkout_aisle_number": "00003",
+        "document_number": "00000193",
+        "issue_date": "22/04/2024",
+        "seller_cuit": "27163083375",
+        "gross_income": "2/1650833/75",
+        "business_opening_date": ")05/03/2015",
+        "client_cuit": "30710185022",
+        "client_name": "INVLAC CONSTRUCCIONES S.R.L S. R. L.",
+        "client_vat_condition": 1,
+        "client_address": "Aniceto La Torre 1962 Piso:0 Dpto:0 - Salta, Salta",
+        "sale_method": "— Otra"
+    },
+    "items": [
+        {
+            "cod": "",
+            "title": "Servicio de hospedaje",
+            "amount": "1,00",
+            "measure": "otras unidades",
+            "unit_price": "10000,00",
+            "discount_perc": "0,00",
+            "discounted_subtotal": "0,00",
+            "subtotal": "10000,00"
+        }
+    ],
+    "footer": {
+        "currency": "ARS",
+        "sub_total": "10000,00",
+        "other_taxes_ammout": "0,00",
+        "total": "10000,00",
+        "exchange_rate": "1"
+    }
+}

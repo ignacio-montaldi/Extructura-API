@@ -1,0 +1,39 @@
+{
+    "type": "C",
+    "header": {
+        "business_name": "ROBLES HUARANCA MIGUEL ANGEL",
+        "business_address": "Av Bolivia 35 Viv.Peatonal 1 94 - San Salvador De Jujuy, Jujuy",
+        "vat_condition": 6,
+        "document_type": "FACTURA",
+        "checkout_aisle_number": "00000363",
+        "document_number": "000072",
+        "issue_date": "11/05/2022",
+        "seller_cuit": "20930802205",
+        "gross_income": "A-1-44580",
+        "business_opening_date": "01/17272010",
+        "client_cuit": "30654303254",
+        "client_name": "DON DANTE S RL",
+        "client_vat_condition": 1,
+        "client_address": "Av.Rodriguez Durañona 2222 - Salta, Salta",
+        "sale_method": "— Contado"
+    },
+    "items": [
+        {
+            "cod": "0001",
+            "title": "HONORARIOS A.T.A CRT NRO. C31ASO192022",
+            "amount": "5.30",
+            "measure": "unidodos",
+            "unit_price": "2000,00",
+            "discount_perc": "0,00",
+            "discounted_subtotal": "0,00",
+            "subtotal": "10000,00"
+        }
+    ],
+    "footer": {
+        "currency": "ARS",
+        "sub_total": "10000,00",
+        "other_taxes_ammout": "0,00",
+        "total": "10000,00",
+        "exchange_rate": "1"
+    }
+}

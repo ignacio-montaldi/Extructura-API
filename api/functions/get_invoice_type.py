@@ -10,7 +10,9 @@ from lib.functions.utils.process_image import processImage
 def getInvoiceType():
     # Obtiene el tipo de factura
     processImage(
-        imageToProcessPath=getSmallestImagePath(dir="images/temp", fileNamePrefix="header_box"),
+        imageToProcessPath=getSmallestImagePath(
+            dir="images/temp", fileNamePrefix="header_box"
+        ),
         rectDimensions=(1, 1),
         boxWidthTresh=25,
         boxHeightTresh=25,
@@ -24,7 +26,7 @@ def getInvoiceType():
     ocr_result = pytesseract.image_to_string(image, lang="spa", config="--psm 6")
     ocr_result = ocr_result.replace("\n\x0c", "")
 
-    match ocr_result:
+    match ocr_result[0]:
         case "A":
             invoice_type = InvoiceType.A
         case "B":

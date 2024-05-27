@@ -13,7 +13,7 @@ def saveCroppedImages(
     higherThanHeight,
     folder,
     reverseSorting,
-    printDimensions
+    printDimensions,
 ):
     # Encuentra los contornos
     cnts = cv2.findContours(

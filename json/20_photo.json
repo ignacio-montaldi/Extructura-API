@@ -1,0 +1,91 @@
+{
+    "type": "A",
+    "header": {
+        "business_name": "GARCIA JUAN CARLOS",
+        "business_address": "Placido Marinez 1050 Piso:9 Dpto:A - Corientes, Comientes",
+        "vat_condition": 1,
+        "document_type": "FACTURA",
+        "checkout_aisle_number": "00011",
+        "document_number": "Mro: 00000237",
+        "issue_date": "03/04/2024",
+        "seller_cuit": "2005656/4683",
+        "gross_income": "20056667483",
+        "business_opening_date": "01/04/2017",
+        "client_cuit": "30543055642",
+        "client_name": "IMPULSO SA.",
+        "client_vat_condition": 1,
+        "client_address": "Av Podro Ferro 1849 « Comantes, Comentos",
+        "sale_method": "— Cuenta Corriente"
+    },
+    "items": [
+        {
+            "cod": "0001",
+            "title": "Resmas da papel A4 75 gr Borgal",
+            "amount": "60,00",
+            "measure": "unidades",
+            "unit_price": "5900,00",
+            "discount_perc": "0.00",
+            "subtotal": "354000,00",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "428340,00"
+        },
+        {
+            "cod": "0002",
+            "title": "Boligrafos Bic caja x 50 unidades",
+            "amount": "1,00",
+            "measure": "unidades",
+            "unit_price": "22230,00",
+            "discount_perc": "0,00",
+            "subtotal": "22230,00",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "26893,30"
+        },
+        {
+            "cod": "0003",
+            "title": "Broches n* 50",
+            "amount": "100.00",
+            "measure": "unidades",
+            "unit_price": "690,00",
+            "discount_perc": "0,00",
+            "subtotal": "69000,00",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "83430,00"
+        },
+        {
+            "cod": "0004",
+            "title": "Caja identificadores x 50",
+            "amount": "1,00",
+            "measure": "uradades",
+            "unit_price": "9130,00",
+            "discount_perc": "0,00",
+            "subtotal": "5130.00",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "11047,30"
+        },
+        {
+            "cod": "0005",
+            "title": "Sobres mania 24x30 x 100 unidadas",
+            "amount": "1,00",
+            "measure": "unidades",
+            "unit_price": "8900,00",
+            "discount_perc": "0,00",
+            "subtotal": "8900.00",
+            "vat_fee": "2%",
+            "subtotal_inc_fees": "10769,00"
+        }
+    ],
+    "footer": {
+        "currency": "ARS",
+        "net_amount_taxed": "463260,00",
+        "net_amount_untaxed": null,
+        "vat_27": "0,00",
+        "vat_21": "97284,60",
+        "vat_10_5": "0,00",
+        "vat_5": "0,00",
+        "vat_2_5": "0,00",
+        "vat_0": "0,00",
+        "other_taxes_ammout": "0,00",
+        "total": "560544,60",
+        "exchange_rate": "1"
+    }
+}

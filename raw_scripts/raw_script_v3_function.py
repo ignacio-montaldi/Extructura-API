@@ -4,16 +4,16 @@ import os
 import cv2
 import pytesseract
 
- 
+
 # getting the name of the directory
 # where the this file is present.
 current = os.path.dirname(os.path.realpath(__file__))
- 
+
 # Getting the parent directory name
 # where the current directory is present.
 parent = os.path.dirname(current)
- 
-# adding the parent directory to 
+
+# adding the parent directory to
 # the sys.path.
 sys.path.append(parent)
 
@@ -25,8 +25,12 @@ from api.functions.get_header import getHeader
 from api.functions.get_items import getItems
 from lib.enums.image_type_enum import Image_type
 from lib.enums.invoice_type_enum import InvoiceType
-from lib.functions.invoice_related.are_header_boxes_inverted import areHeaderMainBoxesInverted
-from lib.functions.invoice_related.paint_header_box_2_title_and_box import paintHeaderBox2TitleAndBox
+from lib.functions.invoice_related.are_header_boxes_inverted import (
+    areHeaderMainBoxesInverted,
+)
+from lib.functions.invoice_related.paint_header_box_2_title_and_box import (
+    paintHeaderBox2TitleAndBox,
+)
 from lib.functions.testing.test_result import testResult
 from lib.functions.utils.add_border import addBorder
 from lib.functions.utils.add_borders import addBorders
@@ -44,17 +48,20 @@ from lib.functions.utils.remove_lines_from_image import removeLinesFromImage
 
 ###### Código principal ###########################################################################################################################################
 
-def main_code(invoiceFileNameNumber):
+
+def main_code(invoiceFileNameNumber, folder, imageType):
     # Borramos los archivos en las carpetas, por si quedó basura
     deleteFilesInFolder("images/data")
     deleteFilesInFolder("images/pretemp")
     deleteFilesInFolder("images/temp")
     deleteFilesInFolder("images/processing")
+    deleteFilesInFolder("images/processing/header_concepts")
+    deleteFilesInFolder("images/processing/header_concepts/header_concepts_subdivided")
 
     invoiceFileName = invoiceFileNameNumber
 
-    starting_image_path = "raw_scripts/testing/"+ invoiceFileName +".png"
-    image_type = Image_type.pdf
+    starting_image_path = "raw_scripts/" + folder + "/" + invoiceFileName + ".png"
+    image_type = imageType
     image = cv2.imread(starting_image_path)
 
     # Preprocesamos la imágen según el tipo de imágen
@@ -65,7 +72,10 @@ def main_code(invoiceFileNameNumber):
         case Image_type.photo:
             image = preprocess_image(image)
             image = edgeCleaning(
-                image=image, path="images/data/page_preprocessed.png", paddingToPaint=10, all=True
+                image=image,
+                path="images/data/page_preprocessed.png",
+                paddingToPaint=10,
+                all=True,
             )
             cv2.imwrite("images/data/page_preprocessed.png", image)
         case Image_type.scan:
@@ -73,7 +83,10 @@ def main_code(invoiceFileNameNumber):
             cv2.imwrite("images/data/page_preprocessed.png", image)
             image = preprocess_image(image)
             image = edgeCleaning(
-                image=image, path="images/data/page_preprocessed.png", paddingToPaint=10, all=True
+                image=image,
+                path="images/data/page_preprocessed.png",
+                paddingToPaint=10,
+                all=True,
             )
 
             from wand.image import Image
@@ -99,7 +112,6 @@ def main_code(invoiceFileNameNumber):
         boxHeightTresh=100,
         folder="images/pretemp",
         outputImagePrefix="invoice_aux",
-        savePreprocessingImages=False,
     )
 
     # Obtiene de encabezado, además tambien remueve los bordes superiores e inferiores
@@ -137,7 +149,6 @@ def main_code(invoiceFileNameNumber):
     createImagesFromImageBoxes(
         imageToProcess=image,
         imageWoLines=imageWol,
-        savePreprocessingImages=False,
         originalName="footer",
         check_function=check_valid_footer_box,
     )
@@ -147,15 +158,15 @@ def main_code(invoiceFileNameNumber):
     # Se divide la imágen que tiene los items...
     processImage(
         imageToProcessPath="images/pretemp/invoice_aux_1.png",
-        rectDimensions=(500, 6),
+        rectDimensions=(500, 6 if image_type == Image_type.pdf else 5),
         boxWidthTresh=100,
-        boxHeightTresh=2000, #No importa este valor
+        boxHeightTresh=2000,  # No importa este valor
         folder="images/temp",
         outputImagePrefix="item",
         higherThanHeight=False,
     )
 
-    #... para luego eliminar los recortes que no sean
+    # ... para luego eliminar los recortes que no sean
     directory_in_str = "images/temp"
     directory = os.fsencode(directory_in_str)
     for file in os.listdir(directory):
@@ -165,33 +176,56 @@ def main_code(invoiceFileNameNumber):
             image = cv2.imread(img_file_path)
             if checkIfImageHasLines(image):
                 delete_file(img_file_path)
+            if image.shape[0] < 15:
+                delete_file(img_file_path)
 
     # Recorta cada una de las "cajas" del encabezado
 
     def check_valid_header_boxes(height, width):
         ratio = height / width
-        return height > 70 and height < 240 and width > 80 and ratio > 0.1 and ratio < 2
+        return height > 65 and height < 240 and width > 75 and ratio > 0.1 and ratio < 2
+
+    def get_header_box_index(x, y, w, h) -> int:
+        # For test
+        # f = open("testHeaderBoxes.txt", "a")
+        # f.write('(\''+str(imageName) +'\''+','+str(x)+','+str(y)+','+str(w)+','+str(h)+','+'\''+str(image_type.name)+'\','+str(h/w)+ "),\n" )
+        # f.close()
+
+        if y < 100 and x > 350 and w > 350:  # Box 1
+            return 1
+        elif x < 15 and y < 100:  # Box 2
+            return 2
+        elif y < 100 and h < 150:  # Box 3
+            return 3
+        elif y > 100 and y < 400 and h / w > 0.1 and h / w < 0.12:  # Box 4
+            return 4
+        else:
+            return 0
 
     image = cv2.imread("images/pretemp/header_1.png", 0)
     imageWol = cv2.imread("images/pretemp/header_1_wol.png", 0)
     createImagesFromImageBoxes(
         imageToProcess=image,
         imageWoLines=imageWol,
-        savePreprocessingImages=True,
         originalName="header",
-        verticalDialationIterations=9 if image_type == Image_type.scan else 3,
-        horizontalDialationIterations=9 if image_type == Image_type.scan else 3,
+        verticalDialationIterations=3 if image_type == Image_type.pdf else 9,
+        horizontalDialationIterations=3 if image_type == Image_type.pdf else 9,
         check_function=check_valid_header_boxes,
+        getIndexFunction=get_header_box_index,
+        # imageName= invoiceFileName,
+        # image_type= image_type
     )
 
     # Chequeamos que el encabezado 1 y 2 están bien ubicados (problema viene de ver cual es primero por ser del mismo tamaño)
     header1 = cv2.imread("images/temp/header_box_1.png")
     header2 = cv2.imread("images/temp/header_box_2.png")
     if areHeaderMainBoxesInverted(header1=header1, header2=header2):
-        invertTwoFileNames("images/temp/header_box_1.png",
-                            "images/temp/header_box_2.png")
-        invertTwoFileNames("images/temp/header_box_1_wol.png",
-                            "images/temp/header_box_2_wol.png")
+        invertTwoFileNames(
+            "images/temp/header_box_1.png", "images/temp/header_box_2.png"
+        )
+        invertTwoFileNames(
+            "images/temp/header_box_1_wol.png", "images/temp/header_box_2_wol.png"
+        )
 
     # Recorte del resto del tipo de factura en los dos cuadros donde estorba en la esquina
     processImage(
@@ -211,7 +245,8 @@ def main_code(invoiceFileNameNumber):
     # Obtiene el tipo de factura
     processImage(
         imageToProcessPath=getSmallestImagePath(
-            dir="images/temp", fileNamePrefix="header_box"),
+            dir="images/temp", fileNamePrefix="header_box"
+        ),
         rectDimensions=(1, 1),
         boxWidthTresh=25,
         boxHeightTresh=25,
@@ -222,11 +257,10 @@ def main_code(invoiceFileNameNumber):
     image = cv2.imread("images/pretemp/invoice_type_image_1.png")
     addBorder(image, "images/pretemp/invoice_type_image_1.png")
     image = cv2.imread("images/pretemp/invoice_type_image_1.png")
-    ocr_result = pytesseract.image_to_string(
-        image, lang="spa", config="--psm 6")
+    ocr_result = pytesseract.image_to_string(image, lang="spa", config="--psm 6")
     ocr_result = ocr_result.replace("\n\x0c", "")
 
-    match ocr_result:
+    match ocr_result[0]:
         case "A":
             invoice_type = InvoiceType.A
         case "B":
@@ -237,7 +271,7 @@ def main_code(invoiceFileNameNumber):
             print("Error")
 
     ##### GET HEADER CONCEPTS #####
-    header = getHeader()
+    header = getHeader(invoiceFileName, image_type)
     print(header)
 
     ##### GET ITEMS #####
@@ -253,20 +287,30 @@ def main_code(invoiceFileNameNumber):
     deleteFilesInFolder("images/pretemp")
     deleteFilesInFolder("images/temp")
     deleteFilesInFolder("images/processing")
+    deleteFilesInFolder("images/processing/header_concepts")
+    deleteFilesInFolder("images/processing/header_concepts/header_concepts_subdivided")
 
-    # Prueba de eficacia del resultado: cambiar el numero para comparar con un json distinto (verificar que exista antes) 
+    # Prueba de eficacia del resultado: cambiar el numero para comparar con un json distinto (verificar que exista antes)
 
-    analizedInvoice = Invoice(type=invoice_type.name, header=header, items=items, footer=footer)
+    analizedInvoice = Invoice(
+        type=invoice_type.name, header=header, items=items, footer=footer
+    )
 
     # testResult(analizedInvoice, jsonPath = 'json/' + invoiceFileName + '.json') #, perfectInvoice)
 
-    #Para generar el json que se modificará para ser el perfecto, eliminar después
+    # Para generar el json que se modificará para ser el perfecto, eliminar después
     import json
-    jsonFileContent = json.dumps(analizedInvoice, default=lambda analizedInvoice: analizedInvoice.__dict__, ensure_ascii=False)
 
-    # Convierto el json perfecto guardado    
-    with open('json/' + invoiceFileName + '.json', 'w', encoding='utf8') as file:
+    jsonFileContent = json.dumps(
+        analizedInvoice,
+        default=lambda analizedInvoice: analizedInvoice.__dict__,
+        ensure_ascii=False,
+    )
+
+    # Convierto el json perfecto guardado
+    with open(
+        "json/" + invoiceFileName + "_" + str(image_type.name) + ".json",
+        "w",
+        encoding="utf8",
+    ) as file:
         file.write(jsonFileContent)
-
-
-

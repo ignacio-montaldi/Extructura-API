@@ -1,0 +1,91 @@
+{
+    "type": "A",
+    "header": {
+        "business_name": "GARCIA JUAN CARLOS",
+        "business_address": "Placido Martinez 1050 Piso:9 Dpto:A - “Corrientes, Corrientes",
+        "vat_condition": 1,
+        "document_type": "FACTURA",
+        "checkout_aisle_number": "00000237",
+        "document_number": "00011",
+        "issue_date": "03/04/2024",
+        "seller_cuit": "20056667483",
+        "gross_income": "200556567483",
+        "business_opening_date": "01/04/2017",
+        "client_cuit": "",
+        "client_name": "IMPULSO S.A.",
+        "client_vat_condition": 1,
+        "client_address": "Av Pedro Ferre 1849 - Corrientes, Corrientes",
+        "sale_method": "— Cuenta Corriente"
+    },
+    "items": [
+        {
+            "cod": "0001",
+            "title": "60,00",
+            "amount": "unidades",
+            "measure": "5900,00",
+            "unit_price": "0,00",
+            "discount_perc": "354000,00",
+            "subtotal": "21%",
+            "vat_fee": "428340,00",
+            "subtotal_inc_fees": ""
+        },
+        {
+            "cod": "0002",
+            "title": "1,00",
+            "amount": "unidades",
+            "measure": "22230,00",
+            "unit_price": "0,00",
+            "discount_perc": "22230,00",
+            "subtotal": "21%",
+            "vat_fee": "26898,30",
+            "subtotal_inc_fees": ""
+        },
+        {
+            "cod": "0003",
+            "title": "100,00",
+            "amount": "unidades",
+            "measure": "",
+            "unit_price": "0,00",
+            "discount_perc": "69000,00",
+            "subtotal": "21%",
+            "vat_fee": "83490,00",
+            "subtotal_inc_fees": ""
+        },
+        {
+            "cod": "0004",
+            "title": "1,00",
+            "amount": "unidades",
+            "measure": "9130,00",
+            "unit_price": "0,00",
+            "discount_perc": "9130,00",
+            "subtotal": "21%",
+            "vat_fee": "11047,30",
+            "subtotal_inc_fees": ""
+        },
+        {
+            "cod": "0005",
+            "title": "1,00",
+            "amount": "unidades",
+            "measure": "8900,00",
+            "unit_price": "0,00",
+            "discount_perc": "8900,00",
+            "subtotal": "21%",
+            "vat_fee": "10769,00",
+            "subtotal_inc_fees": ""
+        }
+    ],
+    "footer": {
+        "currency": "ARS",
+        "net_amount_taxed": "463260,00",
+        "net_amount_untaxed": null,
+        "vat_27": "0,00",
+        "vat_21": "97284,60",
+        "vat_10_5": "0,00",
+        "vat_5": "0,00",
+        "vat_2_5": "0,00",
+        "vat_0": "0,00",
+        "other_taxes_ammout": "0,00",
+        "total": "560544,60",
+        "exchange_rate": "1"
+    }
+}

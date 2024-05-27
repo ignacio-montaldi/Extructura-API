@@ -141,10 +141,10 @@ def getFooter(invoice_type):
     return footer
 
 def isBoxAFooterConceptKey(x, y, w, h):
-    return ((x > 670 and x < 760) or (x > 30 and x < 60)) and (
-        (w > 230 and w < 270) or (w > 915 and w < 960)
+    return ((x > 610 and x < 760) or (x > 30 and x < 60)) and (
+        (w > 200 and w < 270) or (w > 915 and w < 960)
     )
 
 
 def isBoxAFooterConceptValue(x, y, w, h):
-    return x > 950 and (w > 70 and w < 150)
+    return x > 900 and (w > 70 and w < 150)

@@ -30,10 +30,10 @@
         }
     ],
     "footer": {
-        "currency": "USD",
-        "sub_total": "\f",
-        "other_taxes_ammout": null,
-        "total": null,
+        "currency": "ARS",
+        "sub_total": "5000,00",
+        "other_taxes_ammout": "0,00",
+        "total": "5000,00",
         "exchange_rate": "1"
     }
 }

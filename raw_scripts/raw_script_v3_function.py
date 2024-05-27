@@ -197,7 +197,7 @@ def main_code(invoiceFileNameNumber, folder, imageType):
             return 2
         elif y < 100 and h < 150:  # Box 3
             return 3
-        elif y > 100 and y < 400 and h / w > 0.1 and h / w < 0.11:  # Box 4
+        elif y > 100 and y < 400 and h / w > 0.1 and h / w < 0.12:  # Box 4
             return 4
         else:
             return 0

@@ -1,0 +1,39 @@
+{
+    "type": "B",
+    "header": {
+        "business_name": "NEXT LEVEL SOLUTIONS SAS",
+        "business_address": "Rondeau 2858 Piso:3 B - Ciudad de Buenos Aires",
+        "vat_condition": 1,
+        "document_type": "FACTURA",
+        "checkout_aisle_number": "00001",
+        "document_number": "00000387",
+        "issue_date": "23/05/2022",
+        "seller_cuit": "30715763822",
+        "gross_income": "1543446-10",
+        "business_opening_date": "15/09/2017",
+        "client_cuit": "40628198",
+        "client_name": "MONTALDI JAVIER IGNACIO",
+        "client_vat_condition": 5,
+        "client_address": "Av. Belgrano 1276",
+        "sale_method": "— Otra"
+    },
+    "items": [
+        {
+            "cod": "1",
+            "title": "CORSAIR-SILLA DE ESCRITORIO T3 RUSH GAMER GRAY/CHARCOAL ECF-0010031-WW",
+            "amount": "1,00",
+            "measure": "unidades",
+            "unit_price": "71292,99",
+            "discount_perc": "0,00",
+            "discounted_subtotal": "0,00",
+            "subtotal": "71292,99"
+        }
+    ],
+    "footer": {
+        "currency": "ARS",
+        "sub_total": "71292,99",
+        "other_taxes_ammout": "0,00",
+        "total": "71292,99",
+        "exchange_rate": "1"
+    }
+}

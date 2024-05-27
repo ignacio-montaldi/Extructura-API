@@ -2,19 +2,19 @@
     "type": "A",
     "header": {
         "business_name": "COLAVECCHIA MIGUEL JUAN",
-        "business_address": "Av, Presidente Bartolome Mitre 915 Dpto:1 - . Avellaneda, Buenos Aires",
+        "business_address": "Av, Presidente Bartolome Mitre 915 Dpto:1 - Avellaneda, Buenos Aires",
         "vat_condition": 1,
-        "document_type": "FACTURA",
+        "document_type": "EACTURA",
         "checkout_aisle_number": "00026",
         "document_number": "00000335",
         "issue_date": "24/02/2022",
-        "seller_cuit": "20147219807",
+        "seller_cuit": "720147219807",
         "gross_income": "20147219807",
         "business_opening_date": "01/06/2012",
         "client_cuit": "30577207190",
-        "client_name": "COORDINACION ECOLÓGICA AREA METROPOLITANA —",
+        "client_name": "COORDINACION ECOLOGICA AREA METROPOLITANA SOCIEDAD DEL ESTADO",
         "client_vat_condition": 1,
-        "client_address": "Alcorta Amancio Av. 3000 - Capital Federal, Ciudad de Buenos Atrea",
+        "client_address": "Alcoria Amancio Av. 3000 - Capital Federal, Ciudad de Buenos Aires",
         "sale_method": "— Contado"
     },
     "items": [
@@ -37,7 +37,7 @@
             "unit_price": "0,00",
             "discount_perc": "123,96",
             "subtotal": "21%",
-            "vat_fee": "149,99",
+            "vat_fee": "149,93",
             "subtotal_inc_fees": ""
         }
     ],

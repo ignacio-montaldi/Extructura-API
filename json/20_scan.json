@@ -20,58 +20,58 @@
     "items": [
         {
             "cod": "0001",
-            "title": "60,00",
-            "amount": "unidades",
-            "measure": "5900,00",
-            "unit_price": "0,00",
-            "discount_perc": "354000,00",
-            "subtotal": "21%",
-            "vat_fee": "428340,00",
-            "subtotal_inc_fees": ""
+            "title": "Resmas de papel A4 75 gr Boreal",
+            "amount": "60,00",
+            "measure": "unidades",
+            "unit_price": "5900,00",
+            "discount_perc": "0,00",
+            "subtotal": "354000,00",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "428340,00"
         },
         {
             "cod": "0002",
-            "title": "1,00",
-            "amount": "unidades",
-            "measure": "22230,00",
-            "unit_price": "0,00",
-            "discount_perc": "22230,00",
-            "subtotal": "21%",
-            "vat_fee": "26898,30",
-            "subtotal_inc_fees": ""
+            "title": "Bolígrafos Bic caja x 50 unidades",
+            "amount": "1,00",
+            "measure": "unidades",
+            "unit_price": "22230,00",
+            "discount_perc": "0,00",
+            "subtotal": "22230,00",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "26898,30"
         },
         {
             "cod": "0003",
-            "title": "100,00",
-            "amount": "unidades",
-            "measure": "",
-            "unit_price": "0,00",
-            "discount_perc": "69000,00",
-            "subtotal": "21%",
-            "vat_fee": "83490,00",
-            "subtotal_inc_fees": ""
+            "title": "Broches n* 50",
+            "amount": "100,00",
+            "measure": "unidades",
+            "unit_price": "690,00",
+            "discount_perc": "0,00",
+            "subtotal": "69000,00",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "83490,00"
         },
         {
             "cod": "0004",
-            "title": "1,00",
-            "amount": "unidades",
-            "measure": "9130,00",
-            "unit_price": "0,00",
-            "discount_perc": "9130,00",
-            "subtotal": "21%",
-            "vat_fee": "11047,30",
-            "subtotal_inc_fees": ""
+            "title": "Caja identificadores x 50",
+            "amount": "1,00",
+            "measure": "unidades",
+            "unit_price": "9130,00",
+            "discount_perc": "0,00",
+            "subtotal": "9130,00",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "11047,30"
         },
         {
             "cod": "0005",
-            "title": "1,00",
-            "amount": "unidades",
-            "measure": "8900,00",
-            "unit_price": "0,00",
-            "discount_perc": "8900,00",
-            "subtotal": "21%",
-            "vat_fee": "10769,00",
-            "subtotal_inc_fees": ""
+            "title": "Sobres manila 24x30 x 100 unidades",
+            "amount": "1,00",
+            "measure": "unidades",
+            "unit_price": "8900,00",
+            "discount_perc": "0,00",
+            "subtotal": "8900,00",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "10769,00"
         }
     ],
     "footer": {

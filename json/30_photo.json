@@ -19,15 +19,15 @@
     },
     "items": [
         {
-            "cod": "\f",
-            "title": "bujas",
-            "amount": "4,00\" unciadas",
-            "measure": "",
-            "unit_price": "0.00",
-            "discount_perc": "1322,32",
-            "subtotal": "21%",
-            "vat_fee": "1609.01",
-            "subtotal_inc_fees": ""
+            "cod": "",
+            "title": "\f",
+            "amount": "bujas",
+            "measure": "4,00\" unciadas",
+            "unit_price": "330,59",
+            "discount_perc": "0.00",
+            "subtotal": "1322,32",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "1609.01"
         }
     ],
     "footer": {

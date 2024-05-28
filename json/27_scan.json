@@ -20,35 +20,35 @@
     "items": [
         {
             "cod": "o",
-            "title": "1,00",
-            "amount": "unidades",
-            "measure": "7667124,29",
-            "unit_price": "0,00",
-            "discount_perc": "7667124,29",
-            "subtotal": "21%",
-            "vat_fee": "9277220,39",
-            "subtotal_inc_fees": ""
+            "title": "Provisión, preparación y distribución de alimentos",
+            "amount": "1,00",
+            "measure": "unidades",
+            "unit_price": "7667124,29",
+            "discount_perc": "0,00",
+            "subtotal": "7667124,29",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "9277220,39"
         },
         {
             "cod": "02",
-            "title": "1,00",
-            "amount": "unidades",
-            "measure": "580711,13",
-            "unit_price": "0,00",
-            "discount_perc": "580711,13",
-            "subtotal": "10,5%",
-            "vat_fee": "641685,80",
-            "subtotal_inc_fees": ""
+            "title": "Provisión, preparación y distribución de alimentos (Producto harina)",
+            "amount": "1,00",
+            "measure": "unidades",
+            "unit_price": "580711,13",
+            "discount_perc": "0,00",
+            "subtotal": "580711,13",
+            "vat_fee": "10,5%",
+            "subtotal_inc_fees": "641685,80"
         },
         {
             "cod": "",
-            "title": "1,00",
-            "amount": "unidades",
-            "measure": "",
+            "title": "Entregados y distribuidos el 04/09/2020",
+            "amount": "1,00",
+            "measure": "unidades",
             "unit_price": "0,00",
-            "discount_perc": "",
-            "subtotal": "21%",
-            "vat_fee": "",
+            "discount_perc": "0,00",
+            "subtotal": "0,00",
+            "vat_fee": "21%",
             "subtotal_inc_fees": "0,00"
         }
     ],

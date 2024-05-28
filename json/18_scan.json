@@ -22,18 +22,18 @@
             "cod": "",
             "title": "Servicios asistencia Tecnica 3",
             "amount": "1,00",
-            "measure": "675604,00",
-            "unit_price": "",
+            "measure": "otras unidades",
+            "unit_price": "675604,00",
             "discount_perc": "0,00",
-            "discounted_subtotal": "875604,00",
-            "subtotal": ""
+            "discounted_subtotal": "0,00",
+            "subtotal": "875604,00"
         },
         {
             "cod": "",
             "title": "Complemento 2",
             "amount": "1,00",
-            "measure": "80932,00",
-            "unit_price": "",
+            "measure": "otras unidades",
+            "unit_price": "80932,00",
             "discount_perc": "0,00",
             "discounted_subtotal": "0,00",
             "subtotal": "80932,00"

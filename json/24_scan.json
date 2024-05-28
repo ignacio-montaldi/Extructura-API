@@ -20,14 +20,14 @@
     "items": [
         {
             "cod": "",
-            "title": "1,00",
-            "amount": "unidades",
-            "measure": "1394,97",
-            "unit_price": "0,00",
-            "discount_perc": "1394,97",
-            "subtotal": "21%",
-            "vat_fee": "1687,91",
-            "subtotal_inc_fees": ""
+            "title": "Ciiente/Cuenta: 1430555500001 Vencimiento 11/01/2017 Retribución total por servicio de locutorio",
+            "amount": "1,00",
+            "measure": "unidades",
+            "unit_price": "1394,97",
+            "discount_perc": "0,00",
+            "subtotal": "1394,97",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "1687,91"
         }
     ],
     "footer": {

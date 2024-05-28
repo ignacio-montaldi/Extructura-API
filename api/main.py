@@ -41,10 +41,12 @@ global items
 def send_image(image: Image):
     deleteFilesInFolder("images/data")
     deleteFilesInFolder("images/pretemp")
-    deleteFilesInFolder("images/temp")
     deleteFilesInFolder("images/processing")
     deleteFilesInFolder("images/processing/header_concepts")
     deleteFilesInFolder("images/processing/header_concepts/header_concepts_subdivided")
+    deleteFilesInFolder("images/temp")
+    deleteFilesInFolder("images/temp/items")
+    deleteFilesInFolder("images/temp/items/values")
     with open("images/data/factura.png", "wb") as f:
         f.write(decodebytes(str.encode(image.base64Image)))
     preprocessInvoice(Image_type(image.imageTypeId))
@@ -84,10 +86,12 @@ def get_invoice():
     cv2.imwrite("raw_scripts/testing_scan/a.png", image)
     deleteFilesInFolder("images/data")
     deleteFilesInFolder("images/pretemp")
-    deleteFilesInFolder("images/temp")
     deleteFilesInFolder("images/processing")
     deleteFilesInFolder("images/processing/header_concepts")
     deleteFilesInFolder("images/processing/header_concepts/header_concepts_subdivided")
+    deleteFilesInFolder("images/temp")
+    deleteFilesInFolder("images/temp/items")
+    deleteFilesInFolder("images/temp/items/values")
     import json
 
     jsonFileContent = json.dumps(

@@ -19,9 +19,9 @@
     },
     "items": [
         {
-            "cod": "",
-            "title": "Servicio de hospedaje",
-            "amount": "1,00",
+            "cod": "Servicio de hospedaje",
+            "title": "1,00",
+            "amount": "oras unidados",
             "measure": "\f",
             "unit_price": "19000,00",
             "discount_perc": "0,00",

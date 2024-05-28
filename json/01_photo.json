@@ -21,10 +21,10 @@
         {
             "cod": "001",
             "title": "SERVICIO DE BASCULA MES DE MAYO DE 2022",
-            "amount": "unidades",
-            "measure": "",
-            "unit_price": "9.00",
-            "discount_perc": "",
+            "amount": "2,00",
+            "measure": "unidades",
+            "unit_price": "700,00",
+            "discount_perc": "9.00",
             "subtotal": "1400,00",
             "vat_fee": "21%",
             "subtotal_inc_fees": "1694,00"
@@ -32,10 +32,10 @@
         {
             "cod": "002",
             "title": "SERVICIO DE BASCULA MES DE MAYO DE 2.022",
-            "amount": "unidades",
-            "measure": "",
-            "unit_price": "0,00",
-            "discount_perc": "",
+            "amount": "4.00",
+            "measure": "unidades",
+            "unit_price": "900,00",
+            "discount_perc": "0,00",
             "subtotal": "3600,00",
             "vat_fee": "21%",
             "subtotal_inc_fees": "4356,00"

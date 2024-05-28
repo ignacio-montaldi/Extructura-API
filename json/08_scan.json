@@ -20,25 +20,25 @@
     "items": [
         {
             "cod": "001",
-            "title": "4,00",
-            "amount": "unidades",
-            "measure": "2500,00",
-            "unit_price": "0,00",
-            "discount_perc": "10000,00",
-            "subtotal": "21%",
-            "vat_fee": "12100,00",
-            "subtotal_inc_fees": ""
+            "title": "SERVICIO DE BASCULA MES DE DICIEMBRE DE 2.023",
+            "amount": "4,00",
+            "measure": "unidades",
+            "unit_price": "2500,00",
+            "discount_perc": "0,00",
+            "subtotal": "10000,00",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "12100,00"
         },
         {
             "cod": "002",
-            "title": "3.00",
-            "amount": "unidades",
-            "measure": "2700,00",
-            "unit_price": "0,00",
-            "discount_perc": "8100,00",
-            "subtotal": "21%",
-            "vat_fee": "9801,00",
-            "subtotal_inc_fees": ""
+            "title": "SERVICIO DE BASCULA MES DE DICIEMBRE DE 2.023",
+            "amount": "3.00",
+            "measure": "unidades",
+            "unit_price": "2700,00",
+            "discount_perc": "0,00",
+            "subtotal": "8100,00",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "9801,00"
         }
     ],
     "footer": {

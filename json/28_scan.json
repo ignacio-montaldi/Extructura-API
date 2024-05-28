@@ -20,25 +20,25 @@
     "items": [
         {
             "cod": "",
-            "title": "1,00",
-            "amount": "unidades",
-            "measure": "",
-            "unit_price": "0,00",
-            "discount_perc": "660,33",
-            "subtotal": "21%",
-            "vat_fee": "799,00",
-            "subtotal_inc_fees": ""
+            "title": "ng-900u",
+            "amount": "1,00",
+            "measure": "unidades",
+            "unit_price": "660,33",
+            "discount_perc": "0,00",
+            "subtotal": "660,33",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "799,00"
         },
         {
             "cod": "",
-            "title": "2,00",
-            "amount": "unidades",
-            "measure": "",
-            "unit_price": "0,00",
-            "discount_perc": "123,96",
-            "subtotal": "21%",
-            "vat_fee": "149,93",
-            "subtotal_inc_fees": ""
+            "title": "pilas AAA panasonic",
+            "amount": "2,00",
+            "measure": "unidades",
+            "unit_price": "61,98",
+            "discount_perc": "0,00",
+            "subtotal": "123,96",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "149,93"
         }
     ],
     "footer": {

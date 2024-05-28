@@ -24,10 +24,10 @@
             "amount": "1,00",
             "measure": "unidades",
             "unit_price": "7667124,29",
-            "discount_perc": "7667124,29",
-            "subtotal": "",
-            "vat_fee": "927722039",
-            "subtotal_inc_fees": ""
+            "discount_perc": "0,00",
+            "subtotal": "7667124,29",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "927722039"
         },
         {
             "cod": "02",

@@ -21,46 +21,46 @@
         {
             "cod": "0000",
             "title": "HOJA 3* SPRINTER TRAS. PARABOLICA",
-            "amount": "unidades",
-            "measure": "18595,05",
-            "unit_price": "0,00",
-            "discount_perc": "18595,05",
-            "subtotal": "21%",
-            "vat_fee": "22500,01",
-            "subtotal_inc_fees": ""
+            "amount": "1,00",
+            "measure": "unidades",
+            "unit_price": "18595,05",
+            "discount_perc": "0,00",
+            "subtotal": "18595,05",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "22500,01"
         },
         {
             "cod": "0000",
             "title": "PIFIJO",
-            "amount": "unidades",
-            "measure": "",
-            "unit_price": "0,00",
-            "discount_perc": "206,62",
-            "subtotal": "21%",
-            "vat_fee": "250,01",
-            "subtotal_inc_fees": ""
+            "amount": "1,00",
+            "measure": "unidades",
+            "unit_price": "206,62",
+            "discount_perc": "0,00",
+            "subtotal": "206,62",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "250,01"
         },
         {
             "cod": "0000",
             "title": "M/OBRA CAMBIO HOJA Y P”FIJO",
-            "amount": "unidades",
-            "measure": "9752,08",
-            "unit_price": "0,00",
-            "discount_perc": "9752,08",
-            "subtotal": "21%",
-            "vat_fee": "11800,02",
-            "subtotal_inc_fees": ""
+            "amount": "1,00",
+            "measure": "unidades",
+            "unit_price": "9752,08",
+            "discount_perc": "0,00",
+            "subtotal": "9752,08",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "11800,02"
         },
         {
             "cod": "0000",
-            "title": "2,00",
-            "amount": "unidades",
-            "measure": "",
-            "unit_price": "0,00",
-            "discount_perc": "826,46",
-            "subtotal": "21%",
-            "vat_fee": "1000,02",
-            "subtotal_inc_fees": ""
+            "title": "BUJE BARRA ESTABILIZADORA TRASERA CENTRAL",
+            "amount": "2,00",
+            "measure": "unidades",
+            "unit_price": "413,23",
+            "discount_perc": "0,00",
+            "subtotal": "826,46",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "1000,02"
         }
     ],
     "footer": {

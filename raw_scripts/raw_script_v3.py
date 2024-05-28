@@ -52,14 +52,16 @@ from lib.functions.utils.remove_lines_from_image import removeLinesFromImage
 # Borramos los archivos en las carpetas, por si quedó basura
 deleteFilesInFolder("images/data")
 deleteFilesInFolder("images/pretemp")
-deleteFilesInFolder("images/temp")
 deleteFilesInFolder("images/processing")
 deleteFilesInFolder("images/processing/header_concepts")
 deleteFilesInFolder("images/processing/header_concepts/header_concepts_subdivided")
+deleteFilesInFolder("images/temp")
+deleteFilesInFolder("images/temp/items")
+deleteFilesInFolder("images/temp/items/values")
 
 start_time = time.time()
 
-invoiceFileName = "28"
+invoiceFileName = "17"
 
 starting_image_path = "raw_scripts/testing_scan/" + invoiceFileName + ".png"
 image_type = Image_type.scan
@@ -164,18 +166,18 @@ processImage(
     rectDimensions=(500, 6 if image_type == Image_type.pdf else 5),
     boxWidthTresh=100,
     boxHeightTresh=2000,  # No importa este valor
-    folder="images/temp",
+    folder="images/temp/items",
     outputImagePrefix="item",
     higherThanHeight=False,
 )
 
 # ... para luego eliminar los recortes que no sean
-directory_in_str = "images/temp"
+directory_in_str = "images/temp/items"
 directory = os.fsencode(directory_in_str)
 for file in os.listdir(directory):
     filename = os.fsdecode(file)
     if filename.startswith("item"):
-        img_file_path = "images/temp/" + filename
+        img_file_path = "images/temp/items/" + filename
         image = cv2.imread(img_file_path)
         if checkIfImageHasLines(image):
             delete_file(img_file_path)
@@ -289,10 +291,12 @@ print(footer)
 # Borramos los archivos generados para el analisis
 deleteFilesInFolder("images/data")
 deleteFilesInFolder("images/pretemp")
-deleteFilesInFolder("images/temp")
 deleteFilesInFolder("images/processing")
 deleteFilesInFolder("images/processing/header_concepts")
 deleteFilesInFolder("images/processing/header_concepts/header_concepts_subdivided")
+deleteFilesInFolder("images/temp")
+deleteFilesInFolder("images/temp/items")
+deleteFilesInFolder("images/temp/items/values")
 
 print("Process finished --- %s seconds ---" % (time.time() - start_time))
 

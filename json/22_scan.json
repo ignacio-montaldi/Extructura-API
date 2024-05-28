@@ -20,36 +20,36 @@
     "items": [
         {
             "cod": "",
-            "title": "1,00",
-            "amount": "unidades",
-            "measure": "",
-            "unit_price": "0,00",
-            "discount_perc": "750,00",
-            "subtotal": "21%",
-            "vat_fee": "907,50",
-            "subtotal_inc_fees": ""
+            "title": "Alineación eje delantero Iveco MQI 376",
+            "amount": "1,00",
+            "measure": "unidades",
+            "unit_price": "750,00",
+            "discount_perc": "0,00",
+            "subtotal": "750,00",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "907,50"
         },
         {
             "cod": "",
-            "title": "2,00",
-            "amount": "unidades",
-            "measure": "",
-            "unit_price": "0,00",
-            "discount_perc": "1200,00",
-            "subtotal": "21%",
-            "vat_fee": "1452,00",
-            "subtotal_inc_fees": ""
+            "title": "Alineación eje trasero Iveco MQ! 376",
+            "amount": "2,00",
+            "measure": "unidades",
+            "unit_price": "600,00",
+            "discount_perc": "0,00",
+            "subtotal": "1200,00",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "1452,00"
         },
         {
             "cod": "",
-            "title": "4,00",
-            "amount": "unidades",
-            "measure": "",
-            "unit_price": "0,00",
-            "discount_perc": "600,00",
-            "subtotal": "21%",
-            "vat_fee": "726,00",
-            "subtotal_inc_fees": ""
+            "title": "Balanceo de montana AB 2447D",
+            "amount": "4,00",
+            "measure": "unidades",
+            "unit_price": "150,00",
+            "discount_perc": "0,00",
+            "subtotal": "600,00",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "726,00"
         }
     ],
     "footer": {

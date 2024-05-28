@@ -20,58 +20,58 @@
     "items": [
         {
             "cod": "0001",
-            "title": "16,00",
-            "amount": "ovas unidades",
-            "measure": "3500,00",
-            "unit_price": "0,00",
-            "discount_perc": "56000,00",
-            "subtotal": "21%",
-            "vat_fee": "67760,00",
-            "subtotal_inc_fees": ""
+            "title": "Trámites en aduana para cancelación de transito de exportación Salida Cargado.",
+            "amount": "16,00",
+            "measure": "ovas unidades",
+            "unit_price": "3500,00",
+            "discount_perc": "0,00",
+            "subtotal": "56000,00",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "67760,00"
         },
         {
             "cod": "5002",
-            "title": "17,00",
-            "amount": "oras unidades",
-            "measure": "5500,00",
-            "unit_price": "0,00",
-            "discount_perc": "93500,00",
-            "subtotal": "21%",
-            "vat_fee": "113135,00",
-            "subtotal_inc_fees": ""
+            "title": "113135,00",
+            "amount": "Trámites en aduana para el ingreso de camiones en lastre (MANI) Impresión de MIC/DTA.",
+            "measure": "\f",
+            "unit_price": "17,00",
+            "discount_perc": "oras unidades",
+            "subtotal": "5500,00",
+            "vat_fee": "0,00",
+            "subtotal_inc_fees": "93500,00"
         },
         {
             "cod": "TARE",
-            "title": "7,00",
-            "amount": "otras unidades",
-            "measure": "2300,00",
-            "unit_price": "0,00",
-            "discount_perc": "16100,00",
-            "subtotal": "No gravado",
-            "vat_fee": "16100,00",
-            "subtotal_inc_fees": ""
+            "title": "Reposición de tanía reducida de aduana cobrada a través del sistema Informático Malvinas aplicado en horarios inhábil (camión en lastre)",
+            "amount": "7,00",
+            "measure": "otras unidades",
+            "unit_price": "2300,00",
+            "discount_perc": "0,00",
+            "subtotal": "16100,00",
+            "vat_fee": "No gravado",
+            "subtotal_inc_fees": "16100,00"
         },
         {
             "cod": "TARE",
-            "title": "700",
-            "amount": "otras unidades",
-            "measure": "3509,00",
-            "unit_price": "0.00",
-            "discount_perc": "24500,00",
-            "subtotal": "No gravado",
-            "vat_fee": "24500,00",
-            "subtotal_inc_fees": ""
+            "title": "Reposición de tarifa reducida de aduana cobrada a Uavés del sistema Informático Malvinas aplicado en horaños inhábil (camión cargado)",
+            "amount": "700",
+            "measure": "otras unidades",
+            "unit_price": "3509,00",
+            "discount_perc": "0.00",
+            "subtotal": "24500,00",
+            "vat_fee": "No gravado",
+            "subtotal_inc_fees": "24500,00"
         },
         {
             "cod": "TARE",
-            "title": "2,00",
-            "amount": "ovas unidades",
-            "measure": "4700,00",
-            "unit_price": "0,00",
-            "discount_perc": "9400.00",
-            "subtotal": "No gravado",
-            "vat_fee": "940,00",
-            "subtotal_inc_fees": ""
+            "title": "Reposición de tanfa reducida de aduana cobrada a través del sistema Informático Malvinas aplicado en horarios inhábil (camión cargado)",
+            "amount": "2,00",
+            "measure": "ovas unidades",
+            "unit_price": "4700,00",
+            "discount_perc": "0,00",
+            "subtotal": "9400.00",
+            "vat_fee": "No gravado",
+            "subtotal_inc_fees": "940,00"
         }
     ],
     "footer": {

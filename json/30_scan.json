@@ -19,15 +19,15 @@
     },
     "items": [
         {
-            "cod": "1",
-            "title": "4,00 ' unidades",
-            "amount": "",
-            "measure": "",
-            "unit_price": "0,00",
-            "discount_perc": "1322,32",
-            "subtotal": "21%",
-            "vat_fee": "1600,01",
-            "subtotal_inc_fees": ""
+            "cod": "",
+            "title": "1",
+            "amount": "bujias",
+            "measure": "4,00 ' unidades",
+            "unit_price": "330,58",
+            "discount_perc": "0,00",
+            "subtotal": "1322,32",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "1600,01"
         }
     ],
     "footer": {

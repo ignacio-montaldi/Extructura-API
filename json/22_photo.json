@@ -23,8 +23,8 @@
             "title": "Alineación eje delantero Iveco MCI 376",
             "amount": "1,00",
             "measure": "unkdados",
-            "unit_price": "0,00",
-            "discount_perc": "",
+            "unit_price": "750,00",
+            "discount_perc": "0,00",
             "subtotal": "750,00",
             "vat_fee": "21%",
             "subtotal_inc_fees": "907,50"
@@ -34,8 +34,8 @@
             "title": "Alineación eje trasero Iveco MOL 376",
             "amount": "2,00",
             "measure": "unidades",
-            "unit_price": "0.00",
-            "discount_perc": "",
+            "unit_price": "600,00",
+            "discount_perc": "0.00",
             "subtotal": "1200,00",
             "vat_fee": "21%",
             "subtotal_inc_fees": "1452,00"
@@ -45,8 +45,8 @@
             "title": "Balanceo de montana AB 24470",
             "amount": "4,09",
             "measure": "unidades",
-            "unit_price": "9,09",
-            "discount_perc": "",
+            "unit_price": "150,00",
+            "discount_perc": "9,09",
             "subtotal": "600,00",
             "vat_fee": "21%",
             "subtotal_inc_fees": "725,00"

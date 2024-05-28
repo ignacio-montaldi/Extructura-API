@@ -20,36 +20,36 @@
     "items": [
         {
             "cod": "001",
-            "title": "1,00",
-            "amount": "unidades",
-            "measure": "66363,00",
-            "unit_price": "0,00",
-            "discount_perc": "66363,00",
-            "subtotal": "21%",
-            "vat_fee": "80209,23",
-            "subtotal_inc_fees": ""
+            "title": "GASTO POR ANULACIÓN DE ADUANA PARA IMPORTADOR: MP",
+            "amount": "1,00",
+            "measure": "unidades",
+            "unit_price": "66363,00",
+            "discount_perc": "0,00",
+            "subtotal": "66363,00",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "80209,23"
         },
         {
             "cod": "002",
-            "title": "1,00",
-            "amount": "unidades",
-            "measure": "66980,00",
-            "unit_price": "0,00",
-            "discount_perc": "66980,00",
-            "subtotal": "21%",
-            "vat_fee": "81045,80",
-            "subtotal_inc_fees": ""
+            "title": "\"GASTO POR ANULACION DE ADUANA PARA IMPORTADOR: MP",
+            "amount": "1,00",
+            "measure": "unidades",
+            "unit_price": "66980,00",
+            "discount_perc": "0,00",
+            "subtotal": "66980,00",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "81045,80"
         },
         {
             "cod": "003",
-            "title": "1,00",
-            "amount": "unidades",
-            "measure": "80000,00",
-            "unit_price": "0,00",
-            "discount_perc": "80000,00",
-            "subtotal": "21%",
-            "vat_fee": "96800,00",
-            "subtotal_inc_fees": ""
+            "title": "GASTO POR ANULACIÓN DE ADUANA PARA IMPORTADOR; JORMAR",
+            "amount": "1,00",
+            "measure": "unidades",
+            "unit_price": "80000,00",
+            "discount_perc": "0,00",
+            "subtotal": "80000,00",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "96800,00"
         }
     ],
     "footer": {

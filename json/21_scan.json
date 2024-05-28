@@ -3,18 +3,18 @@
     "header": {
         "business_name": "DE VINCENTIS LIDIA CARMEN",
         "business_address": "Ameghino 299 - Resistencia, Chaco",
-        "vat_condition": 0,
+        "vat_condition": 1,
         "document_type": "FACTURA",
         "checkout_aisle_number": "00005",
         "document_number": "00002658",
         "issue_date": "04/11/2021",
         "seller_cuit": "27020877192",
-        "gross_income": "27020877192",
+        "gross_income": "2/0208/77192",
         "business_opening_date": "01/09/1997",
         "client_cuit": "30670214644",
         "client_name": "PETRO AVELLANEDA SRL",
         "client_vat_condition": 1,
-        "client_address": "N. Avneda Y Av V. Sarsfield 0 - Resistencia, Chaco",
+        "client_address": "N, Avneda Y Av V. Sarsfield 0 - Resistencia, Chaco",
         "sale_method": "— Contado"
     },
     "items": [

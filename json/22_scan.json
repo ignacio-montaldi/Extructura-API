@@ -3,7 +3,7 @@
     "header": {
         "business_name": "BARCHUK DIEGO NICOLAS",
         "business_address": "Bompland 0 - Santa Ana, Misiones",
-        "vat_condition": 0,
+        "vat_condition": 1,
         "document_type": "FACTURA",
         "checkout_aisle_number": "0002",
         "document_number": "00000058",
@@ -15,7 +15,7 @@
         "client_name": "PROOBRA S.A.",
         "client_vat_condition": 1,
         "client_address": "San Luis 1345 Piso:05 Dpto:A B - Posadas, Misiones",
-        "sale_method": "—— Cuenta Comente"
+        "sale_method": "Cuenta Comente"
     },
     "items": [
         {

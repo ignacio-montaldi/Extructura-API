@@ -1,18 +1,18 @@
 {
     "type": "A",
     "header": {
-        "business_name": "ELASTICOS MáM S.RL.",
+        "business_name": "ELASTICOS MáM S.R.L.",
         "business_address": "Av Rodriguez Durañona 2417 - Salta, Salta",
-        "vat_condition": 0,
-        "document_type": "FACTURA",
+        "vat_condition": 1,
+        "document_type": "EACTURA",
         "checkout_aisle_number": "00001",
         "document_number": "00022226",
         "issue_date": "27/05/2022",
-        "seller_cuit": "30715144510",
+        "seller_cuit": "30/7/15144510",
         "gross_income": "30715144510",
         "business_opening_date": "01/02/2016",
         "client_cuit": "30654303254",
-        "client_name": "DON DANTESRL",
+        "client_name": "DON DANTE SRL",
         "client_vat_condition": 1,
         "client_address": "Av.Rodriguez Durañona 2222 - Salta, Salta",
         "sale_method": "— Cuenta Comente"
@@ -20,7 +20,7 @@
     "items": [
         {
             "cod": "0000",
-            "title": "1,00",
+            "title": "HOJA 3* SPRINTER TRAS. PARABOLICA",
             "amount": "unidades",
             "measure": "18595,05",
             "unit_price": "0,00",
@@ -31,7 +31,7 @@
         },
         {
             "cod": "0000",
-            "title": "1,00",
+            "title": "PIFIJO",
             "amount": "unidades",
             "measure": "",
             "unit_price": "0,00",
@@ -42,7 +42,7 @@
         },
         {
             "cod": "0000",
-            "title": "1,00",
+            "title": "M/OBRA CAMBIO HOJA Y P”FIJO",
             "amount": "unidades",
             "measure": "9752,08",
             "unit_price": "0,00",

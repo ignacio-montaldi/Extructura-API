@@ -3,18 +3,18 @@
     "header": {
         "business_name": "DON DANTESRL",
         "business_address": "Av.Rodriguez Durañona 2222 - Salta, Salta",
-        "vat_condition": 0,
+        "vat_condition": 1,
         "document_type": "FACTURA",
         "checkout_aisle_number": "00003",
         "document_number": "00005947",
         "issue_date": "15/12/2023",
         "seller_cuit": "30654303254",
-        "gross_income": "91/-622880-5",
+        "gross_income": "917-6522880-5",
         "business_opening_date": "18/08/1992",
         "client_cuit": "30507950848",
         "client_name": "MOLINO CAÑUELAS SOCIEDAD ANONIMA COMERCIAL INDUSTRIAL FINANCIERA INMOBILIARIA Y",
         "client_vat_condition": 1,
-        "client_address": "Ksmometiarañuelas, Buenos Aires",
+        "client_address": "KgRePEtAMFAñuelas, Buenos Aires",
         "sale_method": "— Contado"
     },
     "items": [
@@ -26,7 +26,7 @@
             "unit_price": "0,00",
             "discount_perc": "66363,00",
             "subtotal": "21%",
-            "vat_fee": "80299,23",
+            "vat_fee": "80209,23",
             "subtotal_inc_fees": ""
         },
         {
@@ -48,7 +48,7 @@
             "unit_price": "0,00",
             "discount_perc": "80000,00",
             "subtotal": "21%",
-            "vat_fee": "S6800,00",
+            "vat_fee": "96800,00",
             "subtotal_inc_fees": ""
         }
     ],

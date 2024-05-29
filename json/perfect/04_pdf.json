@@ -1,0 +1,47 @@
+{
+    "type": "A",
+    "header": {
+        "business_name": "Cuit Juridica de Prueba",
+        "business_address": "8 De Diciembre Diciembre ------—------- 153 Piso:P B. Dpto:9* - Ciuda",
+        "vat_condition": 1,
+        "document_type": "FACTURA",
+        "checkout_aisle_number": "00010",
+        "document_number": "00000094",
+        "issue_date": "13/10/2020",
+        "seller_cuit": "30000000007",
+        "gross_income": "1",
+        "business_opening_date": "01/01/1900",
+        "client_cuit": "20000000001",
+        "client_name": "PRUEBA EMPLEADO",
+        "client_vat_condition": 1,
+        "client_address": "Av De Mayo 567 - Capital Federal, Ciudad de Buenos Aires",
+        "sale_method": "Contado"
+    },
+    "items": [
+        {
+            "cod": "1234",
+            "title": "un producto",
+            "amount": "1,00",
+            "measure": "unidades",
+            "unit_price": "10000,00",
+            "discount_perc": "0,00",
+            "subtotal": "10000,00",
+            "vat_fee": "21%",
+            "subtotal_inc_fees": "12100,00"
+        }
+    ],
+    "footer": {
+        "currency": "USD",
+        "net_amount_taxed": "10000,00",
+        "net_amount_untaxed": null,
+        "vat_27": "0,00",
+        "vat_21": "2100,00",
+        "vat_10_5": "0,00",
+        "vat_5": "0,00",
+        "vat_2_5": "0,00",
+        "vat_0": "0,00",
+        "other_taxes_ammout": "0,00",
+        "total": "12100,00",
+        "exchange_rate": "65,000000"
+    }
+}

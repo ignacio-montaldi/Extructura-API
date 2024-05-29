@@ -1,7 +1,7 @@
 {
     "type": "A",
     "header": {
-        "business_name": "ELASTICOS MAáM S.R.L,",
+        "business_name": "ELASTICOS M&M S.R.L.",
         "business_address": "Av Rodriguez Durañona 2417 - Salta, Salta",
         "vat_condition": 1,
         "document_type": "FACTURA",
@@ -12,15 +12,15 @@
         "gross_income": "30715144510",
         "business_opening_date": "01/02/2016",
         "client_cuit": "30654303254",
-        "client_name": "DON DANTE S RL",
+        "client_name": "DON DANTE S R L",
         "client_vat_condition": 1,
         "client_address": "Av.Rodriguez Durañona 2222 - Salta, Salta",
-        "sale_method": "Cuenta Corente"
+        "sale_method": "Cuenta Corriente"
     },
     "items": [
         {
             "cod": "0000",
-            "title": "HOJA 3* SPRINTER TRAS. PARABOLICA",
+            "title": "HOJA 3° SPRINTER TRAS. PARABOLICA",
             "amount": "1,00",
             "measure": "unidades",
             "unit_price": "18595,05",
@@ -31,7 +31,7 @@
         },
         {
             "cod": "0000",
-            "title": "P?FIJO",
+            "title": "P/FIJO",
             "amount": "1,00",
             "measure": "unidades",
             "unit_price": "206,62",
@@ -42,7 +42,7 @@
         },
         {
             "cod": "0000",
-            "title": "M/OBRA CAMBIO HOJA Y P”*FIJO",
+            "title": "M/OBRA CAMBIO HOJA Y P/*FIJO",
             "amount": "1,00",
             "measure": "unidades",
             "unit_price": "9752,08",

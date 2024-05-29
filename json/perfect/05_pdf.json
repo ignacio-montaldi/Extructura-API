@@ -20,8 +20,8 @@
     "items": [
         {
             "cod": "1",
-            "title": "CORSAIR--SILLA DE ESCRITORIO T3 RUSH GAMER GRAY/CHARCOAL ECF-9010031-WWw",
-            "amount": "1.00",
+            "title": "CORSAIR--SILLA DE ESCRITORIO T3 RUSH GAMER GRAY/CHARCOAL #CF-9010031-WW",
+            "amount": "1,00",
             "measure": "unidades",
             "unit_price": "71292,99",
             "discount_perc": "0,00",
@@ -31,7 +31,7 @@
     ],
     "footer": {
         "currency": "ARS",
-        "sub_total": "71292,39",
+        "sub_total": "71292,99",
         "other_taxes_ammout": "0,00",
         "total": "71292,99",
         "exchange_rate": "1"

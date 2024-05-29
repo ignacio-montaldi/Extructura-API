@@ -275,7 +275,7 @@ def main_code(invoiceFileNameNumber, folder, imageType):
     print(header)
 
     ##### GET ITEMS #####
-    items = getItems(invoice_type, invoiceFileName)
+    items = getItems(invoice_type, invoiceFileName, image_type)
     print(items)
 
     ##### GET FOOTER CONCEPTS #####

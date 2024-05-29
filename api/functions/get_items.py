@@ -14,7 +14,7 @@ from lib.functions.utils.process_item_image import processItemImage
 # Devuelve el detalle de los productos
 
 
-def getItems(invoice_type: InvoiceType, imageName: str):
+def getItems(invoice_type: InvoiceType, imageName: str, image_type):
     directory_in_str = "images/temp"
     directory = os.fsencode(directory_in_str)
 
@@ -35,6 +35,7 @@ def getItems(invoice_type: InvoiceType, imageName: str):
                 reverseSorting=True,
                 invoice_type=invoice_type,
                 imageName=imageName,
+                image_type=image_type,
                 printXYWHIteration=printXYWHIteration,
             )
 

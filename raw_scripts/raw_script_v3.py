@@ -279,7 +279,7 @@ header = getHeader(invoiceFileName, image_type)
 print(header)
 
 ##### GET ITEMS #####
-items = getItems(invoice_type, invoiceFileName)
+items = getItems(invoice_type, invoiceFileName, image_type)
 print(items)
 
 ##### GET FOOTER CONCEPTS #####

@@ -1,5 +1,6 @@
 import cv2
 
+from lib.enums.image_type_enum import Image_type
 from lib.enums.invoice_type_enum import InvoiceType
 from lib.functions.utils.check_if_image_is_gray import checkIfImageIsGray
 from lib.functions.utils.delete_file import delete_file
@@ -17,6 +18,7 @@ def processItemImage(
     savePreprocessingImages=False,
     invoice_type=InvoiceType.C,
     imageName="",
+    image_type=Image_type.pdf,
     printXYWHIteration=1,
 ):
 
@@ -24,6 +26,27 @@ def processItemImage(
 
     # Poner en escala de grises la imágen, nada mas, si es que no viene ya lista
     gray = checkIfImageIsGray(imageToProcess)
+
+    f = open("test3.txt", "a")
+    f.write(
+        "('"
+        + str(imageName)
+        + "'"
+        + ","
+        + str(printXYWHIteration)
+        + ","
+        + str(gray.shape[1])
+        + ","
+        + "'"
+        + str(invoice_type.name)
+        + "'"
+        + ","
+        + "'"
+        + str(image_type.name)
+        + "'),"
+        + "\n"
+    )
+    f.close()
 
     # Difuminar la imágen, permite agrupar objetos (es decir, hacer menos legible su separacion) en la imágen para el siguiente paso Kernel positivo e impar
     blur = cv2.GaussianBlur(gray, (7, 7), 0)
@@ -80,6 +103,10 @@ def processItemImage(
             + "'"
             + str(invoice_type.name)
             + "'"
+            + ","
+            + "'"
+            + str(image_type.name)
+            + "'),"
             + "\n"
         )
         f.close()

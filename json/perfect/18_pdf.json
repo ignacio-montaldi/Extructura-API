@@ -10,7 +10,7 @@
         "issue_date": "09/04/2024",
         "seller_cuit": "20418704331",
         "gross_income": "20418704331",
-        "business_opening_date": "(01/04/2022",
+        "business_opening_date": "01/04/2022",
         "client_cuit": "30638043315",
         "client_name": "INGENIERO MEDINA SA",
         "client_vat_condition": 1,
@@ -25,7 +25,7 @@
             "measure": "otras unidades",
             "unit_price": "675604,00",
             "discount_perc": "0,00",
-            "discounted_subtotal": "0.00",
+            "discounted_subtotal": "0,00",
             "subtotal": "675604,00"
         },
         {
@@ -35,7 +35,7 @@
             "measure": "otras unidades",
             "unit_price": "80932,00",
             "discount_perc": "0,00",
-            "discounted_subtotal": "0.00",
+            "discounted_subtotal": "0,00",
             "subtotal": "80932,00"
         }
     ],

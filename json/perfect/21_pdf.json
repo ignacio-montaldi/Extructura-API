@@ -31,7 +31,7 @@
         },
         {
             "cod": "",
-            "title": "PORCIONES DE SORRENTINOS DE J2Q",
+            "title": "PORCIONES DE SORRENTINOS DE J&Q",
             "amount": "15,00",
             "measure": "unidades",
             "unit_price": "330,58",
@@ -53,7 +53,7 @@
         },
         {
             "cod": "",
-            "title": "PORCIONES DE ROQUIS DE PAPA",
+            "title": "PORCIONES DE ÑOQUIS DE PAPA",
             "amount": "10,00",
             "measure": "unidades",
             "unit_price": "74,38",
@@ -69,7 +69,7 @@
             "measure": "unidades",
             "unit_price": "330,58",
             "discount_perc": "0,00",
-            "subtotal": "1852,80",
+            "subtotal": "1652,80",
             "vat_fee": "21%",
             "subtotal_inc_fees": "2000,01"
         },
@@ -80,7 +80,7 @@
             "measure": "unidades",
             "unit_price": "330,58",
             "discount_perc": "0,00",
-            "subtotal": "1852,80",
+            "subtotal": "1652,80",
             "vat_fee": "21%",
             "subtotal_inc_fees": "2000,01"
         }

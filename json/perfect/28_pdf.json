@@ -12,15 +12,15 @@
         "gross_income": "20147219807",
         "business_opening_date": "01/06/2012",
         "client_cuit": "30577207190",
-        "client_name": "COORDINACION ECOLOGICA AREA METROPOLITANA SOCIEDAD DEL ESTADO - -",
+        "client_name": "COORDINACION ECOLOGICA AREA METROPOLITANA SOCIEDAD DEL ESTADO",
         "client_vat_condition": 1,
-        "client_address": "Aicorta Amancio Av. 3000 - Capital Federal, Ciudad de Buenos Aires",
+        "client_address": "Alcorta Amancio Av. 3000 - Capital Federal, Ciudad de Buenos Aires",
         "sale_method": "Contado"
     },
     "items": [
         {
             "cod": "",
-            "title": "ng-800u",
+            "title": "ng-900u",
             "amount": "1,00",
             "measure": "unidades",
             "unit_price": "660,33",
@@ -31,12 +31,12 @@
         },
         {
             "cod": "",
-            "title": "pilas AÑA panasonic",
+            "title": "pilas AAA panasonic",
             "amount": "2,00",
             "measure": "unidades",
             "unit_price": "61,98",
             "discount_perc": "0,00",
-            "subtotal": "123,36",
+            "subtotal": "123,96",
             "vat_fee": "21%",
             "subtotal_inc_fees": "149,99"
         }

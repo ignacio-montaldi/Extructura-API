@@ -10,11 +10,11 @@
         "issue_date": "17/01/2023",
         "seller_cuit": "20265381953",
         "gross_income": "20265381953",
-        "business_opening_date": "(29/09/2004",
+        "business_opening_date": "09/09/2004",
         "client_cuit": "34938581",
         "client_name": "BUSCHIAZZO MATIAS",
         "client_vat_condition": 5,
-        "client_address": "San Martín N>1225",
+        "client_address": "San Martín N°1225",
         "sale_method": "Contado"
     },
     "items": [
@@ -25,8 +25,8 @@
             "measure": "unidades",
             "unit_price": "6900,00",
             "discount_perc": "0,00",
-            "discounted_subtotal": "0.00",
-            "subtotal": "6900.00"
+            "discounted_subtotal": "0,00",
+            "subtotal": "6900,00"
         }
     ],
     "footer": {

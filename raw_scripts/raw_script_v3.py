@@ -61,7 +61,7 @@ deleteFilesInFolder("images/temp/items/values")
 
 start_time = time.time()
 
-invoiceFileName = "17"
+invoiceFileName = "16"
 
 starting_image_path = "raw_scripts/testing_scan/" + invoiceFileName + ".png"
 image_type = Image_type.scan
@@ -306,7 +306,12 @@ analizedInvoice = Invoice(
     type=invoice_type.name, header=header, items=items, footer=footer
 )
 
-# testResult(analizedInvoice, jsonPath = 'json/' + invoiceFileName + '.json') #, perfectInvoice)
+testResult(
+    analizedInvoice,
+    jsonPath="json/perfect/" + invoiceFileName + ".json",
+    invoiceFileName=invoiceFileName,
+    image_type=image_type,
+)  # , perfectInvoice)
 
 # Para generar el json que se modificará para ser el perfecto, eliminar después
 import json

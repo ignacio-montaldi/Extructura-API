@@ -300,7 +300,12 @@ def main_code(invoiceFileNameNumber, folder, imageType):
         type=invoice_type.name, header=header, items=items, footer=footer
     )
 
-    # testResult(analizedInvoice, jsonPath = 'json/' + invoiceFileName + '.json') #, perfectInvoice)
+    testResult(
+        analizedInvoice,
+        jsonPath="json/perfect/" + invoiceFileName + ".json",
+        invoiceFileName=invoiceFileName,
+        image_type=image_type,
+    )  # , perfectInvoice)
 
     # Para generar el json que se modificará para ser el perfecto, eliminar después
     import json

@@ -10,9 +10,9 @@
         "issue_date": "25/11/2023",
         "seller_cuit": "20930802205",
         "gross_income": "A-1-44580",
-        "business_opening_date": "(01/12/2010",
+        "business_opening_date": "01/12/2010",
         "client_cuit": "30654303254",
-        "client_name": "DON DANTESRL",
+        "client_name": "DON DANTE S R L",
         "client_vat_condition": 1,
         "client_address": "Av.Rodriguez Durañona 2222 - Salta, Salta",
         "sale_method": "Contado"
@@ -25,7 +25,7 @@
             "measure": "unidades",
             "unit_price": "4000,00",
             "discount_perc": "0,00",
-            "discounted_subtotal": "0.00",
+            "discounted_subtotal": "0,00",
             "subtotal": "8000,00"
         },
         {
@@ -35,8 +35,8 @@
             "measure": "unidades",
             "unit_price": "4000,00",
             "discount_perc": "0,00",
-            "discounted_subtotal": "0.00",
-            "subtotal": "2000000"
+            "discounted_subtotal": "0,00",
+            "subtotal": "20000,00"
         },
         {
             "cod": "0003",
@@ -45,18 +45,18 @@
             "measure": "unidades",
             "unit_price": "4000,00",
             "discount_perc": "0,00",
-            "discounted_subtotal": "0.00",
+            "discounted_subtotal": "0,00",
             "subtotal": "8000,00"
         },
         {
             "cod": "0004",
             "title": "HONORARIOS A.T.A. PALPALA CRT NRO. 031AS087/2023",
-            "amount": "2.00",
+            "amount": "2,00",
             "measure": "unidades",
             "unit_price": "4000,00",
             "discount_perc": "0,00",
-            "discounted_subtotal": "0.00",
-            "subtotal": "8000.00"
+            "discounted_subtotal": "0,00",
+            "subtotal": "8000,00"
         }
     ],
     "footer": {

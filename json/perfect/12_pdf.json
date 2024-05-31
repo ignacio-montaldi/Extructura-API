@@ -10,9 +10,9 @@
         "issue_date": "06/12/2023",
         "seller_cuit": "20242906528",
         "gross_income": "20242906528",
-        "business_opening_date": "(01/04/2020",
+        "business_opening_date": "01/04/2020",
         "client_cuit": "30654303254",
-        "client_name": "DON DANTESRL",
+        "client_name": "DON DANTE S R L",
         "client_vat_condition": 1,
         "client_address": "Av.Rodriguez Durañona 2222 - Salta, Salta",
         "sale_method": "Otra"
@@ -25,7 +25,7 @@
             "measure": "otras unidades",
             "unit_price": "66000,00",
             "discount_perc": "0,00",
-            "discounted_subtotal": "0.00",
+            "discounted_subtotal": "0,00",
             "subtotal": "66000,00"
         }
     ],

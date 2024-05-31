@@ -1,7 +1,7 @@
 {
     "type": "A",
     "header": {
-        "business_name": "DON DANTESRL",
+        "business_name": "DON DANTE S R L",
         "business_address": "Av.Rodriguez Durañona 2222 - Salta, Salta",
         "vat_condition": 1,
         "document_type": "FACTURA",
@@ -19,9 +19,9 @@
     },
     "items": [
         {
-            "cod": "004",
+            "cod": "001",
             "title": "SERVICIO DE BASCULA MES DE DICIEMBRE DE 2.023",
-            "amount": "8.00",
+            "amount": "8,00",
             "measure": "unidades",
             "unit_price": "2500,00",
             "discount_perc": "0,00",

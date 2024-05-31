@@ -12,9 +12,9 @@
         "gross_income": "A-1-55049",
         "business_opening_date": "01/07/2015",
         "client_cuit": "30654303254",
-        "client_name": "DON DANTESRL",
+        "client_name": "DON DANTE S R L",
         "client_vat_condition": 1,
-        "client_address": "Av.Rodriguez Durañona 2222 - Salta, Saita",
+        "client_address": "Av.Rodriguez Durañona 2222 - Salta, Salta",
         "sale_method": "Otra"
     },
     "items": [
@@ -23,15 +23,15 @@
             "title": "Trámites en aduana para cancelación de transito de exportación Salida Cargado.",
             "amount": "16,00",
             "measure": "otras unidades",
-            "unit_price": "3500.00",
-            "discount_perc": "0.00",
-            "subtotal": "56000.00",
+            "unit_price": "3500,00",
+            "discount_perc": "0,00",
+            "subtotal": "56000,00",
             "vat_fee": "21%",
             "subtotal_inc_fees": "67760,00"
         },
         {
             "cod": "0002",
-            "title": "Trámites en aduana para el ingreso de camiones en lastre (MANI) Impresión de MIC/DTA. > -",
+            "title": "Trámites en aduana para el ingreso de camiones en lastre (MANI) Impresión de MIC/DTA.",
             "amount": "17,00",
             "measure": "otras unidades",
             "unit_price": "5500,00",
@@ -42,7 +42,7 @@
         },
         {
             "cod": "TARE",
-            "title": "Reposición de tarifa reducida de aduana cobrada a través del sistema Informático Malvinas aplicado en horarios inhábil (camión en lastre) -",
+            "title": "Reposición de tarifa reducida de aduana cobrada a través del sistema Informático Malvinas aplicado en horarios inhábil (camión en lastre)",
             "amount": "7,00",
             "measure": "otras unidades",
             "unit_price": "2300,00",
@@ -53,7 +53,7 @@
         },
         {
             "cod": "TARE",
-            "title": "Reposición de tarifa reducida de aduana cobrada a través del sistema Informático Malvinas aplicado en horarios inhábil (camión cargado) -",
+            "title": "Reposición de tarifa reducida de aduana cobrada a través del sistema Informático Malvinas aplicado en horarios inhábil (camión cargado)",
             "amount": "7,00",
             "measure": "otras unidades",
             "unit_price": "3500,00",
@@ -64,14 +64,14 @@
         },
         {
             "cod": "TARE",
-            "title": "Reposición de tarifa reducida de aduana cobrada a través del sistema Informático Malvinas aplicado en horarios inhábil (camión cargado) -",
+            "title": "Reposición de tarifa reducida de aduana cobrada a través del sistema Informático Malvinas aplicado en horarios inhábil (camión cargado)",
             "amount": "2,00",
             "measure": "otras unidades",
             "unit_price": "4700,00",
             "discount_perc": "0,00",
-            "subtotal": "8400,00",
+            "subtotal": "9400,00",
             "vat_fee": "No gravado",
-            "subtotal_inc_fees": "8400,00"
+            "subtotal_inc_fees": "9400,00"
         }
     ],
     "footer": {

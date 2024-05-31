@@ -1,7 +1,7 @@
 {
     "type": "A",
     "header": {
-        "business_name": "DON DANTESRL",
+        "business_name": "DON DANTE S R L",
         "business_address": "Av.Rodriguez Durañona 2222 - Salta, Salta",
         "vat_condition": 1,
         "document_type": "FACTURA",
@@ -12,16 +12,16 @@
         "gross_income": "917-622880-5",
         "business_opening_date": "18/08/1992",
         "client_cuit": "30710585764",
-        "client_name": "DIV SRL",
+        "client_name": "DJV SRL",
         "client_vat_condition": 1,
-        "client_address": "Av Durañona — Pque Industria 2205 - Salta, Salta",
+        "client_address": "Av Durañona   Pque Industria 2205 - Salta, Salta",
         "sale_method": "Contado"
     },
     "items": [
         {
-            "cod": "004",
+            "cod": "001",
             "title": "SERVICIO DE BASCULA MES DE DICIEMBRE DE 2.023",
-            "amount": "4.00",
+            "amount": "4,00",
             "measure": "unidades",
             "unit_price": "2500,00",
             "discount_perc": "0,00",
@@ -38,7 +38,7 @@
             "discount_perc": "0,00",
             "subtotal": "8100,00",
             "vat_fee": "21%",
-            "subtotal_inc_fees": "801,00"
+            "subtotal_inc_fees": "9801,00"
         }
     ],
     "footer": {

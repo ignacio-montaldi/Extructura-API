@@ -40,7 +40,7 @@ def paintHeaderBox2TitleAndBox(image, imageWol):
 
     for c in cnts:
         x, y, w, h = cv2.boundingRect(c)
-        if h > 25:
+        if y < 60:
             cv2.rectangle(imageWol, (x, y), (x + w, y + h), (255, 255, 255), -1)
 
     cv2.imwrite("images/temp/header_box_2_wol.png", imageWol)
